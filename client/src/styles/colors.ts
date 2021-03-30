@@ -6,6 +6,8 @@ export enum Colors {
   gray500 = 'rgba(255, 255, 255, 0.5)',
   gray600 = 'rgba(255, 255, 255, 0.65)',
   gray900 = 'rgba(255, 255, 255, 0.1)',
+  background = '#121414',
+  lightGray = '#29292E',
 
   // pokemons colors
   grass = '#6e7f0e',

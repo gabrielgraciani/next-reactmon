@@ -26,7 +26,7 @@ export const Card = ({ mainType, types }: CardProps): React.ReactElement => {
       <ContentContainer>
         <Types>
           {types.map(type => (
-            <TypeItem type={type}>
+            <TypeItem type={type} key={type}>
               <TypeText>type</TypeText>
             </TypeItem>
           ))}

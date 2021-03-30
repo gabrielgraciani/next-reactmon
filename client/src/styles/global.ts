@@ -1,3 +1,4 @@
+import { Colors } from 'styles/colors';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
@@ -13,6 +14,11 @@ const GlobalStyles = createGlobalStyle`
 
   body, input, textarea, select, button {
     font: 400 1rem "Roboto", sans-serif;
+  }
+
+  body {
+    background: ${Colors.background};
+    color: ${Colors.white};
   }
 
   button {
