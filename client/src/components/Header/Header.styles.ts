@@ -25,6 +25,7 @@ const Menu = styled.nav`
   height: 8rem;
   display: flex;
   align-items: center;
+  flex-grow: 1;
 `;
 
 const MenuItem = styled.a`
@@ -54,4 +55,42 @@ const MenuItem = styled.a`
   }
 `;
 
-export { Container, HeaderContent, ProjectName, Menu, MenuItem };
+const LoginButton = styled.a`
+  font-size: 1.4rem;
+`;
+
+const UserInformation = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const UserName = styled.span`
+  font-size: 1.4rem;
+`;
+
+const UserAvatar = styled.div`
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+`;
+
+const UserImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+`;
+
+export {
+  Container,
+  HeaderContent,
+  ProjectName,
+  Menu,
+  MenuItem,
+  LoginButton,
+  UserInformation,
+  UserName,
+  UserAvatar,
+  UserImage,
+};
