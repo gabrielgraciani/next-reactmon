@@ -1,6 +1,7 @@
 import { Card } from 'components/Card';
 import { Banner } from 'components/Banner';
 
+import { Item } from 'components/Item';
 import { Container, CardsContainer } from './Home.styles';
 
 export default function Home(): React.ReactElement {
@@ -29,6 +30,15 @@ export default function Home(): React.ReactElement {
         <Card mainType="psychic" types={['psychic', 'electric']} />
         <Card mainType="electric" types={['electric', 'normal']} />
         <Card mainType="normal" types={['normal', 'dark']} />
+      </CardsContainer>
+
+      <CardsContainer>
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
       </CardsContainer>
     </Container>
   );
