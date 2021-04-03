@@ -62,6 +62,7 @@ const LoginButton = styled.a`
 const UserInformation = styled.div`
   display: flex;
   align-items: center;
+  user-select: none;
 `;
 
 const UserName = styled.span`
@@ -72,7 +73,7 @@ const UserAvatar = styled.div`
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  margin-left: 1rem;
+  margin: 0 1rem;
 `;
 
 const UserImage = styled.img`
@@ -80,6 +81,17 @@ const UserImage = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+`;
+
+const PopoverContent = styled.div``;
+
+const PopoverContentItem = styled.a`
+  display: block;
+  font-size: 1.4rem;
+
+  & + a {
+    margin-top: 1rem;
+  }
 `;
 
 export {
@@ -93,4 +105,6 @@ export {
   UserName,
   UserAvatar,
   UserImage,
+  PopoverContent,
+  PopoverContentItem,
 };

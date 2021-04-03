@@ -1,4 +1,8 @@
+import { useState } from 'react';
+import { FiChevronDown } from 'react-icons/fi';
+
 import { Link } from '../Link';
+import { Popover } from '../Popover';
 
 import {
   Container,
@@ -11,10 +15,26 @@ import {
   UserName,
   UserAvatar,
   UserImage,
+  PopoverContent,
+  PopoverContentItem,
 } from './Header.styles';
 
 export const Header = (): React.ReactElement => {
-  const userLogged = false;
+  const [isPopoverVisible, setIsPopoverVisible] = useState(false);
+  const userLogged = true;
+
+  const content = () => {
+    return (
+      <PopoverContent>
+        <PopoverContentItem>Admin</PopoverContentItem>
+        <PopoverContentItem>Sair</PopoverContentItem>
+      </PopoverContent>
+    );
+  };
+
+  const handleVisibleChange = () => {
+    setIsPopoverVisible(!isPopoverVisible);
+  };
 
   return (
     <Container>
@@ -37,12 +57,20 @@ export const Header = (): React.ReactElement => {
         </Menu>
 
         {userLogged ? (
-          <UserInformation>
-            <UserName>Gabriel Graciani</UserName>
-            <UserAvatar>
-              <UserImage src="https://github.com/gabrielgraciani.png" />
-            </UserAvatar>
-          </UserInformation>
+          <Popover
+            visible={isPopoverVisible}
+            content={content}
+            onClose={() => setIsPopoverVisible(false)}
+            onVisibleChange={handleVisibleChange}
+          >
+            <UserInformation>
+              <UserName>Gabriel Graciani</UserName>
+              <UserAvatar>
+                <UserImage src="https://github.com/gabrielgraciani.png" />
+              </UserAvatar>
+              <FiChevronDown fontSize="1.8rem" />
+            </UserInformation>
+          </Popover>
         ) : (
           <LoginButton href="/login">Log in / Sign up</LoginButton>
         )}
