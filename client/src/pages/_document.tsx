@@ -11,9 +11,9 @@ export default class MyDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext,
   ): Promise<{
-    styles: React.ReactElement;
+    styles: JSX.Element;
     html: string;
-    head?: (React.ReactElement | null)[] | undefined;
+    head?: (JSX.Element | null)[] | undefined;
   }> {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
@@ -40,7 +40,7 @@ export default class MyDocument extends Document {
     }
   }
 
-  render(): React.ReactElement {
+  render(): JSX.Element {
     return (
       <Html lang="pt-BR">
         <Head />

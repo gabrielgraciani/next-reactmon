@@ -17,7 +17,7 @@ import {
 
 import { CardProps } from './Card.types';
 
-const Card = ({ mainType, types }: CardProps): React.ReactElement => {
+const Card = ({ mainType, types }: CardProps): JSX.Element => {
   return (
     <Container type={mainType}>
       <ImageContainer>

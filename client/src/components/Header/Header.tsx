@@ -20,7 +20,7 @@ import {
   PopoverIconContainer,
 } from './Header.styles';
 
-const Header = (): React.ReactElement => {
+const Header = (): JSX.Element => {
   const [isPopoverVisible, setIsPopoverVisible] = useState(false);
   const userLogged = false;
 

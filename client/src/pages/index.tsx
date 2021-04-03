@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Head from 'next/head';
 
 import { Card } from 'components/Card';
 import { Banner } from 'components/Banner';
@@ -12,72 +13,78 @@ import {
   CardInfos,
 } from './Home.styles';
 
-export default function Home(): React.ReactElement {
+export default function Home(): JSX.Element {
   return (
-    <Container>
-      <Banner title="Sobre" image="/images/banners/banner-home.jpg">
-        <p>
-          É uma franquia de mídia que pertence a The Pokémon Company, tendo sido
-          criada por Satoshi Tajiri em 1995. Ela é centrada em criaturas
-          ficcionais chamadas "Pokémon", que os seres humanos capturam e os
-          treinam para lutarem um contra o outro como um esporte.
-        </p>
+    <>
+      <Head>
+        <title>Home | Reactmon</title>
+      </Head>
 
-        <p>
-          A franquia começou com um par de jogos lançados para o Game Boy
-          original, desenvolvidos pela Game Freak e publicados pela Nintendo.
-          Atualmente, a franquia se estende em jogos, cartas colecionáveis,
-          série de televisão, além de filmes, mangás e brinquedos. Pokémon é a
-          segunda franquia de mídia de jogos mais bem sucedida e lucrativa do
-          mundo, atrás da franquia de Mario que também pertence a Nintendo.
-        </p>
-      </Banner>
+      <Container>
+        <Banner title="Sobre" image="/images/banners/banner-home.jpg">
+          <p>
+            É uma franquia de mídia que pertence a The Pokémon Company, tendo
+            sido criada por Satoshi Tajiri em 1995. Ela é centrada em criaturas
+            ficcionais chamadas "Pokémon", que os seres humanos capturam e os
+            treinam para lutarem um contra o outro como um esporte.
+          </p>
 
-      <CardInfos>
-        <CardTitle>Pokémons do momento</CardTitle>
-        <Link href="/pokedex">
-          <SeeAll>Ver Todos</SeeAll>
-        </Link>
-      </CardInfos>
+          <p>
+            A franquia começou com um par de jogos lançados para o Game Boy
+            original, desenvolvidos pela Game Freak e publicados pela Nintendo.
+            Atualmente, a franquia se estende em jogos, cartas colecionáveis,
+            série de televisão, além de filmes, mangás e brinquedos. Pokémon é a
+            segunda franquia de mídia de jogos mais bem sucedida e lucrativa do
+            mundo, atrás da franquia de Mario que também pertence a Nintendo.
+          </p>
+        </Banner>
 
-      <CardsContainer>
-        <Card mainType="dark" types={['dark', 'grass']} />
-        <Card mainType="grass" types={['grass', 'psychic']} />
-        <Card mainType="psychic" types={['psychic', 'electric']} />
-        <Card mainType="electric" types={['electric', 'normal']} />
-        <Card mainType="normal" types={['normal', 'dark']} />
-      </CardsContainer>
+        <CardInfos>
+          <CardTitle>Pokémons do momento</CardTitle>
+          <Link href="/pokedex">
+            <SeeAll>Ver Todos</SeeAll>
+          </Link>
+        </CardInfos>
 
-      <CardInfos>
-        <CardTitle>Itens do momento</CardTitle>
-        <Link href="/items">
-          <SeeAll>Ver Todos</SeeAll>
-        </Link>
-      </CardInfos>
+        <CardsContainer>
+          <Card mainType="dark" types={['dark', 'grass']} />
+          <Card mainType="grass" types={['grass', 'psychic']} />
+          <Card mainType="psychic" types={['psychic', 'electric']} />
+          <Card mainType="electric" types={['electric', 'normal']} />
+          <Card mainType="normal" types={['normal', 'dark']} />
+        </CardsContainer>
 
-      <CardsContainer>
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-      </CardsContainer>
+        <CardInfos>
+          <CardTitle>Itens do momento</CardTitle>
+          <Link href="/items">
+            <SeeAll>Ver Todos</SeeAll>
+          </Link>
+        </CardInfos>
 
-      <CardInfos>
-        <CardTitle>Cidades do momento</CardTitle>
-        <Link href="/cities">
-          <SeeAll>Ver Todos</SeeAll>
-        </Link>
-      </CardInfos>
+        <CardsContainer>
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+        </CardsContainer>
 
-      <CardsContainer>
-        <City />
-        <City />
-        <City />
-        <City />
-        <City />
-      </CardsContainer>
-    </Container>
+        <CardInfos>
+          <CardTitle>Cidades do momento</CardTitle>
+          <Link href="/cities">
+            <SeeAll>Ver Todos</SeeAll>
+          </Link>
+        </CardInfos>
+
+        <CardsContainer>
+          <City />
+          <City />
+          <City />
+          <City />
+          <City />
+        </CardsContainer>
+      </Container>
+    </>
   );
 }

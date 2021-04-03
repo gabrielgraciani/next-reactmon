@@ -6,11 +6,7 @@ import {
 } from './Banner.styles';
 import { BannerProps } from './Banner.types';
 
-const Banner = ({
-  children,
-  image,
-  title,
-}: BannerProps): React.ReactElement => {
+const Banner = ({ children, image, title }: BannerProps): JSX.Element => {
   return (
     <Container image={image}>
       <ContentContainer>
