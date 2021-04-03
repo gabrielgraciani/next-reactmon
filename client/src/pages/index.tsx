@@ -50,7 +50,7 @@ export default function Home(): React.ReactElement {
 
       <CardInfos>
         <CardTitle>Itens do momento</CardTitle>
-        <Link href="/itens">
+        <Link href="/items">
           <SeeAll>Ver Todos</SeeAll>
         </Link>
       </CardInfos>

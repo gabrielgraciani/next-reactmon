@@ -8,7 +8,7 @@ import {
   Footer,
 } from './Item.styles';
 
-export const Item = (): JSX.Element => {
+const Item = (): JSX.Element => {
   return (
     <Container>
       <ImageContainer>
@@ -24,3 +24,5 @@ export const Item = (): JSX.Element => {
     </Container>
   );
 };
+
+export default Item;

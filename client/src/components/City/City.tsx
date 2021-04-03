@@ -9,7 +9,7 @@ import {
   Description,
 } from './City.styles';
 
-export const City = (): JSX.Element => {
+const City = (): JSX.Element => {
   return (
     <Container>
       <ImageContainer>
@@ -35,3 +35,5 @@ export const City = (): JSX.Element => {
     </Container>
   );
 };
+
+export default City;

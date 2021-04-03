@@ -26,6 +26,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${Colors.white};
     font-size: 1.4rem;
     line-height:1.4rem;
+    border:0;
   }
 
   h1, h2, h3, h4, h5, h6 {

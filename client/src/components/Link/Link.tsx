@@ -4,7 +4,7 @@ import { cloneElement, ReactElement } from 'react';
 
 import { LinkProps } from './Link.types';
 
-export const Link = ({
+const Link = ({
   children,
   activeClassName,
   ...rest
@@ -20,3 +20,5 @@ export const Link = ({
     </NextLink>
   );
 };
+
+export default Link;

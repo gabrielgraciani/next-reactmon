@@ -26,6 +26,10 @@ const Menu = styled.nav`
   display: flex;
   align-items: center;
   flex-grow: 1;
+
+  @media (max-width: 768px) {
+    margin-left: 0rem;
+  }
 `;
 
 const MenuItem = styled.a`
@@ -53,6 +57,12 @@ const MenuItem = styled.a`
       background: ${Colors.white};
     }
   }
+
+  @media (max-width: 768px) {
+    &:first-child {
+      display: none;
+    }
+  }
 `;
 
 const LoginButton = styled.a`
@@ -67,6 +77,10 @@ const UserInformation = styled.div`
 
 const UserName = styled.span`
   font-size: 1.4rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const UserAvatar = styled.div`
@@ -94,6 +108,12 @@ const PopoverContentItem = styled.a`
   }
 `;
 
+const PopoverIconContainer = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 export {
   Container,
   HeaderContent,
@@ -107,4 +127,5 @@ export {
   UserImage,
   PopoverContent,
   PopoverContentItem,
+  PopoverIconContainer,
 };

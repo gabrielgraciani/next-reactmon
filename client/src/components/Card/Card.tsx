@@ -17,7 +17,7 @@ import {
 
 import { CardProps } from './Card.types';
 
-export const Card = ({ mainType, types }: CardProps): React.ReactElement => {
+const Card = ({ mainType, types }: CardProps): React.ReactElement => {
   return (
     <Container type={mainType}>
       <ImageContainer>
@@ -50,3 +50,5 @@ export const Card = ({ mainType, types }: CardProps): React.ReactElement => {
     </Container>
   );
 };
+
+export default Card;

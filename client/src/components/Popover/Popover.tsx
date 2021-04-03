@@ -3,7 +3,7 @@ import React, { cloneElement, useRef, useEffect } from 'react';
 import { Container, PopoverContent, PopoverTriangle } from './Popover.styles';
 import { PopoverTypes } from './Popover.types';
 
-export const Popover = ({
+const Popover = ({
   visible,
   children,
   content: Content,
@@ -53,3 +53,5 @@ export const Popover = ({
     </Container>
   );
 };
+
+export default Popover;

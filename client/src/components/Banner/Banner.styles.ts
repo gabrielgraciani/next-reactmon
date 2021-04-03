@@ -8,6 +8,7 @@ const Container = styled.div<BannerStyledProps>`
   background-size: cover;
   padding: 10rem 5%;
   position: relative;
+  background-position: color-interpolation-filters;
 
   &:after {
     position: absolute;

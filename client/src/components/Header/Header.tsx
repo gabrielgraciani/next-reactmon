@@ -17,9 +17,10 @@ import {
   UserImage,
   PopoverContent,
   PopoverContentItem,
+  PopoverIconContainer,
 } from './Header.styles';
 
-export const Header = (): React.ReactElement => {
+const Header = (): React.ReactElement => {
   const [isPopoverVisible, setIsPopoverVisible] = useState(false);
   const userLogged = true;
 
@@ -48,11 +49,11 @@ export const Header = (): React.ReactElement => {
           <Link href="/pokedex" activeClassName="active">
             <MenuItem>Pokédex</MenuItem>
           </Link>
-          <Link href="/itens" activeClassName="active">
+          <Link href="/items" activeClassName="active">
             <MenuItem>Itens</MenuItem>
           </Link>
           <Link href="/cities" activeClassName="active">
-            <MenuItem>Cities</MenuItem>
+            <MenuItem>Cidades</MenuItem>
           </Link>
         </Menu>
 
@@ -68,11 +69,13 @@ export const Header = (): React.ReactElement => {
               <UserAvatar>
                 <UserImage src="https://github.com/gabrielgraciani.png" />
               </UserAvatar>
-              {isPopoverVisible ? (
-                <FiChevronUp fontSize="1.8rem" />
-              ) : (
-                <FiChevronDown fontSize="1.8rem" />
-              )}
+              <PopoverIconContainer>
+                {isPopoverVisible ? (
+                  <FiChevronUp fontSize="1.8rem" />
+                ) : (
+                  <FiChevronDown fontSize="1.8rem" />
+                )}
+              </PopoverIconContainer>
             </UserInformation>
           </Popover>
         ) : (
@@ -82,3 +85,5 @@ export const Header = (): React.ReactElement => {
     </Container>
   );
 };
+
+export default Header;

@@ -6,7 +6,7 @@ import {
 } from './Banner.styles';
 import { BannerProps } from './Banner.types';
 
-export const Banner = ({
+const Banner = ({
   children,
   image,
   title,
@@ -21,3 +21,5 @@ export const Banner = ({
     </Container>
   );
 };
+
+export default Banner;
