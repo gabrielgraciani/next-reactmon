@@ -129,7 +129,6 @@ const Container = styled.div<CardStyledProps>`
   transition: all 0.3s ease;
   overflow: hidden;
   width: 100%;
-  box-shadow: 0px 0.5rem 2rem -1rem ${Colors.purple};
   position: relative;
   border-radius: 1rem;
   padding: 1.6rem;
@@ -149,19 +148,18 @@ const Container = styled.div<CardStyledProps>`
     width: 200%;
     height: 200%;
     transform: rotate(30deg);
-    background: ${Colors.gray900};
+    background: ${Colors.darkGray};
     background: linear-gradient(
       to right,
       transparent 0%,
       transparent 77%,
-      ${Colors.gray500} 92%,
+      ${Colors.white} 92%,
       transparent 100%
     );
   }
 
   &:hover {
     transform: translateY(-4%);
-    box-shadow: 0 0.5rem 2rem -0.5rem ${Colors.purple};
   }
 
   &:hover:after {
@@ -182,12 +180,12 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${Colors.black700};
+  background-color: ${Colors.blackOpacity70};
 `;
 
 const ContentContainer = styled.div`
   padding: 0 0 2rem 0;
-  background: ${Colors.gray600};
+  background: ${Colors.lightGrayOpacity70};
   width: 100%;
   display: flex;
   flex-direction: column;

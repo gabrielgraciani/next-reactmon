@@ -56,13 +56,13 @@ const Description = styled.span`
   width: 100%;
   text-align: center;
   font-size: 1.4rem;
-  color: #9e9e9e;
+  color: ${Colors.darkGrayOpacity50};
 `;
 
 const Footer = styled.div`
   width: 100%;
   padding: 2.5rem 1.5rem;
-  background: #f6901a;
+  background: ${Colors.orange};
   display: flex;
   align-items: center;
   justify-content: center;

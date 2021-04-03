@@ -16,7 +16,7 @@ const Container = styled.div<BannerStyledProps>`
     left: 0;
     width: 100%;
     height: 100%;
-    background: ${Colors.black700};
+    background: ${Colors.blackOpacity70};
   }
 `;
 

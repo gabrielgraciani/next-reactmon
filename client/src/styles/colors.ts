@@ -1,13 +1,16 @@
 export enum Colors {
-  white = '#fff',
-  black = '#000',
-  black700 = 'rgba(0, 0, 0, 0.7)',
-  purple = '#3a1c71',
-  gray500 = 'rgba(255, 255, 255, 0.5)',
-  gray600 = 'rgba(255, 255, 255, 0.65)',
-  gray900 = 'rgba(255, 255, 255, 0.1)',
-  background = '#121414',
-  lightGray = '#29292E',
+  white = '#ffffff',
+  black = '#000000',
+  blackOpacity70 = 'rgba(0, 0, 0, 0.7)',
+
+  lightGray = '#D2D2D2',
+  lightGrayOpacity70 = 'rgba(245,245,245, 0.7)',
+  gray = '#BEBEBE',
+  grayOpacity50 = 'rgba(190,190,190, 0.5)',
+  darkGray = '#171923',
+  darkGrayOpacity50 = 'rgba(23,25,35, 0.5)',
+
+  orange = '#ED8936',
 
   // pokemons colors
   grass = '#6e7f0e',

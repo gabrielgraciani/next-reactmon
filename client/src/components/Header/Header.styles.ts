@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.header`
   width: 100%;
-  border-bottom: 0.1rem solid ${Colors.lightGray};
+  border-bottom: 0.1rem solid ${Colors.grayOpacity50};
   padding: 0 5%;
   height: 8rem;
   display: flex;
@@ -34,7 +34,7 @@ const MenuItem = styled.a`
   line-height: 8rem;
   cursor: pointer;
   position: relative;
-  color: ${Colors.gray500};
+  color: ${Colors.lightGray};
 
   & + a {
     margin-left: 2rem;
