@@ -30,7 +30,6 @@ const Svg = styled.svg`
   bottom: -0.1rem;
   left: 0;
   fill: ${Colors.mediumGray};
-  -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 `;
 

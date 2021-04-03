@@ -1,9 +1,16 @@
+import Link from 'next/link';
+
 import { Card } from 'components/Card';
 import { Banner } from 'components/Banner';
-
 import { Item } from 'components/Item';
 import { City } from 'components/City';
-import { Container, CardsContainer } from './Home.styles';
+import {
+  Container,
+  CardsContainer,
+  CardTitle,
+  SeeAll,
+  CardInfos,
+} from './Home.styles';
 
 export default function Home(): React.ReactElement {
   return (
@@ -25,6 +32,14 @@ export default function Home(): React.ReactElement {
           mundo, atrás da franquia de Mario que também pertence a Nintendo.
         </p>
       </Banner>
+
+      <CardInfos>
+        <CardTitle>Pokémons do momento</CardTitle>
+        <Link href="/pokedex">
+          <SeeAll>Ver Todos</SeeAll>
+        </Link>
+      </CardInfos>
+
       <CardsContainer>
         <Card mainType="dark" types={['dark', 'grass']} />
         <Card mainType="grass" types={['grass', 'psychic']} />
@@ -32,6 +47,13 @@ export default function Home(): React.ReactElement {
         <Card mainType="electric" types={['electric', 'normal']} />
         <Card mainType="normal" types={['normal', 'dark']} />
       </CardsContainer>
+
+      <CardInfos>
+        <CardTitle>Itens do momento</CardTitle>
+        <Link href="/itens">
+          <SeeAll>Ver Todos</SeeAll>
+        </Link>
+      </CardInfos>
 
       <CardsContainer>
         <Item />
@@ -41,6 +63,13 @@ export default function Home(): React.ReactElement {
         <Item />
         <Item />
       </CardsContainer>
+
+      <CardInfos>
+        <CardTitle>Cidades do momento</CardTitle>
+        <Link href="/cities">
+          <SeeAll>Ver Todos</SeeAll>
+        </Link>
+      </CardInfos>
 
       <CardsContainer>
         <City />

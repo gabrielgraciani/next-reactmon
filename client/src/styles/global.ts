@@ -23,6 +23,9 @@ const GlobalStyles = createGlobalStyle`
 
   button {
     cursor: pointer;
+    color: ${Colors.white};
+    font-size: 1.4rem;
+    line-height:1.4rem;
   }
 
   h1, h2, h3, h4, h5, h6 {
