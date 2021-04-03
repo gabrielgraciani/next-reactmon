@@ -1,4 +1,4 @@
-import { ReactNode, ElementType, ReactElement } from 'react';
+import { ElementType, ReactElement } from 'react';
 
 export interface PopoverTypes {
   children: ReactElement;
