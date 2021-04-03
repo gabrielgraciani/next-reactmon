@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: 62.5%;
+    height:100%;
   }
 
   body, input, textarea, select, button {
@@ -19,6 +20,13 @@ const GlobalStyles = createGlobalStyle`
   body {
     background: ${Colors.darkGray};
     color: ${Colors.white};
+    height:100%;
+  }
+
+  #__next{
+    height:100%;
+    display:flex;
+    flex-direction:column;
   }
 
   button {

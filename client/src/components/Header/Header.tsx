@@ -22,7 +22,7 @@ import {
 
 const Header = (): React.ReactElement => {
   const [isPopoverVisible, setIsPopoverVisible] = useState(false);
-  const userLogged = true;
+  const userLogged = false;
 
   const content = () => {
     return (
@@ -79,7 +79,7 @@ const Header = (): React.ReactElement => {
             </UserInformation>
           </Popover>
         ) : (
-          <LoginButton href="/login">Log in / Sign up</LoginButton>
+          <LoginButton href="/login">Entrar</LoginButton>
         )}
       </HeaderContent>
     </Container>

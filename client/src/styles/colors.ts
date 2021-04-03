@@ -12,6 +12,8 @@ export enum Colors {
   darkGrayOpacity50 = 'rgba(23,25,35, 0.5)',
 
   orange = '#ED8936',
+  lightBlue = '#90cac9',
+  red = '#f44336',
 
   // pokemons colors
   grass = '#6e7f0e',
