@@ -7,6 +7,7 @@ export enum Colors {
   lightGrayOpacity70 = 'rgba(245,245,245, 0.7)',
   gray = '#BEBEBE',
   grayOpacity50 = 'rgba(190,190,190, 0.5)',
+  mediumGray = '#333',
   darkGray = '#171923',
   darkGrayOpacity50 = 'rgba(23,25,35, 0.5)',
 

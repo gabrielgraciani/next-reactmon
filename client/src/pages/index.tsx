@@ -2,6 +2,7 @@ import { Card } from 'components/Card';
 import { Banner } from 'components/Banner';
 
 import { Item } from 'components/Item';
+import { City } from 'components/City';
 import { Container, CardsContainer } from './Home.styles';
 
 export default function Home(): React.ReactElement {
@@ -39,6 +40,14 @@ export default function Home(): React.ReactElement {
         <Item />
         <Item />
         <Item />
+      </CardsContainer>
+
+      <CardsContainer>
+        <City />
+        <City />
+        <City />
+        <City />
+        <City />
       </CardsContainer>
     </Container>
   );
