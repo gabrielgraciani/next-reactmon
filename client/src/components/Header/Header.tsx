@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FiChevronDown } from 'react-icons/fi';
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
 import { Link } from '../Link';
 import { Popover } from '../Popover';
@@ -68,7 +68,11 @@ export const Header = (): React.ReactElement => {
               <UserAvatar>
                 <UserImage src="https://github.com/gabrielgraciani.png" />
               </UserAvatar>
-              <FiChevronDown fontSize="1.8rem" />
+              {isPopoverVisible ? (
+                <FiChevronUp fontSize="1.8rem" />
+              ) : (
+                <FiChevronDown fontSize="1.8rem" />
+              )}
             </UserInformation>
           </Popover>
         ) : (
