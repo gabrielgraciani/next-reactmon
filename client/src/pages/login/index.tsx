@@ -14,11 +14,7 @@ import {
   Text,
   CreateAccount,
 } from './Login.styles';
-
-interface SignInFormData {
-  email: string;
-  password: string;
-}
+import { SignInFormData } from './Login.types';
 
 const signInFormSchema = yup.object().shape({
   email: yup.string().required('E-mail obrigatório').email('E-mail inválido'),
