@@ -1,6 +1,7 @@
 import { cloneElement, useRef, useEffect } from 'react';
 import { useTransition } from 'react-spring';
 
+import { useRouter } from 'next/router';
 import { DrawerProps } from './Drawer.types';
 import { Container, DrawerContent, CloseIcon } from './Drawer.styles';
 
@@ -12,6 +13,7 @@ const Drawer = ({
   onVisibleChange,
 }: DrawerProps): JSX.Element => {
   const drawerRef = useRef<HTMLDivElement>(null);
+  const { asPath } = useRouter();
 
   const handleOpenDrawer = () => {
     onVisibleChange();
@@ -35,6 +37,11 @@ const Drawer = ({
 
     return null;
   });
+
+  useEffect(() => {
+    onClose();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [asPath]);
 
   const drawerWithTransition = useTransition(visible, {
     from: { right: -260 },

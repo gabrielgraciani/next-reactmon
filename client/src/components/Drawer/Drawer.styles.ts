@@ -6,6 +6,7 @@ import { Colors } from 'styles/colors';
 
 const Container = styled.div`
   position: relative;
+  z-index: 99;
 `;
 
 const DrawerContent = styled(animated.div)`
