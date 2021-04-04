@@ -3,8 +3,9 @@ import Link from 'next/link';
 
 import { Form } from 'components/Form';
 import { Button } from 'components/Button';
-
 import { Input } from 'components/Input';
+import { Textarea } from 'components/Textarea';
+
 import {
   Container,
   Title,
@@ -28,7 +29,7 @@ export default function CreateCity(): JSX.Element {
           <Input name="name" label="Digite o nome da cidade" />
         </Form.FormItem>
         <Form.FormItem>
-          <Input name="description" label="Digite a descrição da cidade" />
+          <Textarea name="description" label="Digite a descrição da cidade" />
         </Form.FormItem>
 
         <Form.FormItem>
