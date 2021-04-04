@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FiMenu } from 'react-icons/fi';
 
 import { Colors } from 'styles/colors';
 
@@ -19,9 +18,4 @@ const UserName = styled.span`
   font-size: 1.4rem;
 `;
 
-const BurgerIcon = styled(FiMenu)`
-  cursor: pointer;
-  font-size: 2.4rem;
-`;
-
-export { Container, ProjectName, UserName, BurgerIcon };
+export { Container, ProjectName, UserName };
