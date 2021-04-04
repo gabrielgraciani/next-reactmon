@@ -1,10 +1,9 @@
-import express, { response } from 'express';
+import express from 'express';
+
+import routes from './routes';
 
 const app = express();
 
-app.get('/pokemons', (request, response) => {
-  return response.json({message: 'hello'})
-})
+app.use(routes);
 
 app.listen(3333, () => console.log('Server is running!'));
-
