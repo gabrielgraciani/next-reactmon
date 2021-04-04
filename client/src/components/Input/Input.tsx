@@ -1,101 +1,90 @@
-import { useState, useRef, useCallback, useEffect, ChangeEvent } from 'react';
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
 
-import KeyCodes from '../../interfaces/KeyCodes';
-
+import { InputProps } from './Input.types';
 import {
   Container,
   InputContainer,
-  StyledInput,
   Label,
+  StyledInput,
   ErrorMessage,
 } from './Input.styles';
-import { InputProps } from './Input.types';
 
-const Input = ({
-  name,
-  value,
-  placeholder,
-  onChange,
-  error,
-  errorMessage,
-  type = 'text',
-}: InputProps): JSX.Element => {
-  const [isMouseEnter, setIsMouseEnter] = useState(false);
-  const [isMouseActive, setIsMouseActive] = useState(false);
-
+const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
+  { name, label, error = null, ...rest },
+  ref,
+): JSX.Element => {
+  const [isInputActive, setIsInputActive] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleChangeMouseActive = useCallback(() => {
-    setIsMouseActive(false);
+    setIsInputActive(false);
   }, []);
 
   const handleClickOutside = useCallback(
     e => {
       if (
-        isMouseActive &&
+        isInputActive &&
         wrapperRef.current &&
         !wrapperRef.current.contains(e.target)
       ) {
         handleChangeMouseActive();
       }
     },
-    [handleChangeMouseActive, isMouseActive],
+    [handleChangeMouseActive, isInputActive],
   );
-
-  const handleTypeEsc = useCallback(
-    (e: KeyboardEvent) => {
-      if (isMouseActive && e.keyCode === KeyCodes.ESCAPE) {
-        handleChangeMouseActive();
-      }
-    },
-    [handleChangeMouseActive, isMouseActive],
-  );
-
-  const containerClasses = `${isMouseEnter ? 'mouseEnter' : ''} ${
-    isMouseActive ? 'mouseActive' : ''
-  } ${error ? 'hasError' : ''}`;
-
-  const labelClasses = `${isMouseActive ? 'mouseActive' : ''} ${
-    value ? 'hasValue' : ''
-  } ${error ? 'hasError' : ''}`;
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
-  };
 
   useEffect(() => {
     window.addEventListener('mousedown', handleClickOutside);
-    window.addEventListener('keydown', handleTypeEsc);
 
     return () => {
       window.removeEventListener('mousedown', handleClickOutside);
-      window.removeEventListener('keydown', handleTypeEsc);
     };
-  }, [handleClickOutside, handleChangeMouseActive, handleTypeEsc]);
+  }, [handleClickOutside, handleChangeMouseActive]);
+
+  const inputVariationClass = `${isInputActive ? 'active' : ''} ${
+    error ? 'error' : ''
+  }`;
 
   return (
     <Container>
+      {label && (
+        <Label
+          htmlFor={name}
+          isInvalid={!!error}
+          isActive={isInputActive}
+          className={inputVariationClass}
+        >
+          {label}
+        </Label>
+      )}
+
       <InputContainer
-        onMouseEnter={() => setIsMouseEnter(true)}
-        onMouseLeave={() => setIsMouseEnter(false)}
-        onClick={() => setIsMouseActive(true)}
-        className={containerClasses}
+        onClick={() => setIsInputActive(true)}
+        isInvalid={!!error}
+        isActive={isInputActive}
+        className={inputVariationClass}
         ref={wrapperRef}
       >
-        {placeholder && <Label className={labelClasses}>{placeholder}</Label>}
         <StyledInput
-          type={type}
-          value={value}
-          onChange={handleChange}
           name={name}
-          ref={inputRef}
+          id={name}
+          ref={ref}
+          {...rest}
           autoComplete="off"
         />
       </InputContainer>
-      {error && errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+
+      {!!error && <ErrorMessage>{error.message}</ErrorMessage>}
     </Container>
   );
 };
 
+const Input = forwardRef(InputBase);
 export default Input;

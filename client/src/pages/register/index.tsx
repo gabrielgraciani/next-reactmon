@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -14,10 +13,6 @@ import {
 } from './Register.styles';
 
 export default function Register(): JSX.Element {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   return (
     <>
       <Head>
@@ -29,38 +24,19 @@ export default function Register(): JSX.Element {
 
         <Form>
           <FormItem>
-            <Input
-              name="name"
-              placeholder="Digite seu nome"
-              value={name}
-              onChange={val => setName(val)}
-            />
+            <Input name="name" label="Digite seu nome" />
           </FormItem>
           <FormItem>
-            <Input
-              name="email"
-              type="email"
-              placeholder="Digite seu e-mail"
-              value={email}
-              onChange={val => setEmail(val)}
-            />
+            <Input name="email" type="email" label="Digite seu e-mail" />
           </FormItem>
           <FormItem>
-            <Input
-              name="password"
-              placeholder="Digite sua senha"
-              type="password"
-              value={password}
-              onChange={val => setPassword(val)}
-            />
+            <Input name="password" label="Digite sua senha" type="password" />
           </FormItem>
           <FormItem>
             <Input
               name="password_confirmation"
-              placeholder="Confirme sua senha"
+              label="Confirme sua senha"
               type="password"
-              value={password}
-              onChange={val => setPassword(val)}
             />
           </FormItem>
 

@@ -1,6 +1,8 @@
-import { useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Input } from 'components/Input';
 import { Button } from 'components/Button';
@@ -13,9 +15,26 @@ import {
   CreateAccount,
 } from './Login.styles';
 
+interface SignInFormData {
+  email: string;
+  password: string;
+}
+
+const signInFormSchema = yup.object().shape({
+  email: yup.string().required('E-mail obrigatório').email('E-mail inválido'),
+  password: yup.string().required('Senha obrigatória'),
+});
+
 export default function Login(): JSX.Element {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { register, handleSubmit, formState } = useForm<SignInFormData>({
+    resolver: yupResolver(signInFormSchema),
+  });
+
+  const { errors } = formState;
+
+  const handleSignIn: SubmitHandler<SignInFormData> = async values => {
+    console.log(values);
+  };
 
   return (
     <>
@@ -26,30 +45,28 @@ export default function Login(): JSX.Element {
       <Container>
         <Title>Log in</Title>
 
-        <Form>
+        <Form onSubmit={handleSubmit(handleSignIn)}>
           <FormItem>
             <Input
               name="email"
               type="email"
-              placeholder="Digite seu e-mail"
-              value={email}
-              onChange={val => setEmail(val)}
+              label="Digite seu e-mail"
+              {...register('email')}
+              error={errors.email}
             />
           </FormItem>
           <FormItem>
             <Input
               name="password"
-              placeholder="Digite sua senha"
+              label="Digite sua senha"
               type="password"
-              value={password}
-              onChange={val => setPassword(val)}
+              {...register('password')}
+              error={errors.password}
             />
           </FormItem>
 
           <FormItem>
-            <Button type="submit" onClick={() => console.log('clicou')}>
-              Entrar
-            </Button>
+            <Button type="submit">Entrar</Button>
           </FormItem>
         </Form>
 
