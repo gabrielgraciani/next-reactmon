@@ -24,7 +24,6 @@ class PokemonsRepository {
     });
 
     this.pokemons.push(pokemon);
-
     return pokemon;
   }
 }

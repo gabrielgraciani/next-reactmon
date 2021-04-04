@@ -15,10 +15,9 @@ class PokemonsController {
     const { name, mainType } = request.body;
 
     const createPokemon = new CreatePokemonService(pokemonsRepository);
+    const pokemon = createPokemon.execute({ name, mainType });
 
-    createPokemon.execute({ name, mainType });
-
-    return response.status(201).send();
+    return response.json(pokemon);
   }
 }
 
