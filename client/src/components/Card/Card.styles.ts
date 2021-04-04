@@ -140,22 +140,16 @@ const Container = styled.div<CardStyledProps>`
   ${props => cardVariations[props.type]}
 
   &:after {
-    transition: all 0.7s ease;
     content: '';
     position: absolute;
-    top: -110%;
-    left: -210%;
-    width: 200%;
-    height: 200%;
-    transform: rotate(30deg);
-    background: ${Colors.darkGray};
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      transparent 77%,
-      ${Colors.white} 92%,
-      transparent 100%
-    );
+    top: 0;
+    left: -100%;
+    width: 100px;
+    height: 100%;
+    background: ${Colors.whiteOpacity30};
+    transform: skewX(-30deg);
+    transition: all 0.7s ease;
+    filter: blur(10px);
   }
 
   &:hover {
@@ -163,9 +157,7 @@ const Container = styled.div<CardStyledProps>`
   }
 
   &:hover:after {
-    transition: all 0.7s ease;
-    top: -30%;
-    left: -30%;
+    left: 140%;
   }
 
   &:hover ${Image} {

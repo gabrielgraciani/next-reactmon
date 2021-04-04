@@ -1,5 +1,6 @@
 export enum Colors {
   white = '#ffffff',
+  whiteOpacity30 = 'rgba(255, 255, 255, 0.3)',
   black = '#000000',
   blackOpacity70 = 'rgba(0, 0, 0, 0.7)',
 
