@@ -26,7 +26,7 @@ const HeaderAdmin = (): JSX.Element => {
         <Link href={ApplicationRoutes.ADMIN.ITEMS}>
           <DrawerItem>Gerenciar Itens</DrawerItem>
         </Link>
-        <Link href={ApplicationRoutes.ADMIN.CITIES}>
+        <Link href={ApplicationRoutes.ADMIN.CITIES.LIST}>
           <DrawerItem>Gerenciar Cidades</DrawerItem>
         </Link>
         <Link href={ApplicationRoutes.ROOT}>

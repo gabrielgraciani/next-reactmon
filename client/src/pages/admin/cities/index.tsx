@@ -1,8 +1,24 @@
 import { Table } from 'antd';
+import ApplicationRoutes from 'config/ApplicationRoutes';
+import Link from 'next/link';
+import { useState } from 'react';
 
-import { Container, Title } from './Cities.styles';
+import {
+  Container,
+  Title,
+  ButtonsContainer,
+  StyledButton,
+} from './Cities.styles';
+
+interface DataType {
+  key: React.Key;
+  name: string;
+  description: string;
+}
 
 export default function CitiesList(): JSX.Element {
+  const [selectedRows, setSelectedRows] = useState([]);
+
   const dataSource = [
     {
       key: '1',
@@ -28,10 +44,39 @@ export default function CitiesList(): JSX.Element {
       key: 'description',
     },
   ];
+
+  const rowSelection = {
+    onChange: (selectedRowKeys: React.Key[], selectedRowsAntd: DataType[]) => {
+      console.log(
+        `selectedRowKeys: ${selectedRowKeys}`,
+        'selectedRowsAntd: ',
+        selectedRowsAntd,
+      );
+      setSelectedRows(selectedRowsAntd);
+    },
+  };
+
+  const buttonDisabled = selectedRows.length === 0;
   return (
     <Container>
       <Title>Lista de cidades</Title>
-      <Table columns={columns} dataSource={dataSource} />
+
+      <ButtonsContainer>
+        <StyledButton type="primary" danger disabled={buttonDisabled}>
+          Delete Selected rows
+        </StyledButton>
+
+        <Link href={ApplicationRoutes.ADMIN.CITIES.CREATE}>
+          <StyledButton type="primary">Create new city</StyledButton>
+        </Link>
+      </ButtonsContainer>
+
+      <Table
+        rowSelection={rowSelection}
+        columns={columns}
+        dataSource={dataSource}
+        pagination={{ pageSize: 10 }}
+      />
     </Container>
   );
 }

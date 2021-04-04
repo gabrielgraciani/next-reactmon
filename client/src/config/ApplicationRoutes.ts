@@ -8,7 +8,11 @@ const ApplicationRoutes = {
   ADMIN: {
     ROOT: '/admin/pokemons',
     ITEMS: '/admin/items',
-    CITIES: '/admin/cities',
+    CITIES: {
+      LIST: '/admin/cities',
+      CREATE: '/admin/cities/create',
+      EDIT: '/admin/cities',
+    },
   },
 };
 
