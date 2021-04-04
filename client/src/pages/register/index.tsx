@@ -8,6 +8,8 @@ import { Input } from 'components/Input';
 import { Button } from 'components/Button';
 import { Form } from 'components/Form';
 
+import ApplicationRoutes from 'config/ApplicationRoutes';
+
 import { Container, Title, Text, CreateAccount } from './Register.styles';
 import { RegisterFormData } from './Register.types';
 
@@ -86,7 +88,7 @@ export default function Register(): JSX.Element {
 
         <Text>
           Já possui uma conta?
-          <Link href="/login">
+          <Link href={ApplicationRoutes.LOGIN}>
             <CreateAccount> Entre agora</CreateAccount>
           </Link>
         </Text>

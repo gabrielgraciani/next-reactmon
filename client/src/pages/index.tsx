@@ -5,6 +5,9 @@ import { Card } from 'components/Card';
 import { Banner } from 'components/Banner';
 import { Item } from 'components/Item';
 import { City } from 'components/City';
+
+import ApplicationRoutes from 'config/ApplicationRoutes';
+
 import {
   Container,
   CardsContainer,
@@ -41,7 +44,7 @@ export default function Home(): JSX.Element {
 
         <CardInfos>
           <CardTitle>Pokémons do momento</CardTitle>
-          <Link href="/pokedex">
+          <Link href={ApplicationRoutes.POKEDEX}>
             <SeeAll>Ver Todos</SeeAll>
           </Link>
         </CardInfos>
@@ -56,7 +59,7 @@ export default function Home(): JSX.Element {
 
         <CardInfos>
           <CardTitle>Itens do momento</CardTitle>
-          <Link href="/items">
+          <Link href={ApplicationRoutes.ITEMS}>
             <SeeAll>Ver Todos</SeeAll>
           </Link>
         </CardInfos>
@@ -72,7 +75,7 @@ export default function Home(): JSX.Element {
 
         <CardInfos>
           <CardTitle>Cidades do momento</CardTitle>
-          <Link href="/cities">
+          <Link href={ApplicationRoutes.CITIES}>
             <SeeAll>Ver Todos</SeeAll>
           </Link>
         </CardInfos>

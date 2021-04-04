@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import NextLink from 'next/link';
+
+import ApplicationRoutes from 'config/ApplicationRoutes';
 
 import { Link } from '../Link';
 import { Popover } from '../Popover';
@@ -27,7 +30,9 @@ const Header = (): JSX.Element => {
   const content = () => {
     return (
       <PopoverContent>
-        <PopoverContentItem>Admin</PopoverContentItem>
+        <NextLink href={ApplicationRoutes.ADMIN.ROOT}>
+          <PopoverContentItem>Admin</PopoverContentItem>
+        </NextLink>
         <PopoverContentItem>Sair</PopoverContentItem>
       </PopoverContent>
     );
@@ -43,16 +48,16 @@ const Header = (): JSX.Element => {
         <ProjectName>Reactmon</ProjectName>
 
         <Menu>
-          <Link href="/" activeClassName="active">
+          <Link href={ApplicationRoutes.ROOT} activeClassName="active">
             <MenuItem>Home</MenuItem>
           </Link>
-          <Link href="/pokedex" activeClassName="active">
+          <Link href={ApplicationRoutes.POKEDEX} activeClassName="active">
             <MenuItem>Pokédex</MenuItem>
           </Link>
-          <Link href="/items" activeClassName="active">
+          <Link href={ApplicationRoutes.ITEMS} activeClassName="active">
             <MenuItem>Itens</MenuItem>
           </Link>
-          <Link href="/cities" activeClassName="active">
+          <Link href={ApplicationRoutes.CITIES} activeClassName="active">
             <MenuItem>Cidades</MenuItem>
           </Link>
         </Menu>
@@ -79,7 +84,9 @@ const Header = (): JSX.Element => {
             </UserInformation>
           </Popover>
         ) : (
-          <LoginButton href="/login">Entrar</LoginButton>
+          <NextLink href={ApplicationRoutes.LOGIN}>
+            <LoginButton>Entrar</LoginButton>
+          </NextLink>
         )}
       </HeaderContent>
     </Container>

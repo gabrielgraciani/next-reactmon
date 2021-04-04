@@ -18,4 +18,18 @@ const UserName = styled.span`
   font-size: 1.4rem;
 `;
 
-export { Container, ProjectName, UserName };
+const DrawerContent = styled.nav`
+  display: flex;
+  flex-direction: column;
+`;
+
+const DrawerItem = styled.a`
+  font-size: 1.4rem;
+  font-weight: bold;
+
+  & + a {
+    margin-top: 1rem;
+  }
+`;
+
+export { Container, ProjectName, UserName, DrawerContent, DrawerItem };

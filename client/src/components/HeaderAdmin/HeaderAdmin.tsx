@@ -1,15 +1,39 @@
 import { useState } from 'react';
+import Link from 'next/link';
 import { FiMenu } from 'react-icons/fi';
 
 import { Drawer } from 'components/Drawer';
 
-import { Container, ProjectName, UserName } from './HeaderAdmin.styles';
+import ApplicationRoutes from 'config/ApplicationRoutes';
+
+import {
+  Container,
+  ProjectName,
+  UserName,
+  DrawerContent,
+  DrawerItem,
+} from './HeaderAdmin.styles';
 
 const HeaderAdmin = (): JSX.Element => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
 
   const contentDrawer = () => {
-    return <div>conteudo</div>;
+    return (
+      <DrawerContent>
+        <Link href={ApplicationRoutes.ADMIN.ROOT}>
+          <DrawerItem>Gerenciar Pokémons</DrawerItem>
+        </Link>
+        <Link href={ApplicationRoutes.ADMIN.ITEMS}>
+          <DrawerItem>Gerenciar Itens</DrawerItem>
+        </Link>
+        <Link href={ApplicationRoutes.ADMIN.CITIES}>
+          <DrawerItem>Gerenciar Cidades</DrawerItem>
+        </Link>
+        <Link href={ApplicationRoutes.ROOT}>
+          <DrawerItem>Voltar para o início</DrawerItem>
+        </Link>
+      </DrawerContent>
+    );
   };
 
   const handleVisibleChange = () => {
