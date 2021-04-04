@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { animated } from 'react-spring';
+
 import { Colors } from '../../styles/colors';
 
 const Container = styled.div`
@@ -6,10 +8,12 @@ const Container = styled.div`
   z-index: 9;
 `;
 
-const PopoverContent = styled.div`
+const PopoverContent = styled(animated.div)`
   position: absolute;
   top: calc(100% + 1rem);
+  z-index: 9;
   right: 0;
+  opacity: 0;
   background: ${Colors.white};
   color: ${Colors.black};
   padding: 1rem 2rem;

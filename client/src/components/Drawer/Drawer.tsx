@@ -1,4 +1,5 @@
 import { cloneElement, useRef, useEffect } from 'react';
+import { useTransition } from 'react-spring';
 
 import { DrawerProps } from './Drawer.types';
 import { Container, DrawerContent, CloseIcon } from './Drawer.styles';
@@ -34,6 +35,13 @@ const Drawer = ({
 
     return null;
   });
+
+  const drawerWithTransition = useTransition(visible, {
+    from: { right: -260 },
+    enter: { right: 0 },
+    leave: { right: -260 },
+  });
+
   return (
     <Container ref={drawerRef}>
       {cloneElement(children, {
@@ -43,11 +51,14 @@ const Drawer = ({
         },
       })}
 
-      {visible && (
-        <DrawerContent isOpen={visible}>
-          <CloseIcon onClick={onClose} />
-          <Content />
-        </DrawerContent>
+      {drawerWithTransition(
+        (style, item) =>
+          item && (
+            <DrawerContent style={style}>
+              <CloseIcon onClick={onClose} />
+              <Content />
+            </DrawerContent>
+          ),
       )}
     </Container>
   );

@@ -7,7 +7,3 @@ export interface DrawerProps {
   visible: boolean;
   onVisibleChange: () => void;
 }
-
-export interface DrawerStyledProps {
-  isOpen: boolean;
-}

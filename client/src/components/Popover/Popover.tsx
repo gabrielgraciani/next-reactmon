@@ -1,4 +1,5 @@
 import React, { cloneElement, useRef, useEffect } from 'react';
+import { useTransition } from 'react-spring';
 
 import { Container, PopoverContent, PopoverTriangle } from './Popover.styles';
 import { PopoverTypes } from './Popover.types';
@@ -35,6 +36,15 @@ const Popover = ({
     return null;
   });
 
+  const popoverWithTransition = useTransition(visible, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: {
+      duration: 200,
+    },
+  });
+
   return (
     <Container ref={popoverRef}>
       {cloneElement(children, {
@@ -49,6 +59,16 @@ const Popover = ({
           <Content />
           <PopoverTriangle />
         </PopoverContent>
+      )}
+
+      {popoverWithTransition(
+        (style, item) =>
+          item && (
+            <PopoverContent style={style}>
+              <Content />
+              <PopoverTriangle />
+            </PopoverContent>
+          ),
       )}
     </Container>
   );

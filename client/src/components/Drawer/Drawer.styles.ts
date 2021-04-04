@@ -1,19 +1,18 @@
 import { FiX } from 'react-icons/fi';
 import styled from 'styled-components';
+import { animated } from 'react-spring';
 
 import { Colors } from 'styles/colors';
-import { DrawerStyledProps } from './Drawer.types';
 
 const Container = styled.div`
   position: relative;
 `;
 
-const DrawerContent = styled.div<DrawerStyledProps>`
+const DrawerContent = styled(animated.div)`
   position: fixed;
-  right: 0;
   top: 0;
+  width: 25rem;
   height: 100%;
-  width: ${props => (props.isOpen ? '25rem' : '0')};
   background: ${Colors.white};
   box-shadow: 0 0 10px ${Colors.white};
   color: ${Colors.darkGray};
