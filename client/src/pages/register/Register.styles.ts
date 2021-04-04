@@ -15,17 +15,6 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Form = styled.form`
-  width: 100%;
-  margin-top: 2rem;
-`;
-
-const FormItem = styled.div`
-  & + div {
-    margin-top: 1rem;
-  }
-`;
-
 const Text = styled.span`
   display: block;
   margin-top: 2rem;
@@ -40,4 +29,4 @@ const CreateAccount = styled.a`
   }
 `;
 
-export { Container, Title, Form, FormItem, Text, CreateAccount };
+export { Container, Title, Text, CreateAccount };

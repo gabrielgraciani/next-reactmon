@@ -6,14 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Input } from 'components/Input';
 import { Button } from 'components/Button';
-import {
-  Container,
-  Title,
-  Form,
-  FormItem,
-  Text,
-  CreateAccount,
-} from './Register.styles';
+import { Form } from 'components/Form';
+
+import { Container, Title, Text, CreateAccount } from './Register.styles';
 import { RegisterFormData } from './Register.types';
 
 const registerFormSchema = yup.object().shape({
@@ -48,15 +43,15 @@ export default function Register(): JSX.Element {
         <Title>Crie sua conta</Title>
 
         <Form onSubmit={handleSubmit(handleRegister)}>
-          <FormItem>
+          <Form.FormItem>
             <Input
               name="name"
               label="Digite seu nome"
               {...register('name')}
               error={errors.name}
             />
-          </FormItem>
-          <FormItem>
+          </Form.FormItem>
+          <Form.FormItem>
             <Input
               name="email"
               type="email"
@@ -64,8 +59,8 @@ export default function Register(): JSX.Element {
               {...register('email')}
               error={errors.email}
             />
-          </FormItem>
-          <FormItem>
+          </Form.FormItem>
+          <Form.FormItem>
             <Input
               name="password"
               label="Digite sua senha"
@@ -73,8 +68,8 @@ export default function Register(): JSX.Element {
               {...register('password')}
               error={errors.password}
             />
-          </FormItem>
-          <FormItem>
+          </Form.FormItem>
+          <Form.FormItem>
             <Input
               name="password_confirmation"
               label="Confirme sua senha"
@@ -82,11 +77,11 @@ export default function Register(): JSX.Element {
               {...register('password_confirmation')}
               error={errors.password_confirmation}
             />
-          </FormItem>
+          </Form.FormItem>
 
-          <FormItem>
+          <Form.FormItem>
             <Button type="submit">Criar</Button>
-          </FormItem>
+          </Form.FormItem>
         </Form>
 
         <Text>

@@ -6,14 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Input } from 'components/Input';
 import { Button } from 'components/Button';
-import {
-  Container,
-  Title,
-  Form,
-  FormItem,
-  Text,
-  CreateAccount,
-} from './Login.styles';
+import { Form } from 'components/Form';
+
+import { Container, Title, Text, CreateAccount } from './Login.styles';
 import { SignInFormData } from './Login.types';
 
 const signInFormSchema = yup.object().shape({
@@ -42,7 +37,7 @@ export default function Login(): JSX.Element {
         <Title>Log in</Title>
 
         <Form onSubmit={handleSubmit(handleSignIn)}>
-          <FormItem>
+          <Form.FormItem>
             <Input
               name="email"
               type="email"
@@ -50,8 +45,8 @@ export default function Login(): JSX.Element {
               {...register('email')}
               error={errors.email}
             />
-          </FormItem>
-          <FormItem>
+          </Form.FormItem>
+          <Form.FormItem>
             <Input
               name="password"
               label="Digite sua senha"
@@ -59,11 +54,11 @@ export default function Login(): JSX.Element {
               {...register('password')}
               error={errors.password}
             />
-          </FormItem>
+          </Form.FormItem>
 
-          <FormItem>
+          <Form.FormItem>
             <Button type="submit">Entrar</Button>
-          </FormItem>
+          </Form.FormItem>
         </Form>
 
         <Text>
