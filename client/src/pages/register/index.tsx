@@ -11,22 +11,31 @@ import {
   FormItem,
   Text,
   CreateAccount,
-} from './Login.styles';
+} from './Register.styles';
 
-export default function Login(): JSX.Element {
+export default function Register(): JSX.Element {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
     <>
       <Head>
-        <title>Login | Reactmon</title>
+        <title>Register | Reactmon</title>
       </Head>
 
       <Container>
-        <Title>Log in</Title>
+        <Title>Crie sua conta</Title>
 
         <Form>
+          <FormItem>
+            <Input
+              name="name"
+              placeholder="Digite seu nome"
+              value={name}
+              onChange={val => setName(val)}
+            />
+          </FormItem>
           <FormItem>
             <Input
               name="email"
@@ -45,6 +54,15 @@ export default function Login(): JSX.Element {
               onChange={val => setPassword(val)}
             />
           </FormItem>
+          <FormItem>
+            <Input
+              name="password_confirmation"
+              placeholder="Confirme sua senha"
+              type="password"
+              value={password}
+              onChange={val => setPassword(val)}
+            />
+          </FormItem>
 
           <FormItem>
             <Button type="submit" onClick={() => console.log('clicou')}>
@@ -54,9 +72,9 @@ export default function Login(): JSX.Element {
         </Form>
 
         <Text>
-          Não possui uma conta?
-          <Link href="/register">
-            <CreateAccount> Crie agora</CreateAccount>
+          Já possui uma conta?
+          <Link href="/login">
+            <CreateAccount> Entre agora</CreateAccount>
           </Link>
         </Text>
       </Container>
