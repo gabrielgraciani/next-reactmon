@@ -4,9 +4,9 @@ import Pokemon from '../models/Pokemon';
 
 class ListPokemonsService {
   public async execute(): Promise<Pokemon[]> {
-    const usersRepository = getRepository(Pokemon);
+    const pokemonsRepository = getRepository(Pokemon);
 
-    const pokemons = await usersRepository.find();
+    const pokemons = await pokemonsRepository.find();
 
     return pokemons;
   }

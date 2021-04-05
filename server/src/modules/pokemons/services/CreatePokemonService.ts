@@ -1,5 +1,4 @@
-import { getCustomRepository } from 'typeorm';
-import PokemonsRepository from '../repositories/PokemonsRepository';
+import { getRepository } from 'typeorm';
 import Pokemon from '../models/Pokemon';
 
 interface Request {
@@ -9,7 +8,7 @@ interface Request {
 
 class CreatePokemonService {
   public async execute({ name, mainType }: Request): Promise<Pokemon> {
-    const pokemonsRepository = getCustomRepository(PokemonsRepository);
+    const pokemonsRepository = getRepository(Pokemon);
 
     const pokemon = await pokemonsRepository.create({
       name,

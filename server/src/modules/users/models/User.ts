@@ -5,8 +5,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('pokemons')
-class Pokemon {
+@Entity('users')
+class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -14,10 +14,13 @@ class Pokemon {
   name: string;
 
   @Column()
-  main_type: string;
+  email: string;
+
+  @Column()
+  password: string;
 
   @CreateDateColumn()
   created_at: Date;
 }
 
-export default Pokemon;
+export default User;
