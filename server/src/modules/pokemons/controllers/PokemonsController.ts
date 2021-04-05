@@ -1,21 +1,21 @@
 import { Request, Response } from 'express';
 
+import ListPokemonsService from '../services/ListPokemonsService';
 import CreatePokemonService from '../services/CreatePokemonService';
-import PokemonsRepository from '../repositories/PokemonsRepository';
-
-const pokemonsRepository = new PokemonsRepository();
 
 class PokemonsController {
   async index(request: Request, response: Response): Promise<Response> {
-    const pokemons = pokemonsRepository.list();
+    const listPokemons = new ListPokemonsService();
+    const pokemons = await listPokemons.execute();
+
     return response.json(pokemons);
   }
 
   async create(request: Request, response: Response): Promise<Response> {
     const { name, mainType } = request.body;
 
-    const createPokemon = new CreatePokemonService(pokemonsRepository);
-    const pokemon = createPokemon.execute({ name, mainType });
+    const createPokemon = new CreatePokemonService();
+    const pokemon = await createPokemon.execute({ name, mainType });
 
     return response.json(pokemon);
   }

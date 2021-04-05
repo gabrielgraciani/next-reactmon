@@ -1,3 +1,4 @@
+import { getCustomRepository } from 'typeorm';
 import PokemonsRepository from '../repositories/PokemonsRepository';
 import Pokemon from '../models/Pokemon';
 
@@ -7,10 +8,15 @@ interface Request {
 }
 
 class CreatePokemonService {
-  constructor(private pokemonsRepository: PokemonsRepository) {}
+  public async execute({ name, mainType }: Request): Promise<Pokemon> {
+    const pokemonsRepository = getCustomRepository(PokemonsRepository);
 
-  public execute({ name, mainType }: Request): Pokemon {
-    const pokemon = this.pokemonsRepository.create({ name, mainType });
+    const pokemon = await pokemonsRepository.create({
+      name,
+      main_type: mainType,
+    });
+
+    await pokemonsRepository.save(pokemon);
 
     return pokemon;
   }

@@ -5,6 +5,9 @@
   "username": "docker",
   "password": "reactmon",
   "database": "reactmon",
+  "entities": [
+    "./src/modules/**/models/*.ts"
+  ],
   "migrations": ["./src/database/migrations/*.ts"],
   "cli": {
     "migrationsDir": "./src/database/migrations"

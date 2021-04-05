@@ -33,7 +33,8 @@
         "prettier/prettier": ["error", {
            "endOfLine":"auto"
         }],
-        "no-useless-constructor": "off"
+        "no-useless-constructor": "off",
+        "camelcase": "off"
     },
     "settings": {
         "import/resolver": {
