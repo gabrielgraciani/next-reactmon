@@ -14,7 +14,13 @@ class Pokemon {
   name: string;
 
   @Column()
-  main_type: string;
+  weight: string;
+
+  @Column()
+  height: string;
+
+  @Column()
+  main_type_id: string;
 
   @CreateDateColumn()
   created_at: Date;
