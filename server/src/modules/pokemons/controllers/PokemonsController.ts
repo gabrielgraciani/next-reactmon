@@ -12,7 +12,7 @@ class PokemonsController {
   }
 
   async create(request: Request, response: Response): Promise<Response> {
-    const { name, weight, height, mainTypeId } = request.body;
+    const { name, weight, height, mainTypeId, types } = request.body;
 
     const createPokemon = new CreatePokemonService();
     const pokemon = await createPokemon.execute({
@@ -20,6 +20,7 @@ class PokemonsController {
       weight,
       height,
       mainTypeId,
+      types,
     });
 
     return response.json(pokemon);

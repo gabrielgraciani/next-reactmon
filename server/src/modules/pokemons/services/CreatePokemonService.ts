@@ -3,6 +3,7 @@ import { getRepository } from 'typeorm';
 import AppError from '../../../errors/AppError';
 
 import Type from '../../types/models/Type';
+import PokemonType from '../../pokemonsTypes/models/PokemonType';
 import Pokemon from '../models/Pokemon';
 
 interface Request {
@@ -10,6 +11,7 @@ interface Request {
   weight: string;
   height: string;
   mainTypeId: string;
+  types: string[];
 }
 
 class CreatePokemonService {
@@ -18,9 +20,11 @@ class CreatePokemonService {
     weight,
     height,
     mainTypeId,
+    types,
   }: Request): Promise<Pokemon | undefined> {
     const pokemonsRepository = getRepository(Pokemon);
     const typesRepository = getRepository(Type);
+    const pokemonsTypesRepository = getRepository(PokemonType);
 
     const existsType = await typesRepository.findOne(mainTypeId);
 
@@ -36,6 +40,15 @@ class CreatePokemonService {
     });
 
     await pokemonsRepository.save(pokemon);
+
+    types.forEach(type => {
+      const pokemonType = pokemonsTypesRepository.create({
+        pokemon_id: pokemon.id,
+        type_id: type,
+      });
+
+      pokemonsTypesRepository.save(pokemonType);
+    });
 
     return pokemon;
   }
