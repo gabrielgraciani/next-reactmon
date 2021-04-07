@@ -1,8 +1,10 @@
 import { getRepository } from 'typeorm';
 
+import AppError from '../../../errors/AppError';
 import Pokemon from '../models/Pokemon';
 
 interface Request {
+  id: string;
   name: string;
   weight: string;
   height: string;
@@ -10,8 +12,9 @@ interface Request {
   weakness: string[];
 }
 
-class CreatePokemonService {
+class UpdatePokemonService {
   public async execute({
+    id,
     name,
     weight,
     height,
@@ -20,18 +23,24 @@ class CreatePokemonService {
   }: Request): Promise<Pokemon> {
     const pokemonsRepository = getRepository(Pokemon);
 
+    const pokemon = await pokemonsRepository.findOne({
+      id,
+    });
+
+    if (!pokemon) {
+      throw new AppError('Pokemon not found', 404);
+    }
+
     const mainType = types[0];
     const typesString = types.join(',');
     const weaknessString = weakness.join(',');
 
-    const pokemon = await pokemonsRepository.create({
-      name,
-      weight,
-      height,
-      main_type: mainType,
-      types: typesString,
-      weakness: weaknessString,
-    });
+    pokemon.name = name;
+    pokemon.weight = weight;
+    pokemon.height = height;
+    pokemon.main_type = mainType;
+    pokemon.types = typesString;
+    pokemon.weakness = weaknessString;
 
     await pokemonsRepository.save(pokemon);
 
@@ -39,4 +48,4 @@ class CreatePokemonService {
   }
 }
 
-export default CreatePokemonService;
+export default UpdatePokemonService;

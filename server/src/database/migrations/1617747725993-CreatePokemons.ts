@@ -26,23 +26,21 @@ export default class CreatePokemons1617747725993 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'main_type_id',
-            type: 'uuid',
+            name: 'main_type',
+            type: 'varchar',
+          },
+          {
+            name: 'types',
+            type: 'varchar',
+          },
+          {
+            name: 'weakness',
+            type: 'varchar',
           },
           {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
-          },
-        ],
-        foreignKeys: [
-          {
-            name: 'PokemonType',
-            referencedTableName: 'types',
-            referencedColumnNames: ['id'],
-            columnNames: ['main_type_id'],
-            onDelete: 'CASCADE',
-            onUpdate: 'CASCADE',
           },
         ],
       }),

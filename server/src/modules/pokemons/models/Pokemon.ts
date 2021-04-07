@@ -3,11 +3,7 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  OneToOne,
-  JoinColumn,
 } from 'typeorm';
-
-import Type from '../../types/models/Type';
 
 @Entity('pokemons')
 class Pokemon {
@@ -24,11 +20,13 @@ class Pokemon {
   height: string;
 
   @Column()
-  main_type_id: string;
+  main_type: string;
 
-  @OneToOne(() => Type)
-  @JoinColumn({ name: 'main_type_id' })
-  main_type: Type;
+  @Column()
+  types: string;
+
+  @Column()
+  weakness: string;
 
   @CreateDateColumn()
   created_at: Date;

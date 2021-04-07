@@ -2,20 +2,32 @@ import { getRepository } from 'typeorm';
 
 import Pokemon from '../models/Pokemon';
 
+interface PokemonFormatted {
+  id: string;
+  name: string;
+  weight: string;
+  height: string;
+  main_type: string;
+  types: string[];
+  weakness: string[];
+  created_at: Date;
+}
+
 class ListPokemonsService {
-  public async execute(): Promise<Pokemon[]> {
+  public async execute(): Promise<PokemonFormatted[]> {
     const pokemonsRepository = getRepository(Pokemon);
 
-    const pokemons = await pokemonsRepository.find({
-      relations: ['main_type'],
+    const pokemons = await pokemonsRepository.find();
+
+    const pokemonsFormatted = pokemons.map(pokemon => {
+      return {
+        ...pokemon,
+        types: pokemon.types.split(','),
+        weakness: pokemon.weakness.split(','),
+      };
     });
 
-    // const pokemons = await pokemonsRepository
-    //   .createQueryBuilder('pokemons')
-    //   .leftJoinAndSelect('pokemons.main_type', 'types')
-    //   .getMany();
-
-    return pokemons;
+    return pokemonsFormatted;
   }
 }
 
