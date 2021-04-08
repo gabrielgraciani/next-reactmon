@@ -5,12 +5,41 @@ import CreateCityService from '../services/CreateCityService';
 import UpdateCityService from '../services/UpdateCityService';
 import DeleteCityService from '../services/DeleteCityService';
 
-class CitiesController {
-  async index(request: Request, response: Response): Promise<Response> {
-    const listCities = new ListCitiesService();
-    const cities = await listCities.execute();
+interface CitiesListRequest extends Request {
+  query: {
+    page: string;
+  };
+}
 
-    return response.json(cities);
+class CitiesController {
+  async index(
+    request: CitiesListRequest,
+    response: Response,
+  ): Promise<Response> {
+    const { page = '1' } = request.query;
+    const limit = 12;
+
+    const pageInt = parseInt(page, 10);
+
+    const startOffset = (pageInt - 1) * limit;
+    const endOffset = pageInt * limit;
+
+    const listCities = new ListCitiesService();
+
+    const cities = await listCities.execute({
+      offset: startOffset,
+      limit,
+    });
+
+    const hasNextPage = cities.total_records > endOffset;
+
+    return response.json({
+      data: cities.data,
+      meta: {
+        total_records: cities.total_records,
+        has_next_page: hasNextPage,
+      },
+    });
   }
 
   async create(request: Request, response: Response): Promise<Response> {
