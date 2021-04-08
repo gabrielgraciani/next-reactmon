@@ -32,7 +32,7 @@ class UpdateItemService {
       throw new AppError('Item not found', 404);
     }
 
-    if (item.image) {
+    if (item.image && imageFilename) {
       const itemImageFilePath = path.join(uploadConfig.directory, item.image);
       const itemImageFileExists = await fs.promises.stat(itemImageFilePath);
 
@@ -44,7 +44,7 @@ class UpdateItemService {
     item.name = name;
     item.description = description;
     item.function = itemFunction;
-    item.image = imageFilename;
+    item.image = imageFilename || item.image;
 
     await itemsRepository.save(item);
 

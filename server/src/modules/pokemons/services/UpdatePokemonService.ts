@@ -36,7 +36,7 @@ class UpdatePokemonService {
       throw new AppError('Pokemon not found', 404);
     }
 
-    if (pokemon.image) {
+    if (pokemon.image && imageFilename) {
       const pokemonImageFilePath = path.join(
         uploadConfig.directory,
         pokemon.image,
@@ -58,7 +58,7 @@ class UpdatePokemonService {
     pokemon.main_type = mainType;
     pokemon.types = types;
     pokemon.weakness = weakness;
-    pokemon.image = imageFilename;
+    pokemon.image = imageFilename || pokemon.image;
 
     await pokemonsRepository.save(pokemon);
 

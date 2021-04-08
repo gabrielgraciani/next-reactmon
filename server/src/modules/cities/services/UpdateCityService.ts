@@ -30,7 +30,7 @@ class UpdateCityService {
       throw new AppError('City not found', 404);
     }
 
-    if (city.image) {
+    if (city.image && imageFilename) {
       const cityImageFilePath = path.join(uploadConfig.directory, city.image);
       const cityAvatarFileExists = await fs.promises.stat(cityImageFilePath);
 
@@ -41,7 +41,7 @@ class UpdateCityService {
 
     city.name = name;
     city.description = description;
-    city.image = imageFilename;
+    city.image = imageFilename || city.image;
 
     await citiesRepository.save(city);
 
