@@ -6,12 +6,37 @@ import CreatePokemonService from '../services/CreatePokemonService';
 import UpdatePokemonService from '../services/UpdatePokemonService';
 import DeletePokemonService from '../services/DeletePokemonService';
 
-class PokemonsController {
-  async index(request: Request, response: Response): Promise<Response> {
-    const listPokemons = new ListPokemonsService();
-    const pokemons = await listPokemons.execute();
+interface PokemonRequest extends Request {
+  query: {
+    page: string;
+  };
+}
 
-    return response.json(pokemons);
+class PokemonsController {
+  async index(request: PokemonRequest, response: Response): Promise<Response> {
+    const { page = '1' } = request.query;
+    const limit = 10;
+
+    const pageInt = parseInt(page, 10);
+
+    const startOffset = (pageInt - 1) * limit;
+    const endOffset = pageInt * limit;
+
+    const listPokemons = new ListPokemonsService();
+    const pokemons = await listPokemons.execute({
+      offset: startOffset,
+      limit,
+    });
+
+    const hasNextPage = pokemons.total_records > endOffset;
+
+    return response.json({
+      data: pokemons.data,
+      meta: {
+        total_records: pokemons.total_records,
+        has_next_page: hasNextPage,
+      },
+    });
   }
 
   async find(request: Request, response: Response): Promise<Response> {

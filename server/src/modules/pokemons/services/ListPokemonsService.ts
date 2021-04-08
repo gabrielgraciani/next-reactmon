@@ -1,14 +1,31 @@
-import { getRepository } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
+
+import PokemonsRepository from '../repositories/PokemonsRepository';
 
 import Pokemon from '../models/Pokemon';
 
+interface Request {
+  offset: number;
+  limit: number;
+}
+
+interface Response {
+  data: Pokemon[];
+  total_records: number;
+}
+
 class ListPokemonsService {
-  public async execute(): Promise<Pokemon[]> {
-    const pokemonsRepository = getRepository(Pokemon);
+  public async execute({ offset = 0, limit }: Request): Promise<Response> {
+    const pokemonsRepository = getCustomRepository(PokemonsRepository);
 
-    const pokemons = await pokemonsRepository.find();
+    const pokemons = await pokemonsRepository.findAndCount({
+      skip: offset,
+      take: limit,
+    });
 
-    const pokemonsFormatted = pokemons.map(pokemon => {
+    const [pokemonsResult, pokemonsCount] = pokemons;
+
+    const pokemonsFormatted = pokemonsResult.map(pokemon => {
       const parsedTypes: string = JSON.parse(pokemon.types);
       const parsedWeakness: string = JSON.parse(pokemon.weakness);
 
@@ -19,7 +36,7 @@ class ListPokemonsService {
       };
     });
 
-    return pokemonsFormatted;
+    return { data: pokemonsFormatted, total_records: pokemonsCount };
   }
 }
 
