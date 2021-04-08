@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import ListPokemonsService from '../services/ListPokemonsService';
+import ListPokemonByIdService from '../services/ListPokemonByIdService';
 import CreatePokemonService from '../services/CreatePokemonService';
 import UpdatePokemonService from '../services/UpdatePokemonService';
 import DeletePokemonService from '../services/DeletePokemonService';
@@ -11,6 +12,15 @@ class PokemonsController {
     const pokemons = await listPokemons.execute();
 
     return response.json(pokemons);
+  }
+
+  async find(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const pokemonFind = new ListPokemonByIdService();
+    const pokemon = await pokemonFind.execute({ id });
+
+    return response.json(pokemon);
   }
 
   async create(request: Request, response: Response): Promise<Response> {

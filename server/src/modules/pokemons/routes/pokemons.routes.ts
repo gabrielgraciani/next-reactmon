@@ -11,6 +11,7 @@ const pokemonsController = new PokemonsController();
 const upload = multer(uploadConfig);
 
 pokemonsRouter.get('/', pokemonsController.index);
+pokemonsRouter.get('/:id', pokemonsController.find);
 pokemonsRouter.post(
   '/',
   ensureAuthenticated,
