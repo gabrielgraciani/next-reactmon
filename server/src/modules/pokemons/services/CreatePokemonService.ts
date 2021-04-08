@@ -1,5 +1,7 @@
 import { getRepository } from 'typeorm';
 
+import AppError from '../../../errors/AppError';
+
 import Pokemon from '../models/Pokemon';
 
 interface Request {
@@ -24,6 +26,16 @@ class CreatePokemonService {
 
     const typesParsed = JSON.parse(types);
     const mainType = typesParsed[0];
+
+    const pokemonExists = await pokemonsRepository.findOne({
+      where: {
+        name,
+      },
+    });
+
+    if (pokemonExists) {
+      throw new AppError('Pokemon name is already used', 401);
+    }
 
     const pokemon = await pokemonsRepository.create({
       name,

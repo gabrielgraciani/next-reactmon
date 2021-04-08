@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreatePokemons1617747725993 implements MigrationInterface {
+export default class CreateCities1617914965026 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'pokemons',
+        name: 'cities',
         columns: [
           {
             name: 'id',
@@ -19,23 +19,7 @@ export default class CreatePokemons1617747725993 implements MigrationInterface {
             isUnique: true,
           },
           {
-            name: 'weight',
-            type: 'varchar',
-          },
-          {
-            name: 'height',
-            type: 'varchar',
-          },
-          {
-            name: 'main_type',
-            type: 'varchar',
-          },
-          {
-            name: 'types',
-            type: 'varchar',
-          },
-          {
-            name: 'weakness',
+            name: 'description',
             type: 'varchar',
           },
           {
@@ -54,6 +38,6 @@ export default class CreatePokemons1617747725993 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('pokemons');
+    await queryRunner.dropTable('cities');
   }
 }
