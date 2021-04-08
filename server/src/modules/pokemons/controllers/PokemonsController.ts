@@ -6,16 +6,19 @@ import CreatePokemonService from '../services/CreatePokemonService';
 import UpdatePokemonService from '../services/UpdatePokemonService';
 import DeletePokemonService from '../services/DeletePokemonService';
 
-interface PokemonRequest extends Request {
+interface PokemonsListRequest extends Request {
   query: {
     page: string;
   };
 }
 
 class PokemonsController {
-  async index(request: PokemonRequest, response: Response): Promise<Response> {
+  async index(
+    request: PokemonsListRequest,
+    response: Response,
+  ): Promise<Response> {
     const { page = '1' } = request.query;
-    const limit = 10;
+    const limit = 12;
 
     const pageInt = parseInt(page, 10);
 
