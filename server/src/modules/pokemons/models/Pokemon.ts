@@ -28,6 +28,9 @@ class Pokemon {
   @Column()
   weakness: string;
 
+  @Column()
+  image: string;
+
   @CreateDateColumn()
   created_at: Date;
 }

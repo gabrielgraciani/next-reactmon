@@ -1,6 +1,9 @@
 import { getRepository } from 'typeorm';
+import path from 'path';
+import fs from 'fs';
 
 import AppError from '../../../errors/AppError';
+import uploadConfig from '../../../config/upload';
 import Pokemon from '../models/Pokemon';
 
 interface Request {
@@ -8,8 +11,9 @@ interface Request {
   name: string;
   weight: string;
   height: string;
-  types: string[];
-  weakness: string[];
+  types: string;
+  weakness: string;
+  imageFilename?: string;
 }
 
 class UpdatePokemonService {
@@ -20,6 +24,7 @@ class UpdatePokemonService {
     height,
     types,
     weakness,
+    imageFilename,
   }: Request): Promise<Pokemon> {
     const pokemonsRepository = getRepository(Pokemon);
 
@@ -31,18 +36,34 @@ class UpdatePokemonService {
       throw new AppError('Pokemon not found', 404);
     }
 
-    const mainType = types[0];
-    const typesString = types.join(',');
-    const weaknessString = weakness.join(',');
+    if (pokemon.image) {
+      const pokemonImageFilePath = path.join(
+        uploadConfig.directory,
+        pokemon.image,
+      );
+      const userAvatarFileExists = await fs.promises.stat(pokemonImageFilePath);
+
+      if (userAvatarFileExists) {
+        await fs.promises.unlink(pokemonImageFilePath);
+      }
+    }
+
+    const typesParsed = JSON.parse(types);
+    const weaknessParsed = JSON.parse(weakness);
+    const mainType = typesParsed[0];
 
     pokemon.name = name;
     pokemon.weight = weight;
     pokemon.height = height;
     pokemon.main_type = mainType;
-    pokemon.types = typesString;
-    pokemon.weakness = weaknessString;
+    pokemon.types = types;
+    pokemon.weakness = weakness;
+    pokemon.image = imageFilename;
 
     await pokemonsRepository.save(pokemon);
+
+    pokemon.types = typesParsed;
+    pokemon.weakness = weaknessParsed;
 
     return pokemon;
   }

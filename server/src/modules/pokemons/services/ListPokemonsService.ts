@@ -2,28 +2,20 @@ import { getRepository } from 'typeorm';
 
 import Pokemon from '../models/Pokemon';
 
-interface PokemonFormatted {
-  id: string;
-  name: string;
-  weight: string;
-  height: string;
-  main_type: string;
-  types: string[];
-  weakness: string[];
-  created_at: Date;
-}
-
 class ListPokemonsService {
-  public async execute(): Promise<PokemonFormatted[]> {
+  public async execute(): Promise<Pokemon[]> {
     const pokemonsRepository = getRepository(Pokemon);
 
     const pokemons = await pokemonsRepository.find();
 
     const pokemonsFormatted = pokemons.map(pokemon => {
+      const parsedTypes: string = JSON.parse(pokemon.types);
+      const parsedWeakness: string = JSON.parse(pokemon.weakness);
+
       return {
         ...pokemon,
-        types: pokemon.types.split(','),
-        weakness: pokemon.weakness.split(','),
+        types: parsedTypes,
+        weakness: parsedWeakness,
       };
     });
 

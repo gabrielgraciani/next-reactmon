@@ -6,8 +6,9 @@ interface Request {
   name: string;
   weight: string;
   height: string;
-  types: string[];
-  weakness: string[];
+  types: string;
+  weakness: string;
+  imageFilename?: string;
 }
 
 class CreatePokemonService {
@@ -17,23 +18,27 @@ class CreatePokemonService {
     height,
     types,
     weakness,
+    imageFilename,
   }: Request): Promise<Pokemon> {
     const pokemonsRepository = getRepository(Pokemon);
 
-    const mainType = types[0];
-    const typesString = types.join(',');
-    const weaknessString = weakness.join(',');
+    const typesParsed = JSON.parse(types);
+    const mainType = typesParsed[0];
 
     const pokemon = await pokemonsRepository.create({
       name,
       weight,
       height,
       main_type: mainType,
-      types: typesString,
-      weakness: weaknessString,
+      types,
+      weakness,
+      image: imageFilename,
     });
 
     await pokemonsRepository.save(pokemon);
+
+    pokemon.types = JSON.parse(pokemon.types);
+    pokemon.weakness = JSON.parse(pokemon.weakness);
 
     return pokemon;
   }

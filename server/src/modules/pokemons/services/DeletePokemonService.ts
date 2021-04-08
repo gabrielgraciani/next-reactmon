@@ -1,5 +1,8 @@
 import { getRepository } from 'typeorm';
+import path from 'path';
+import fs from 'fs';
 
+import uploadConfig from '../../../config/upload';
 import AppError from '../../../errors/AppError';
 import Pokemon from '../models/Pokemon';
 
@@ -18,6 +21,20 @@ class DeletePokemonService {
 
     if (!pokemon) {
       throw new AppError('Pokemon not found', 404);
+    }
+
+    if (pokemon.image) {
+      const pokemonImageFilePath = path.join(
+        uploadConfig.directory,
+        pokemon.image,
+      );
+      const pokemonImageFileExists = await fs.promises.stat(
+        pokemonImageFilePath,
+      );
+
+      if (pokemonImageFileExists) {
+        await fs.promises.unlink(pokemonImageFilePath);
+      }
     }
 
     await pokemonsRepository.delete({ id });

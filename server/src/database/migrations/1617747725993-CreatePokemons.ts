@@ -38,6 +38,11 @@ export default class CreatePokemons1617747725993 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'image',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',

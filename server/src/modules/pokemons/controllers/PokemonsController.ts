@@ -16,6 +16,8 @@ class PokemonsController {
   async create(request: Request, response: Response): Promise<Response> {
     const { name, weight, height, types, weakness } = request.body;
 
+    const filename = request.file !== undefined ? request.file.filename : null;
+
     const createPokemon = new CreatePokemonService();
     const pokemon = await createPokemon.execute({
       name,
@@ -23,6 +25,7 @@ class PokemonsController {
       height,
       types,
       weakness,
+      imageFilename: filename,
     });
 
     return response.json(pokemon);
@@ -31,6 +34,8 @@ class PokemonsController {
   public async update(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
     const { name, weight, height, types, weakness } = request.body;
+
+    const filename = request.file !== undefined ? request.file.filename : null;
 
     const updatePokemon = new UpdatePokemonService();
 
@@ -41,6 +46,7 @@ class PokemonsController {
       height,
       types,
       weakness,
+      imageFilename: filename,
     });
 
     return response.json(pokemon);
