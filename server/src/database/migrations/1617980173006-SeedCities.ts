@@ -7,12 +7,12 @@ export default class SeedCities1617980173006 implements MigrationInterface {
     let data = '';
 
     SeedCities.forEach(seed => {
-      data = `${data} ('${seed.name}', '${seed.description}'),`;
+      data = `${data} ('${seed.name}', '${seed.description}', '${seed.image}'),`;
     });
 
     const dataSlice = data.slice(0, -1);
 
-    const query = `INSERT INTO cities (name, description) VALUES ${dataSlice};`;
+    const query = `INSERT INTO cities (name, description, image) VALUES ${dataSlice};`;
 
     await queryRunner.query(query);
   }
