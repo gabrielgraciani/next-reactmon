@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import ListUsersService from '../services/ListUsersService';
 import CreateUserService from '../services/CreateUserService';
 import UpdateUserService from '../services/UpdateUserService';
+import ListUserByIdService from '../services/ListUserByIdService';
 
 class UsersController {
   async index(request: Request, response: Response): Promise<Response> {
@@ -10,6 +11,15 @@ class UsersController {
     const users = await listUsers.execute();
 
     return response.json(users);
+  }
+
+  async find(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const userFind = new ListUserByIdService();
+    const user = await userFind.execute({ id });
+
+    return response.json(user);
   }
 
   async create(request: Request, response: Response): Promise<Response> {

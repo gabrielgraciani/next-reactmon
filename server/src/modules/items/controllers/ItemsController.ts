@@ -4,6 +4,7 @@ import ListItemsService from '../services/ListItemsService';
 import CreateItemService from '../services/CreateItemService';
 import UpdateItemService from '../services/UpdateItemService';
 import DeleteItemService from '../services/DeleteItemService';
+import ListItemByIdService from '../services/ListItemByIdService';
 
 interface ItemsListRequest extends Request {
   query: {
@@ -31,15 +32,26 @@ class CitiesController {
       limit,
     });
 
+    const totalPages = Math.ceil(items.total_records / limit);
     const hasNextPage = items.total_records > endOffset;
 
     return response.json({
       data: items.data,
       meta: {
         total_records: items.total_records,
+        total_pages: totalPages,
         has_next_page: hasNextPage,
       },
     });
+  }
+
+  async find(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const itemFind = new ListItemByIdService();
+    const item = await itemFind.execute({ id });
+
+    return response.json(item);
   }
 
   async create(request: Request, response: Response): Promise<Response> {

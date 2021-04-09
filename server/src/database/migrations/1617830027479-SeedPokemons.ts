@@ -7,12 +7,12 @@ export default class SeedPokemons1617830027479 implements MigrationInterface {
     let data = '';
 
     SeedPokemons.forEach(seed => {
-      data = `${data} ('${seed.name}', '${seed.weight}', '${seed.height}', '${seed.mainType}', '${seed.types}', '${seed.weakness}'),`;
+      data = `${data} ('${seed.name}', '${seed.weight}', '${seed.height}', '${seed.mainType}', '${seed.types}', '${seed.weakness}', '${seed.image}'),`;
     });
 
     const dataSlice = data.slice(0, -1);
 
-    const query = `INSERT INTO pokemons (name, weight, height, main_type, types, weakness) VALUES ${dataSlice};`;
+    const query = `INSERT INTO pokemons (name, weight, height, main_type, types, weakness, image) VALUES ${dataSlice};`;
 
     await queryRunner.query(query);
   }

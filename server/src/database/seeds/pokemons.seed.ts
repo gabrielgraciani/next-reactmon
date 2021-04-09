@@ -6,6 +6,7 @@ const SeedPokemons = [
     weight: '19.5',
     types: '["Psychic"]',
     mainType: 'Psychic',
+    image: 'e3aa059cc520f04244e4-Abra.png',
   },
   {
     height: '1.80',
@@ -14,6 +15,7 @@ const SeedPokemons = [
     weight: '59.0',
     types: '["Rock", "Flying"]',
     mainType: 'Rock',
+    image: 'e3aa059cc520f04244e4-Aerodactyl.png',
   },
   {
     height: '1.50',
@@ -22,6 +24,7 @@ const SeedPokemons = [
     weight: '48.0',
     types: '["Psychic"]',
     mainType: 'Psychic',
+    image: 'e3aa059cc520f04244e4-Alakazam.png',
   },
   {
     height: '3.51',
@@ -30,6 +33,7 @@ const SeedPokemons = [
     weight: '65.0',
     types: '["Poison"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Arbok.png',
   },
   {
     height: '1.91',
@@ -38,6 +42,7 @@ const SeedPokemons = [
     weight: '155.0',
     types: '["Fire"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Arcanine.png',
   },
   {
     height: '1.70',
@@ -46,6 +51,7 @@ const SeedPokemons = [
     weight: '55.4',
     types: '["Ice", "Flying"]',
     mainType: 'Ice',
+    image: 'e3aa059cc520f04244e4-Articuno.png',
   },
   {
     height: '0.99',
@@ -54,6 +60,7 @@ const SeedPokemons = [
     weight: '29.5',
     types: '["Bug", "Poison"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Beedrill.png',
   },
   {
     height: '0.71',
@@ -62,6 +69,7 @@ const SeedPokemons = [
     weight: '4.0',
     types: '["Grass", "Poison"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Bellsprout.png',
   },
   {
     height: '1.60',
@@ -70,6 +78,7 @@ const SeedPokemons = [
     weight: '85.5',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Blastoise.png',
   },
   {
     height: '0.71',
@@ -78,6 +87,7 @@ const SeedPokemons = [
     weight: '6.9',
     types: '["Grass", "Poison"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Bulbasaur.png',
   },
   {
     height: '1.09',
@@ -86,6 +96,7 @@ const SeedPokemons = [
     weight: '32.0',
     types: '["Bug", "Flying"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Butterfree.png',
   },
   {
     height: '0.30',
@@ -94,6 +105,7 @@ const SeedPokemons = [
     weight: '2.9',
     types: '["Bug"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Caterpie.png',
   },
   {
     height: '1.09',
@@ -102,6 +114,7 @@ const SeedPokemons = [
     weight: '34.6',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Chansey.png',
   },
   {
     height: '1.70',
@@ -110,6 +123,7 @@ const SeedPokemons = [
     weight: '90.5',
     types: '["Fire", "Flying"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Charizard.png',
   },
   {
     height: '0.61',
@@ -118,6 +132,7 @@ const SeedPokemons = [
     weight: '8.5',
     types: '["Fire"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Charmander.png',
   },
   {
     height: '1.09',
@@ -126,6 +141,7 @@ const SeedPokemons = [
     weight: '19.0',
     types: '["Fire"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Charmeleon.png',
   },
   {
     height: '1.30',
@@ -134,6 +150,7 @@ const SeedPokemons = [
     weight: '40.0',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Clefable.png',
   },
   {
     height: '0.61',
@@ -142,6 +159,7 @@ const SeedPokemons = [
     weight: '7.5',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Clefairy.png',
   },
   {
     height: '1.50',
@@ -150,6 +168,7 @@ const SeedPokemons = [
     weight: '132.5',
     types: '["Water", "Ice"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Cloyster.png',
   },
   {
     height: '0.41',
@@ -158,6 +177,7 @@ const SeedPokemons = [
     weight: '6.5',
     types: '["Ground"]',
     mainType: 'Ground',
+    image: 'e3aa059cc520f04244e4-Cubone.png',
   },
   {
     height: '1.70',
@@ -166,6 +186,7 @@ const SeedPokemons = [
     weight: '120.0',
     types: '["Water", "Ice"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Dewgong.png',
   },
   {
     height: '0.20',
@@ -174,6 +195,7 @@ const SeedPokemons = [
     weight: '0.8',
     types: '["Ground"]',
     mainType: 'Ground',
+    image: 'e3aa059cc520f04244e4-Diglett.png',
   },
   {
     height: '0.30',
@@ -182,6 +204,7 @@ const SeedPokemons = [
     weight: '4.0',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Ditto.png',
   },
   {
     height: '1.80',
@@ -190,6 +213,7 @@ const SeedPokemons = [
     weight: '85.2',
     types: '["Normal", "Flying"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Dodrio.png',
   },
   {
     height: '1.40',
@@ -198,6 +222,7 @@ const SeedPokemons = [
     weight: '39.2',
     types: '["Normal", "Flying"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Doduo.png',
   },
   {
     height: '3.99',
@@ -206,6 +231,7 @@ const SeedPokemons = [
     weight: '16.5',
     types: '["Dragon"]',
     mainType: 'Dragon',
+    image: 'e3aa059cc520f04244e4-Dragonair.png',
   },
   {
     height: '2.21',
@@ -214,6 +240,7 @@ const SeedPokemons = [
     weight: '210.0',
     types: '["Dragon", "Flying"]',
     mainType: 'Dragon',
+    image: 'e3aa059cc520f04244e4-Dragonite.png',
   },
   {
     height: '1.80',
@@ -222,6 +249,7 @@ const SeedPokemons = [
     weight: '3.3',
     types: '["Dragon"]',
     mainType: 'Dragon',
+    image: 'e3aa059cc520f04244e4-Dratini.png',
   },
   {
     height: '0.99',
@@ -230,6 +258,7 @@ const SeedPokemons = [
     weight: '32.4',
     types: '["Psychic"]',
     mainType: 'Psychic',
+    image: 'e3aa059cc520f04244e4-Drowzee.png',
   },
   {
     height: '0.71',
@@ -238,6 +267,7 @@ const SeedPokemons = [
     weight: '33.3',
     types: '["Ground"]',
     mainType: 'Ground',
+    image: 'e3aa059cc520f04244e4-Dugtrio.png',
   },
   {
     height: '0.30',
@@ -246,6 +276,7 @@ const SeedPokemons = [
     weight: '6.5',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Eevee.png',
   },
   {
     height: '2.01',
@@ -254,6 +285,7 @@ const SeedPokemons = [
     weight: '6.9',
     types: '["Poison"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Ekans.png',
   },
   {
     height: '1.09',
@@ -262,6 +294,7 @@ const SeedPokemons = [
     weight: '30.0',
     types: '["Electric"]',
     mainType: 'Electric',
+    image: 'e3aa059cc520f04244e4-Electabuzz.png',
   },
   {
     height: '1.19',
@@ -270,6 +303,7 @@ const SeedPokemons = [
     weight: '66.6',
     types: '["Electric"]',
     mainType: 'Electric',
+    image: 'e3aa059cc520f04244e4-Electrode.png',
   },
   {
     height: '0.41',
@@ -278,6 +312,7 @@ const SeedPokemons = [
     weight: '2.5',
     types: '["Grass", "Psychic"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Exeggcute.png',
   },
   {
     height: '2.01',
@@ -286,6 +321,7 @@ const SeedPokemons = [
     weight: '120.0',
     types: '["Grass", "Psychic"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Exeggutor.png',
   },
   {
     height: '0.79',
@@ -294,6 +330,7 @@ const SeedPokemons = [
     weight: '15.0',
     types: '["Normal", "Flying"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Farfetch.png',
   },
   {
     height: '1.19',
@@ -302,6 +339,7 @@ const SeedPokemons = [
     weight: '38.0',
     types: '["Normal", "Flying"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Fearow.png',
   },
   {
     height: '0.89',
@@ -310,6 +348,7 @@ const SeedPokemons = [
     weight: '25.0',
     types: '["Fire"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Flareon.png',
   },
   {
     height: '1.30',
@@ -318,6 +357,7 @@ const SeedPokemons = [
     weight: '0.1',
     types: '["Ghost", "Poison"]',
     mainType: 'Ghost',
+    image: 'e3aa059cc520f04244e4-Gastly.png',
   },
   {
     height: '1.50',
@@ -326,6 +366,7 @@ const SeedPokemons = [
     weight: '40.5',
     types: '["Ghost", "Poison"]',
     mainType: 'Ghost',
+    image: 'e3aa059cc520f04244e4-Gengar.png',
   },
   {
     height: '0.41',
@@ -334,6 +375,7 @@ const SeedPokemons = [
     weight: '20.0',
     types: '["Rock", "Ground"]',
     mainType: 'Rock',
+    image: 'e3aa059cc520f04244e4-Geodude.png',
   },
   {
     height: '0.79',
@@ -342,6 +384,7 @@ const SeedPokemons = [
     weight: '8.6',
     types: '["Grass", "Poison"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Gloom.png',
   },
   {
     height: '1.60',
@@ -350,6 +393,7 @@ const SeedPokemons = [
     weight: '55.0',
     types: '["Poison", "Flying"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Golbat.png',
   },
   {
     height: '0.61',
@@ -358,6 +402,7 @@ const SeedPokemons = [
     weight: '15.0',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Goldeen.png',
   },
   {
     height: '1.70',
@@ -366,6 +411,7 @@ const SeedPokemons = [
     weight: '76.6',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Golduck.png',
   },
   {
     height: '1.40',
@@ -374,6 +420,7 @@ const SeedPokemons = [
     weight: '300.0',
     types: '["Rock", "Ground"]',
     mainType: 'Rock',
+    image: 'e3aa059cc520f04244e4-Golem.png',
   },
   {
     height: '0.99',
@@ -382,6 +429,7 @@ const SeedPokemons = [
     weight: '105.0',
     types: '["Rock", "Ground"]',
     mainType: 'Rock',
+    image: 'e3aa059cc520f04244e4-Graveler.png',
   },
   {
     height: '0.89',
@@ -390,6 +438,7 @@ const SeedPokemons = [
     weight: '30.0',
     types: '["Poison"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Grimer.png',
   },
   {
     height: '0.71',
@@ -398,6 +447,7 @@ const SeedPokemons = [
     weight: '19.0',
     types: '["Fire"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Growlithe.png',
   },
   {
     height: '6.50',
@@ -406,6 +456,7 @@ const SeedPokemons = [
     weight: '235.0',
     types: '["Water", "Flying"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Gyarados.png',
   },
   {
     height: '1.60',
@@ -414,6 +465,7 @@ const SeedPokemons = [
     weight: '0.1',
     types: '["Ghost", "Poison"]',
     mainType: 'Ghost',
+    image: 'e3aa059cc520f04244e4-Haunter.png',
   },
   {
     height: '1.40',
@@ -422,6 +474,7 @@ const SeedPokemons = [
     weight: '50.2',
     types: '["Fighting"]',
     mainType: 'Fighting',
+    image: 'e3aa059cc520f04244e4-Hitmonchan.png',
   },
   {
     height: '1.50',
@@ -430,6 +483,7 @@ const SeedPokemons = [
     weight: '49.8',
     types: '["Fighting"]',
     mainType: 'Fighting',
+    image: 'e3aa059cc520f04244e4-Hitmonlee.png',
   },
   {
     height: '0.41',
@@ -438,6 +492,7 @@ const SeedPokemons = [
     weight: '8.0',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Horsea.png',
   },
   {
     height: '1.60',
@@ -446,6 +501,7 @@ const SeedPokemons = [
     weight: '75.6',
     types: '["Psychic"]',
     mainType: 'Psychic',
+    image: 'e3aa059cc520f04244e4-Hypno.png',
   },
   {
     height: '0.99',
@@ -454,6 +510,7 @@ const SeedPokemons = [
     weight: '13.0',
     types: '["Grass", "Poison"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Ivysaur.png',
   },
   {
     height: '0.51',
@@ -462,6 +519,7 @@ const SeedPokemons = [
     weight: '5.5',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Jigglypuff.png',
   },
   {
     height: '0.79',
@@ -470,6 +528,7 @@ const SeedPokemons = [
     weight: '24.5',
     types: '["Electric"]',
     mainType: 'Electric',
+    image: 'e3aa059cc520f04244e4-Jolteon.png',
   },
   {
     height: '1.40',
@@ -478,6 +537,7 @@ const SeedPokemons = [
     weight: '40.6',
     types: '["Ice", "Psychic"]',
     mainType: 'Ice',
+    image: 'e3aa059cc520f04244e4-Jynx.png',
   },
   {
     height: '0.51',
@@ -486,6 +546,7 @@ const SeedPokemons = [
     weight: '11.5',
     types: '["Rock", "Water"]',
     mainType: 'Rock',
+    image: 'e3aa059cc520f04244e4-Kabuto.png',
   },
   {
     height: '1.30',
@@ -494,6 +555,7 @@ const SeedPokemons = [
     weight: '40.5',
     types: '["Rock", "Water"]',
     mainType: 'Rock',
+    image: 'e3aa059cc520f04244e4-Kabutops.png',
   },
   {
     height: '1.30',
@@ -502,6 +564,7 @@ const SeedPokemons = [
     weight: '56.5',
     types: '["Psychic"]',
     mainType: 'Psychic',
+    image: 'e3aa059cc520f04244e4-Kadabra.png',
   },
   {
     height: '0.61',
@@ -510,6 +573,7 @@ const SeedPokemons = [
     weight: '10.0',
     types: '["Bug", "Poison"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Kakuna.png',
   },
   {
     height: '2.21',
@@ -518,6 +582,7 @@ const SeedPokemons = [
     weight: '80.0',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Kangaskhan.png',
   },
   {
     height: '1.30',
@@ -526,6 +591,7 @@ const SeedPokemons = [
     weight: '60.0',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Kingler.png',
   },
   {
     height: '0.61',
@@ -534,6 +600,7 @@ const SeedPokemons = [
     weight: '1.0',
     types: '["Poison"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Koffing.png',
   },
   {
     height: '0.41',
@@ -542,6 +609,7 @@ const SeedPokemons = [
     weight: '6.5',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Krabby.png',
   },
   {
     height: '2.49',
@@ -550,6 +618,7 @@ const SeedPokemons = [
     weight: '220.0',
     types: '["Water", "Ice"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Lapras.png',
   },
   {
     height: '1.19',
@@ -558,6 +627,7 @@ const SeedPokemons = [
     weight: '65.5',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Lickitung.png',
   },
   {
     height: '1.60',
@@ -566,6 +636,7 @@ const SeedPokemons = [
     weight: '130.0',
     types: '["Fighting"]',
     mainType: 'Fighting',
+    image: 'e3aa059cc520f04244e4-Machamp.png',
   },
   {
     height: '1.50',
@@ -574,6 +645,7 @@ const SeedPokemons = [
     weight: '70.5',
     types: '["Fighting"]',
     mainType: 'Fighting',
+    image: 'e3aa059cc520f04244e4-Machoke.png',
   },
   {
     height: '0.79',
@@ -582,6 +654,7 @@ const SeedPokemons = [
     weight: '19.5',
     types: '["Fighting"]',
     mainType: 'Fighting',
+    image: 'e3aa059cc520f04244e4-Machop.png',
   },
   {
     height: '0.89',
@@ -590,6 +663,7 @@ const SeedPokemons = [
     weight: '10.0',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Magikarp.png',
   },
   {
     height: '1.30',
@@ -598,6 +672,7 @@ const SeedPokemons = [
     weight: '44.5',
     types: '["Fire"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Magmar.png',
   },
   {
     height: '0.30',
@@ -606,6 +681,7 @@ const SeedPokemons = [
     weight: '6.0',
     types: '["Electric"]',
     mainType: 'Electric',
+    image: 'e3aa059cc520f04244e4-Magnemite.png',
   },
   {
     height: '0.99',
@@ -614,6 +690,7 @@ const SeedPokemons = [
     weight: '60.0',
     types: '["Electric"]',
     mainType: 'Electric',
+    image: 'e3aa059cc520f04244e4-Magneton.png',
   },
   {
     height: '0.51',
@@ -622,6 +699,7 @@ const SeedPokemons = [
     weight: '28.0',
     types: '["Fighting"]',
     mainType: 'Fighting',
+    image: 'e3aa059cc520f04244e4-Mankey.png',
   },
   {
     height: '0.99',
@@ -630,6 +708,7 @@ const SeedPokemons = [
     weight: '45.0',
     types: '["Ground"]',
     mainType: 'Ground',
+    image: 'e3aa059cc520f04244e4-Marowak.png',
   },
   {
     height: '0.41',
@@ -638,6 +717,7 @@ const SeedPokemons = [
     weight: '4.2',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Meowth.png',
   },
   {
     height: '0.71',
@@ -646,6 +726,7 @@ const SeedPokemons = [
     weight: '9.9',
     types: '["Bug"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Metapod.png',
   },
   {
     height: '0.41',
@@ -654,6 +735,7 @@ const SeedPokemons = [
     weight: '4.0',
     types: '["Psychic"]',
     mainType: 'Psychic',
+    image: 'e3aa059cc520f04244e4-Mew.png',
   },
   {
     height: '2.01',
@@ -662,6 +744,7 @@ const SeedPokemons = [
     weight: '122.0',
     types: '["Psychic"]',
     mainType: 'Psychic',
+    image: 'e3aa059cc520f04244e4-Mewtwo.png',
   },
   {
     height: '2.01',
@@ -670,6 +753,7 @@ const SeedPokemons = [
     weight: '60.0',
     types: '["Fire", "Flying"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Moltres.png',
   },
   {
     height: '1.30',
@@ -678,6 +762,7 @@ const SeedPokemons = [
     weight: '54.5',
     types: '["Psychic"]',
     mainType: 'Psychic',
+    image: 'e3aa059cc520f04244e4-MrMime.png',
   },
   {
     height: '1.19',
@@ -686,6 +771,7 @@ const SeedPokemons = [
     weight: '30.0',
     types: '["Poison"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Muk.png',
   },
   {
     height: '1.40',
@@ -694,6 +780,7 @@ const SeedPokemons = [
     weight: '62.0',
     types: '["Poison", "Ground"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Nidoking.png',
   },
   {
     height: '1.30',
@@ -702,6 +789,7 @@ const SeedPokemons = [
     weight: '60.0',
     types: '["Poison", "Ground"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Nidoqueen.png',
   },
   {
     height: '0.41',
@@ -710,6 +798,7 @@ const SeedPokemons = [
     weight: '7.0',
     types: '["Poison"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-NidoranFemale.png',
   },
   {
     height: '0.51',
@@ -718,6 +807,7 @@ const SeedPokemons = [
     weight: '9.0',
     types: '["Poison"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-NidoranMale.png',
   },
   {
     height: '0.79',
@@ -726,6 +816,7 @@ const SeedPokemons = [
     weight: '20.0',
     types: '["Poison"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Nidorina.png',
   },
   {
     height: '0.89',
@@ -734,6 +825,7 @@ const SeedPokemons = [
     weight: '19.5',
     types: '["Poison"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Nidorino.png',
   },
   {
     height: '1.09',
@@ -742,6 +834,7 @@ const SeedPokemons = [
     weight: '19.9',
     types: '["Fire"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Ninetales.png',
   },
   {
     height: '0.51',
@@ -750,6 +843,7 @@ const SeedPokemons = [
     weight: '5.4',
     types: '["Grass", "Poison"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Oddish.png',
   },
   {
     height: '0.41',
@@ -758,6 +852,7 @@ const SeedPokemons = [
     weight: '7.5',
     types: '["Rock", "Water"]',
     mainType: 'Rock',
+    image: 'e3aa059cc520f04244e4-Omanyte.png',
   },
   {
     height: '0.99',
@@ -766,6 +861,7 @@ const SeedPokemons = [
     weight: '35.0',
     types: '["Rock", "Water"]',
     mainType: 'Rock',
+    image: 'e3aa059cc520f04244e4-Omastar.png',
   },
   {
     height: '8.79',
@@ -774,6 +870,7 @@ const SeedPokemons = [
     weight: '210.0',
     types: '["Rock", "Ground"]',
     mainType: 'Rock',
+    image: 'e3aa059cc520f04244e4-Onix.png',
   },
   {
     height: '0.30',
@@ -782,6 +879,7 @@ const SeedPokemons = [
     weight: '5.4',
     types: '["Bug", "Grass"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Paras.png',
   },
   {
     height: '0.99',
@@ -790,6 +888,7 @@ const SeedPokemons = [
     weight: '29.5',
     types: '["Bug", "Grass"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Parasect.png',
   },
   {
     height: '0.99',
@@ -798,6 +897,7 @@ const SeedPokemons = [
     weight: '32.0',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Persian.png',
   },
   {
     height: '1.50',
@@ -806,6 +906,7 @@ const SeedPokemons = [
     weight: '39.5',
     types: '["Normal", "Flying"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Pidgeot.png',
   },
   {
     height: '1.09',
@@ -814,6 +915,7 @@ const SeedPokemons = [
     weight: '30.0',
     types: '["Normal", "Flying"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Pidgeotto.png',
   },
   {
     height: '0.30',
@@ -822,6 +924,7 @@ const SeedPokemons = [
     weight: '1.8',
     types: '["Normal", "Flying"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Pidgey.png',
   },
   {
     height: '0.41',
@@ -830,6 +933,7 @@ const SeedPokemons = [
     weight: '6.0',
     types: '["Electric"]',
     mainType: 'Electric',
+    image: 'e3aa059cc520f04244e4-Pikachu.png',
   },
   {
     height: '1.50',
@@ -838,6 +942,7 @@ const SeedPokemons = [
     weight: '55.0',
     types: '["Bug"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Pinsir.png',
   },
   {
     height: '0.61',
@@ -846,6 +951,7 @@ const SeedPokemons = [
     weight: '12.4',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Poliwag.png',
   },
   {
     height: '0.99',
@@ -854,6 +960,7 @@ const SeedPokemons = [
     weight: '20.0',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Poliwhirl.png',
   },
   {
     height: '1.30',
@@ -862,6 +969,7 @@ const SeedPokemons = [
     weight: '54.0',
     types: '["Water", "Fighting"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Poliwrath.png',
   },
   {
     height: '0.99',
@@ -870,6 +978,7 @@ const SeedPokemons = [
     weight: '30.0',
     types: '["Fire"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Ponyta.png',
   },
   {
     height: '0.79',
@@ -878,6 +987,7 @@ const SeedPokemons = [
     weight: '36.5',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Porygon.png',
   },
   {
     height: '0.99',
@@ -886,6 +996,7 @@ const SeedPokemons = [
     weight: '32.0',
     types: '["Fighting"]',
     mainType: 'Fighting',
+    image: 'e3aa059cc520f04244e4-Primeape.png',
   },
   {
     height: '0.79',
@@ -894,6 +1005,7 @@ const SeedPokemons = [
     weight: '19.6',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Psyduck.png',
   },
   {
     height: '0.79',
@@ -902,6 +1014,7 @@ const SeedPokemons = [
     weight: '30.0',
     types: '["Electric"]',
     mainType: 'Electric',
+    image: 'e3aa059cc520f04244e4-Raichu.png',
   },
   {
     height: '1.70',
@@ -910,6 +1023,7 @@ const SeedPokemons = [
     weight: '95.0',
     types: '["Fire"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Rapidash.png',
   },
   {
     height: '0.71',
@@ -918,6 +1032,7 @@ const SeedPokemons = [
     weight: '18.5',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Raticate.png',
   },
   {
     height: '0.30',
@@ -926,6 +1041,7 @@ const SeedPokemons = [
     weight: '3.5',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Rattata.png',
   },
   {
     height: '1.91',
@@ -934,6 +1050,7 @@ const SeedPokemons = [
     weight: '120.0',
     types: '["Ground", "Rock"]',
     mainType: 'Ground',
+    image: 'e3aa059cc520f04244e4-Rhydon.png',
   },
   {
     height: '0.99',
@@ -942,6 +1059,7 @@ const SeedPokemons = [
     weight: '115.0',
     types: '["Ground", "Rock"]',
     mainType: 'Ground',
+    image: 'e3aa059cc520f04244e4-Rhyhorn.png',
   },
   {
     height: '0.61',
@@ -950,6 +1068,7 @@ const SeedPokemons = [
     weight: '12.0',
     types: '["Ground"]',
     mainType: 'Ground',
+    image: 'e3aa059cc520f04244e4-Sandshrew.png',
   },
   {
     height: '0.99',
@@ -958,6 +1077,7 @@ const SeedPokemons = [
     weight: '29.5',
     types: '["Ground"]',
     mainType: 'Ground',
+    image: 'e3aa059cc520f04244e4-Sandslash.png',
   },
   {
     height: '1.50',
@@ -966,6 +1086,7 @@ const SeedPokemons = [
     weight: '56.0',
     types: '["Bug", "Flying"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Scyther.png',
   },
   {
     height: '1.19',
@@ -974,6 +1095,7 @@ const SeedPokemons = [
     weight: '25.0',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Seadra.png',
   },
   {
     height: '1.30',
@@ -982,6 +1104,7 @@ const SeedPokemons = [
     weight: '39.0',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Seaking.png',
   },
   {
     height: '1.09',
@@ -990,6 +1113,7 @@ const SeedPokemons = [
     weight: '90.0',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Seel.png',
   },
   {
     height: '0.30',
@@ -998,6 +1122,7 @@ const SeedPokemons = [
     weight: '4.0',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Shellder.png',
   },
   {
     height: '1.60',
@@ -1006,6 +1131,7 @@ const SeedPokemons = [
     weight: '78.5',
     types: '["Water", "Psychic"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Slowbro.png',
   },
   {
     height: '1.19',
@@ -1014,6 +1140,7 @@ const SeedPokemons = [
     weight: '36.0',
     types: '["Water", "Psychic"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Slowpoke.png',
   },
   {
     height: '2.11',
@@ -1022,6 +1149,7 @@ const SeedPokemons = [
     weight: '460.0',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Snorlax.png',
   },
   {
     height: '0.30',
@@ -1030,6 +1158,7 @@ const SeedPokemons = [
     weight: '2.0',
     types: '["Normal", "Flying"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Spearow.png',
   },
   {
     height: '0.51',
@@ -1038,6 +1167,7 @@ const SeedPokemons = [
     weight: '9.0',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Squirtle.png',
   },
   {
     height: '1.09',
@@ -1046,6 +1176,7 @@ const SeedPokemons = [
     weight: '80.0',
     types: '["Water", "Psychic"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Starmie.png',
   },
   {
     height: '0.79',
@@ -1054,6 +1185,7 @@ const SeedPokemons = [
     weight: '34.5',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Staryu.png',
   },
   {
     height: '0.99',
@@ -1062,6 +1194,7 @@ const SeedPokemons = [
     weight: '35.0',
     types: '["Grass"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Tangela.png',
   },
   {
     height: '1.40',
@@ -1070,6 +1203,7 @@ const SeedPokemons = [
     weight: '88.4',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Tauros.png',
   },
   {
     height: '0.89',
@@ -1078,6 +1212,7 @@ const SeedPokemons = [
     weight: '45.5',
     types: '["Water", "Poison"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Tentacool.png',
   },
   {
     height: '1.60',
@@ -1086,6 +1221,7 @@ const SeedPokemons = [
     weight: '55.0',
     types: '["Water", "Poison"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Tentacruel.png',
   },
   {
     height: '0.99',
@@ -1094,6 +1230,7 @@ const SeedPokemons = [
     weight: '29.0',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Vaporeon.png',
   },
   {
     height: '1.50',
@@ -1102,6 +1239,7 @@ const SeedPokemons = [
     weight: '12.5',
     types: '["Bug", "Poison"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Venomoth.png',
   },
   {
     height: '0.99',
@@ -1110,6 +1248,7 @@ const SeedPokemons = [
     weight: '30.0',
     types: '["Bug", "Poison"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Venonat.png',
   },
   {
     height: '2.01',
@@ -1118,6 +1257,7 @@ const SeedPokemons = [
     weight: '100.0',
     types: '["Grass", "Poison"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Venusaur.png',
   },
   {
     height: '1.70',
@@ -1126,6 +1266,7 @@ const SeedPokemons = [
     weight: '15.5',
     types: '["Grass", "Poison"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Victreebel.png',
   },
   {
     height: '1.19',
@@ -1134,6 +1275,7 @@ const SeedPokemons = [
     weight: '18.6',
     types: '["Grass", "Poison"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Vileplume.png',
   },
   {
     height: '0.51',
@@ -1142,6 +1284,7 @@ const SeedPokemons = [
     weight: '10.4',
     types: '["Electric"]',
     mainType: 'Electric',
+    image: 'e3aa059cc520f04244e4-Voltorb.png',
   },
   {
     height: '0.61',
@@ -1150,6 +1293,7 @@ const SeedPokemons = [
     weight: '9.9',
     types: '["Fire"]',
     mainType: 'Fire',
+    image: 'e3aa059cc520f04244e4-Vulpix.png',
   },
   {
     height: '0.99',
@@ -1158,6 +1302,7 @@ const SeedPokemons = [
     weight: '22.5',
     types: '["Water"]',
     mainType: 'Water',
+    image: 'e3aa059cc520f04244e4-Wartortle.png',
   },
   {
     height: '0.30',
@@ -1166,6 +1311,7 @@ const SeedPokemons = [
     weight: '3.2',
     types: '["Bug", "Poison"]',
     mainType: 'Bug',
+    image: 'e3aa059cc520f04244e4-Weedle.png',
   },
   {
     height: '0.99',
@@ -1174,6 +1320,7 @@ const SeedPokemons = [
     weight: '6.4',
     types: '["Grass", "Poison"]',
     mainType: 'Grass',
+    image: 'e3aa059cc520f04244e4-Weepinbell.png',
   },
   {
     height: '1.19',
@@ -1182,6 +1329,7 @@ const SeedPokemons = [
     weight: '9.5',
     types: '["Poison"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Weezing.png',
   },
   {
     height: '0.99',
@@ -1190,6 +1338,7 @@ const SeedPokemons = [
     weight: '12.0',
     types: '["Normal"]',
     mainType: 'Normal',
+    image: 'e3aa059cc520f04244e4-Wigglytuff.png',
   },
   {
     height: '1.60',
@@ -1198,6 +1347,7 @@ const SeedPokemons = [
     weight: '52.6',
     types: '["Electric", "Flying"]',
     mainType: 'Electric',
+    image: 'e3aa059cc520f04244e4-Zapdos.png',
   },
   {
     height: '0.79',
@@ -1206,6 +1356,7 @@ const SeedPokemons = [
     weight: '7.5',
     types: '["Poison", "Flying"]',
     mainType: 'Poison',
+    image: 'e3aa059cc520f04244e4-Zubat.png',
   },
 ];
 

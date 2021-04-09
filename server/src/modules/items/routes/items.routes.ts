@@ -11,6 +11,7 @@ const itemsController = new ItemsController();
 const upload = multer(uploadConfig);
 
 itemsRouter.get('/', itemsController.index);
+itemsRouter.get('/:id', itemsController.find);
 itemsRouter.post(
   '/',
   ensureAuthenticated,

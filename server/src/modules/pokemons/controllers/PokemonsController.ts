@@ -31,12 +31,14 @@ class PokemonsController {
       limit,
     });
 
+    const totalPages = Math.ceil(pokemons.total_records / limit);
     const hasNextPage = pokemons.total_records > endOffset;
 
     return response.json({
       data: pokemons.data,
       meta: {
         total_records: pokemons.total_records,
+        total_pages: totalPages,
         has_next_page: hasNextPage,
       },
     });

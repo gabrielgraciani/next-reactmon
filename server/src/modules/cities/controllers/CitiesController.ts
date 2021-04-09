@@ -4,6 +4,7 @@ import ListCitiesService from '../services/ListCitiesService';
 import CreateCityService from '../services/CreateCityService';
 import UpdateCityService from '../services/UpdateCityService';
 import DeleteCityService from '../services/DeleteCityService';
+import ListCityByIdService from '../services/ListCityByIdService';
 
 interface CitiesListRequest extends Request {
   query: {
@@ -31,15 +32,26 @@ class CitiesController {
       limit,
     });
 
+    const totalPages = Math.ceil(cities.total_records / limit);
     const hasNextPage = cities.total_records > endOffset;
 
     return response.json({
       data: cities.data,
       meta: {
         total_records: cities.total_records,
+        total_pages: totalPages,
         has_next_page: hasNextPage,
       },
     });
+  }
+
+  async find(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const cityFind = new ListCityByIdService();
+    const city = await cityFind.execute({ id });
+
+    return response.json(city);
   }
 
   async create(request: Request, response: Response): Promise<Response> {
