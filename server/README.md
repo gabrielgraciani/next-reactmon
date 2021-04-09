@@ -1,5 +1,32 @@
 # Reactmon API
 
+### API do projeto Reactmon para fins educacionais.
+
+## :notebook: Executando
+
+```bash
+# Clone este repositório
+$ git clone https://link-a-definir.com.br
+
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd server
+
+# Instale as dependências
+$ yarn install or npm install
+
+# Execute a aplicação criando um docker (executado apenas na primeira vez acessando o projeto)
+$ yarn up:docker or npm run up:docker
+
+# Nas demais vezes que quiser subir o projeto
+$ yarn start:docker or npm run start:docker
+
+# Parar o projeto
+$ yarn stop:docker or npm run stop:docker
+
+# Excluir a imagem do docker
+$ yarn down:docker or npm run down:docker
+```
+
 * [Request & Response Examples](#request--response-examples)
 
 ## Request & Response Examples
