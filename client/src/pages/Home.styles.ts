@@ -41,4 +41,21 @@ const SeeAll = styled.a`
   }
 `;
 
-export { Container, CardInfos, CardsContainer, CardTitle, SeeAll };
+const LoadingOrErrorContainer = styled.div`
+  margin: 3rem auto 4rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: ${Colors.red};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export {
+  Container,
+  CardInfos,
+  CardsContainer,
+  CardTitle,
+  SeeAll,
+  LoadingOrErrorContainer,
+};

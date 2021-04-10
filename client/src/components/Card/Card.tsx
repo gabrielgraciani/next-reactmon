@@ -1,3 +1,7 @@
+import { formatHeight } from 'helpers/formatHeight';
+import { formatLowerCase } from 'helpers/formatLowerCase';
+import { formatWeight } from 'helpers/formatWeight';
+
 import {
   Container,
   ImageContainer,
@@ -9,42 +13,45 @@ import {
   Name,
   NameText,
   Specifications,
-  SpecificationsColLeft,
-  SpecificationsColRight,
-  SpecificationsRow,
-  SpecificationsText,
 } from './Card.styles';
-
 import { CardProps } from './Card.types';
+import CardSpecificationItem from './CardSpecificationItem';
 
-const Card = ({ mainType, types }: CardProps): JSX.Element => {
+const Card = ({ pokemon }: CardProps): JSX.Element => {
   return (
-    <Container type={mainType}>
+    <Container type={formatLowerCase(pokemon.main_type)}>
       <ImageContainer>
-        <Image src="/images/dratini.png" alt="dratini" />
+        <Image
+          src={`${process.env.NEXT_PUBLIC_API_URL}/files/${pokemon.image}`}
+          alt={pokemon.name}
+        />
       </ImageContainer>
       <ContentContainer>
         <Types>
-          {types.map(type => (
-            <TypeItem type={type} key={type}>
+          {pokemon.types.map(type => (
+            <TypeItem type={formatLowerCase(type)} key={type}>
               <TypeText>{type}</TypeText>
             </TypeItem>
           ))}
         </Types>
 
         <Name>
-          <NameText>name</NameText>
+          <NameText>{pokemon.name}</NameText>
         </Name>
 
         <Specifications>
-          <SpecificationsRow>
-            <SpecificationsColLeft>
-              <SpecificationsText>Peso</SpecificationsText>
-            </SpecificationsColLeft>
-            <SpecificationsColRight>
-              <SpecificationsText>50kg</SpecificationsText>
-            </SpecificationsColRight>
-          </SpecificationsRow>
+          <CardSpecificationItem
+            title="Peso"
+            value={formatWeight(pokemon.weight)}
+          />
+          <CardSpecificationItem
+            title="Altura"
+            value={formatHeight(pokemon.height)}
+          />
+          <CardSpecificationItem
+            title="Fraquezas"
+            value={pokemon.weakness.map(weak => weak).join(', ')}
+          />
         </Specifications>
       </ContentContainer>
     </Container>

@@ -14,6 +14,7 @@ export enum Colors {
 
   orange = '#ED8936',
   lightBlue = '#90cac9',
+  blue = '#1890ff',
   red = '#f44336',
 
   // pokemons colors

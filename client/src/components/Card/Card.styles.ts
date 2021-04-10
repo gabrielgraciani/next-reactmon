@@ -225,15 +225,16 @@ const NameText = styled.h4`
 const Specifications = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   min-height: 9.5rem;
+  flex-direction: column;
+  padding: 0 2rem;
 `;
 
 const SpecificationsRow = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 `;
 

@@ -7,16 +7,25 @@ import { Item } from 'components/Item';
 import { City } from 'components/City';
 
 import ApplicationRoutes from 'config/ApplicationRoutes';
+import { usePokemonsFeatured } from 'services/hooks/usePokemonsFeatured';
 
+import { Loading } from 'components/Loading';
 import {
   Container,
   CardsContainer,
   CardTitle,
   SeeAll,
   CardInfos,
+  LoadingOrErrorContainer,
 } from './Home.styles';
 
 export default function Home(): JSX.Element {
+  const {
+    data: pokemonsFeatured,
+    isLoading: isLoadingPokemonsFeatured,
+    error: errorPokemonFeatured,
+  } = usePokemonsFeatured();
+
   return (
     <>
       <Head>
@@ -49,13 +58,21 @@ export default function Home(): JSX.Element {
           </Link>
         </CardInfos>
 
-        <CardsContainer>
-          <Card mainType="dark" types={['dark', 'grass']} />
-          <Card mainType="grass" types={['grass', 'psychic']} />
-          <Card mainType="psychic" types={['psychic', 'electric']} />
-          <Card mainType="electric" types={['electric', 'normal']} />
-          <Card mainType="normal" types={['normal', 'dark']} />
-        </CardsContainer>
+        {isLoadingPokemonsFeatured ? (
+          <LoadingOrErrorContainer>
+            <Loading />
+          </LoadingOrErrorContainer>
+        ) : errorPokemonFeatured ? (
+          <LoadingOrErrorContainer>
+            Ocorreu um erro ao carregar os pokémons, tente novamente mais tarde
+          </LoadingOrErrorContainer>
+        ) : (
+          <CardsContainer>
+            {pokemonsFeatured.map(pokemon => (
+              <Card pokemon={pokemon} key={pokemon.id} />
+            ))}
+          </CardsContainer>
+        )}
 
         <CardInfos>
           <CardTitle>Itens do momento</CardTitle>
