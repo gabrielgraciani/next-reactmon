@@ -8,12 +8,16 @@ import {
   Name,
   Description,
 } from './City.styles';
+import { ICityProps } from './City.types';
 
-const City = (): JSX.Element => {
+const City = ({ city }: ICityProps): JSX.Element => {
   return (
     <Container>
       <ImageContainer>
-        <Image src="/images/victory_road.png" alt="" />
+        <Image
+          src={`${process.env.NEXT_PUBLIC_API_URL}/files/${city.image}`}
+          alt={city.name}
+        />
 
         <Svg
           className="wavy"
@@ -25,12 +29,8 @@ const City = (): JSX.Element => {
       </ImageContainer>
 
       <Content>
-        <Name>Victory Road</Name>
-        <Description>
-          O Caminho da Vitória é a última caverna antes da Liga Pokémon,
-          portanto, a mais perigosa. Muitos treinadores experientes e veteranos
-          vem treinar nessa caverna.
-        </Description>
+        <Name>{city.name}</Name>
+        <Description>{city.description}</Description>
       </Content>
     </Container>
   );

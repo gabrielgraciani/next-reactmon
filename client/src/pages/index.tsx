@@ -17,8 +17,13 @@ import {
   getItemsFeatured,
   useItemsFeatured,
 } from 'services/hooks/useItemsFeatured';
+import {
+  getCitiesFeatured,
+  useCitiesFeatured,
+} from 'services/hooks/useCitiesFeatured';
 import { IPokemon } from 'interfaces/Pokemon';
 import { IItem } from 'interfaces/Item';
+import { ICity } from 'interfaces/City';
 
 import {
   Container,
@@ -33,11 +38,13 @@ import {
 interface IHomeProps {
   pokemonsFeaturedProps: IPokemon[];
   itemsFeaturedProps: IItem[];
+  citiesFeaturedProps: ICity[];
 }
 
 export default function Home({
   pokemonsFeaturedProps,
   itemsFeaturedProps,
+  citiesFeaturedProps,
 }: IHomeProps): JSX.Element {
   const {
     data: pokemonsFeatured,
@@ -52,6 +59,13 @@ export default function Home({
     error: errorItemsFeatured,
     isFetching: isFetchingItemsFeatured,
   } = useItemsFeatured({ initialData: itemsFeaturedProps });
+
+  const {
+    data: citiesFeatured,
+    isLoading: isLoadingCitiesFeatured,
+    error: errorCitiesFeatured,
+    isFetching: isFetchingCitiesFeatured,
+  } = useCitiesFeatured({ initialData: citiesFeaturedProps });
 
   return (
     <>
@@ -128,7 +142,7 @@ export default function Home({
           </LoadingOrErrorContainer>
         ) : errorItemsFeatured ? (
           <LoadingOrErrorContainer>
-            Ocorreu um erro ao carregar os pokémons, tente novamente mais tarde
+            Ocorreu um erro ao carregar os itens, tente novamente mais tarde
           </LoadingOrErrorContainer>
         ) : (
           <CardsContainer>
@@ -139,19 +153,34 @@ export default function Home({
         )}
 
         <CardInfos>
-          <CardTitle>Cidades do momento</CardTitle>
+          <CardTitle>
+            Cidades do momento
+            {!isLoadingCitiesFeatured && isFetchingCitiesFeatured && (
+              <AbsoluteLoadingContainer>
+                <Loading size="small" />
+              </AbsoluteLoadingContainer>
+            )}
+          </CardTitle>
           <Link href={ApplicationRoutes.CITIES}>
             <SeeAll>Ver Todos</SeeAll>
           </Link>
         </CardInfos>
 
-        <CardsContainer>
-          <City />
-          <City />
-          <City />
-          <City />
-          <City />
-        </CardsContainer>
+        {isLoadingCitiesFeatured ? (
+          <LoadingOrErrorContainer>
+            <Loading />
+          </LoadingOrErrorContainer>
+        ) : errorCitiesFeatured ? (
+          <LoadingOrErrorContainer>
+            Ocorreu um erro ao carregar as cidades, tente novamente mais tarde
+          </LoadingOrErrorContainer>
+        ) : (
+          <CardsContainer>
+            {citiesFeatured.map(city => (
+              <City city={city} />
+            ))}
+          </CardsContainer>
+        )}
       </Container>
     </>
   );
@@ -160,8 +189,9 @@ export default function Home({
 export const getServerSideProps: GetServerSideProps = async () => {
   const pokemonsFeaturedProps = await getPokemonsFeatured();
   const itemsFeaturedProps = await getItemsFeatured();
+  const citiesFeaturedProps = await getCitiesFeatured();
 
   return {
-    props: { pokemonsFeaturedProps, itemsFeaturedProps },
+    props: { pokemonsFeaturedProps, itemsFeaturedProps, citiesFeaturedProps },
   };
 };
