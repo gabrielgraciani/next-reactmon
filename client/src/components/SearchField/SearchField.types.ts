@@ -1,7 +1,9 @@
+import { ChangeEvent } from 'react';
+
 export interface ISearchFieldProps {
   value: string;
   placeholder: string;
-  onChange: (e: any) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface ISearchFieldStyledProps {

@@ -1,7 +1,7 @@
-import { Pokemon } from 'interfaces/Pokemon';
+import { IPokemon } from 'interfaces/Pokemon';
 
 export interface ICardProps {
-  pokemon: Pokemon;
+  pokemon: IPokemon;
 }
 
 export interface ICardStyledProps {
