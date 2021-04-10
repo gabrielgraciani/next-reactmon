@@ -7,20 +7,22 @@ import {
   Description,
   Footer,
 } from './Item.styles';
+import { IItemProps } from './Item.types';
 
-const Item = (): JSX.Element => {
+const Item = ({ item }: IItemProps): JSX.Element => {
   return (
     <Container>
       <ImageContainer>
-        <Image src="/images/dratini.png" alt="" />
+        <Image
+          src={`${process.env.NEXT_PUBLIC_API_URL}/files/${item.image}`}
+          alt=""
+        />
       </ImageContainer>
       <Content>
-        <Name>Max Revive</Name>
-        <Description>
-          Item que pode ser utilizado tanto fora quanto dentro de batalhas.
-        </Description>
+        <Name>{item.name}</Name>
+        <Description>{item.description}</Description>
       </Content>
-      <Footer>Recupera um pokémon derrotado e o deixa com HP no máximo</Footer>
+      <Footer>{item.function}</Footer>
     </Container>
   );
 };

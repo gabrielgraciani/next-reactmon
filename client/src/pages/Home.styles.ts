@@ -23,9 +23,16 @@ const CardInfos = styled.div`
 `;
 
 const CardTitle = styled.h2`
-  width: 100%;
   text-align: center;
   font-size: 2.4rem;
+  position: relative;
+`;
+
+const AbsoluteLoadingContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: -5rem;
 `;
 
 const SeeAll = styled.a`
@@ -58,4 +65,5 @@ export {
   CardTitle,
   SeeAll,
   LoadingOrErrorContainer,
+  AbsoluteLoadingContainer,
 };

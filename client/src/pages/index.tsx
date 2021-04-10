@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -5,11 +6,20 @@ import { Card } from 'components/Card';
 import { Banner } from 'components/Banner';
 import { Item } from 'components/Item';
 import { City } from 'components/City';
+import { Loading } from 'components/Loading';
 
 import ApplicationRoutes from 'config/ApplicationRoutes';
-import { usePokemonsFeatured } from 'services/hooks/usePokemonsFeatured';
+import {
+  getPokemonsFeatured,
+  usePokemonsFeatured,
+} from 'services/hooks/usePokemonsFeatured';
+import {
+  getItemsFeatured,
+  useItemsFeatured,
+} from 'services/hooks/useItemsFeatured';
+import { Pokemon } from 'interfaces/Pokemon';
+import { IItem } from 'interfaces/Item';
 
-import { Loading } from 'components/Loading';
 import {
   Container,
   CardsContainer,
@@ -17,14 +27,31 @@ import {
   SeeAll,
   CardInfos,
   LoadingOrErrorContainer,
+  AbsoluteLoadingContainer,
 } from './Home.styles';
 
-export default function Home(): JSX.Element {
+interface HomeProps {
+  pokemonsFeaturedProps: Pokemon[];
+  itemsFeaturedProps: IItem[];
+}
+
+export default function Home({
+  pokemonsFeaturedProps,
+  itemsFeaturedProps,
+}: HomeProps): JSX.Element {
   const {
     data: pokemonsFeatured,
     isLoading: isLoadingPokemonsFeatured,
-    error: errorPokemonFeatured,
-  } = usePokemonsFeatured();
+    error: errorPokemonsFeatured,
+    isFetching: isFetchingPokemonsFeatured,
+  } = usePokemonsFeatured({ initialData: pokemonsFeaturedProps });
+
+  const {
+    data: itemsFeatured,
+    isLoading: isLoadingItemsFeatured,
+    error: errorItemsFeatured,
+    isFetching: isFetchingItemsFeatured,
+  } = useItemsFeatured({ initialData: itemsFeaturedProps });
 
   return (
     <>
@@ -52,7 +79,14 @@ export default function Home(): JSX.Element {
         </Banner>
 
         <CardInfos>
-          <CardTitle>Pokémons do momento</CardTitle>
+          <CardTitle>
+            Pokémons do momento
+            {!isLoadingPokemonsFeatured && isFetchingPokemonsFeatured && (
+              <AbsoluteLoadingContainer>
+                <Loading size="small" />
+              </AbsoluteLoadingContainer>
+            )}
+          </CardTitle>
           <Link href={ApplicationRoutes.POKEDEX}>
             <SeeAll>Ver Todos</SeeAll>
           </Link>
@@ -62,7 +96,7 @@ export default function Home(): JSX.Element {
           <LoadingOrErrorContainer>
             <Loading />
           </LoadingOrErrorContainer>
-        ) : errorPokemonFeatured ? (
+        ) : errorPokemonsFeatured ? (
           <LoadingOrErrorContainer>
             Ocorreu um erro ao carregar os pokémons, tente novamente mais tarde
           </LoadingOrErrorContainer>
@@ -75,20 +109,34 @@ export default function Home(): JSX.Element {
         )}
 
         <CardInfos>
-          <CardTitle>Itens do momento</CardTitle>
+          <CardTitle>
+            Itens do momento
+            {!isLoadingItemsFeatured && isFetchingItemsFeatured && (
+              <AbsoluteLoadingContainer>
+                <Loading size="small" />
+              </AbsoluteLoadingContainer>
+            )}
+          </CardTitle>
           <Link href={ApplicationRoutes.ITEMS}>
             <SeeAll>Ver Todos</SeeAll>
           </Link>
         </CardInfos>
 
-        <CardsContainer>
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-        </CardsContainer>
+        {isLoadingItemsFeatured ? (
+          <LoadingOrErrorContainer>
+            <Loading />
+          </LoadingOrErrorContainer>
+        ) : errorItemsFeatured ? (
+          <LoadingOrErrorContainer>
+            Ocorreu um erro ao carregar os pokémons, tente novamente mais tarde
+          </LoadingOrErrorContainer>
+        ) : (
+          <CardsContainer>
+            {itemsFeatured.map(item => (
+              <Item key={item.id} item={item} />
+            ))}
+          </CardsContainer>
+        )}
 
         <CardInfos>
           <CardTitle>Cidades do momento</CardTitle>
@@ -108,3 +156,12 @@ export default function Home(): JSX.Element {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const pokemonsFeaturedProps = await getPokemonsFeatured();
+  const itemsFeaturedProps = await getItemsFeatured();
+
+  return {
+    props: { pokemonsFeaturedProps, itemsFeaturedProps },
+  };
+};
