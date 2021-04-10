@@ -2,7 +2,7 @@ import React, { cloneElement, useRef, useEffect } from 'react';
 import { useTransition } from 'react-spring';
 
 import { Container, PopoverContent, PopoverTriangle } from './Popover.styles';
-import { PopoverTypes } from './Popover.types';
+import { IPopoverTypes } from './Popover.types';
 
 const Popover = ({
   visible,
@@ -10,7 +10,7 @@ const Popover = ({
   content: Content,
   onClose,
   onVisibleChange,
-}: PopoverTypes): JSX.Element => {
+}: IPopoverTypes): JSX.Element => {
   const popoverRef = useRef<HTMLDivElement>(null);
 
   const handleOpenPopover = () => {

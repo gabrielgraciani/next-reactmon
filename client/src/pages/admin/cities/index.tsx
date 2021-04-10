@@ -10,7 +10,7 @@ import {
   StyledButton,
 } from './Cities.styles';
 
-interface DataType {
+interface IDataType {
   key: React.Key;
   name: string;
   description: string;
@@ -46,7 +46,7 @@ export default function CitiesList(): JSX.Element {
   ];
 
   const rowSelection = {
-    onChange: (selectedRowKeys: React.Key[], selectedRowsAntd: DataType[]) => {
+    onChange: (selectedRowKeys: React.Key[], selectedRowsAntd: IDataType[]) => {
       console.log(
         `selectedRowKeys: ${selectedRowKeys}`,
         'selectedRowsAntd: ',

@@ -6,13 +6,13 @@ import {
   Input,
   Button,
 } from './SearchField.styles';
-import { SearchFieldProps } from './SearchField.types';
+import { ISearchFieldProps } from './SearchField.types';
 
 const SearchField = ({
   value,
   placeholder,
   onChange,
-}: SearchFieldProps): JSX.Element => {
+}: ISearchFieldProps): JSX.Element => {
   return (
     <Container>
       <ContentContainer>

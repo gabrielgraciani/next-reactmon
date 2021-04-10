@@ -1,14 +1,14 @@
 import { Pokemon } from 'interfaces/Pokemon';
 
-export interface CardProps {
+export interface ICardProps {
   pokemon: Pokemon;
 }
 
-export interface CardStyledProps {
+export interface ICardStyledProps {
   type: string;
 }
 
-export interface CardSpecificationItemProps {
+export interface ICardSpecificationItemProps {
   title: string;
   value: string;
 }

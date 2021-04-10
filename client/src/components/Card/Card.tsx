@@ -14,10 +14,10 @@ import {
   NameText,
   Specifications,
 } from './Card.styles';
-import { CardProps } from './Card.types';
+import { ICardProps } from './Card.types';
 import CardSpecificationItem from './CardSpecificationItem';
 
-const Card = ({ pokemon }: CardProps): JSX.Element => {
+const Card = ({ pokemon }: ICardProps): JSX.Element => {
   return (
     <Container type={formatLowerCase(pokemon.main_type)}>
       <ImageContainer>

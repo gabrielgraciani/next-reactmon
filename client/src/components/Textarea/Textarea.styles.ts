@@ -1,13 +1,13 @@
 import { Colors } from 'styles/colors';
 import styled from 'styled-components';
 
-import { TextareaStyledProps } from './Textarea.types';
+import { ITextareaStyledProps } from './Textarea.types';
 
 const Container = styled.div`
   width: 100%;
 `;
 
-const TextareaContainer = styled.div<TextareaStyledProps>`
+const TextareaContainer = styled.div<ITextareaStyledProps>`
   width: 100%;
   border: 0.1rem solid ${Colors.grayOpacity50};
   border-radius: 0.4rem;
@@ -23,7 +23,7 @@ const TextareaContainer = styled.div<TextareaStyledProps>`
   }
 `;
 
-const Label = styled.label<TextareaStyledProps>`
+const Label = styled.label<ITextareaStyledProps>`
   pointer-events: none;
   background: ${Colors.darkGray};
   transition: all 0.2s ease;

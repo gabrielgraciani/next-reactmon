@@ -17,7 +17,7 @@ import {
   getItemsFeatured,
   useItemsFeatured,
 } from 'services/hooks/useItemsFeatured';
-import { Pokemon } from 'interfaces/Pokemon';
+import { IPokemon } from 'interfaces/Pokemon';
 import { IItem } from 'interfaces/Item';
 
 import {
@@ -30,15 +30,15 @@ import {
   AbsoluteLoadingContainer,
 } from './Home.styles';
 
-interface HomeProps {
-  pokemonsFeaturedProps: Pokemon[];
+interface IHomeProps {
+  pokemonsFeaturedProps: IPokemon[];
   itemsFeaturedProps: IItem[];
 }
 
 export default function Home({
   pokemonsFeaturedProps,
   itemsFeaturedProps,
-}: HomeProps): JSX.Element {
+}: IHomeProps): JSX.Element {
   const {
     data: pokemonsFeatured,
     isLoading: isLoadingPokemonsFeatured,

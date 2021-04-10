@@ -1,7 +1,7 @@
 import { Container } from './Loading.styles';
-import { LoadingProps } from './Loading.types';
+import { ILoadingProps } from './Loading.types';
 
-const Loading = ({ size }: LoadingProps): JSX.Element => {
+const Loading = ({ size }: ILoadingProps): JSX.Element => {
   return <Container size={size} />;
 };
 

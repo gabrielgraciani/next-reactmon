@@ -4,12 +4,12 @@ import {
   SpecificationsRow,
   SpecificationsText,
 } from './Card.styles';
-import { CardSpecificationItemProps } from './Card.types';
+import { ICardSpecificationItemProps } from './Card.types';
 
 const CardSpecificationItem = ({
   title,
   value,
-}: CardSpecificationItemProps): JSX.Element => {
+}: ICardSpecificationItemProps): JSX.Element => {
   return (
     <SpecificationsRow>
       <SpecificationsColLeft>

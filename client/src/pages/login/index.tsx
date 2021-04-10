@@ -11,7 +11,7 @@ import { Form } from 'components/Form';
 import ApplicationRoutes from 'config/ApplicationRoutes';
 
 import { Container, Title, Text, CreateAccount } from './Login.styles';
-import { SignInFormData } from './Login.types';
+import { ISignInFormData } from './Login.types';
 
 const signInFormSchema = yup.object().shape({
   email: yup.string().required('E-mail obrigatório').email('E-mail inválido'),
@@ -19,13 +19,13 @@ const signInFormSchema = yup.object().shape({
 });
 
 export default function Login(): JSX.Element {
-  const { register, handleSubmit, formState } = useForm<SignInFormData>({
+  const { register, handleSubmit, formState } = useForm<ISignInFormData>({
     resolver: yupResolver(signInFormSchema),
   });
 
   const { errors } = formState;
 
-  const handleSignIn: SubmitHandler<SignInFormData> = async values => {
+  const handleSignIn: SubmitHandler<ISignInFormData> = async values => {
     console.log(values);
   };
 

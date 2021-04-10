@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { Colors } from 'styles/colors';
 
-import { CardStyledProps } from './Card.types';
+import { ICardStyledProps } from './Card.types';
 
 const cardVariations = {
   normal: css`
@@ -125,7 +125,7 @@ const Image = styled.img`
   transition: transform 0.3s ease;
 `;
 
-const Container = styled.div<CardStyledProps>`
+const Container = styled.div<ICardStyledProps>`
   transition: all 0.3s ease;
   overflow: hidden;
   width: 100%;
@@ -192,7 +192,7 @@ const Types = styled.div`
   padding: 0 1.5rem 0 0;
 `;
 
-const TypeItem = styled.div<CardStyledProps>`
+const TypeItem = styled.div<ICardStyledProps>`
   margin: 0 0 0 1rem;
   padding: 0.5rem;
   display: flex;

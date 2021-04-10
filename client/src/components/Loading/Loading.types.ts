@@ -1,9 +1,9 @@
-type LoadingSizeTypes = 'small' | 'normal';
+type ILoadingSizeTypes = 'small' | 'normal';
 
-export interface LoadingProps {
-  size: LoadingSizeTypes;
+export interface ILoadingProps {
+  size: ILoadingSizeTypes;
 }
 
-export interface LoadingStyledProps {
-  size: LoadingSizeTypes;
+export interface ILoadingStyledProps {
+  size: ILoadingSizeTypes;
 }

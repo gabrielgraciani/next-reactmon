@@ -1,4 +1,4 @@
-export interface Pokemon {
+export interface IPokemon {
   id: string;
   name: string;
   weight: string;

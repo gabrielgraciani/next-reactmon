@@ -1,12 +1,12 @@
 import { useQuery, UseQueryResult } from 'react-query';
 import { api } from 'services/api';
-import { Pokemon } from 'interfaces/Pokemon';
+import { IPokemon } from 'interfaces/Pokemon';
 
-interface UsePokemonsFeaturedProps {
-  initialData: Pokemon[];
+interface IUsePokemonsFeaturedProps {
+  initialData: IPokemon[];
 }
 
-export async function getPokemonsFeatured(): Promise<Pokemon[]> {
+export async function getPokemonsFeatured(): Promise<IPokemon[]> {
   const { data } = await api.get('/pokemons-featured');
 
   return data;
@@ -14,7 +14,7 @@ export async function getPokemonsFeatured(): Promise<Pokemon[]> {
 
 export function usePokemonsFeatured({
   initialData,
-}: UsePokemonsFeaturedProps): UseQueryResult<Pokemon[], unknown> {
+}: IUsePokemonsFeaturedProps): UseQueryResult<IPokemon[], unknown> {
   return useQuery('pokemons_featured', getPokemonsFeatured, {
     staleTime: 1000 * 60 * 5, // 5 minutes
     initialData,

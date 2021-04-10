@@ -7,7 +7,7 @@ import {
   useRef,
 } from 'react';
 
-import { InputProps } from './Input.types';
+import { IInputProps } from './Input.types';
 import {
   Container,
   InputContainer,
@@ -16,7 +16,7 @@ import {
   ErrorMessage,
 } from './Input.styles';
 
-const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
+const InputBase: ForwardRefRenderFunction<HTMLInputElement, IInputProps> = (
   { name, label, error = null, ...rest },
   ref,
 ): JSX.Element => {

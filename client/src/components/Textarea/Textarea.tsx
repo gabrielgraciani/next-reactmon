@@ -7,7 +7,7 @@ import {
   useRef,
 } from 'react';
 
-import { TextareaProps } from './Textarea.types';
+import { ITextareaProps } from './Textarea.types';
 import {
   Container,
   TextareaContainer,
@@ -18,7 +18,7 @@ import {
 
 const TextareaBase: ForwardRefRenderFunction<
   HTMLTextAreaElement,
-  TextareaProps
+  ITextareaProps
 > = ({ name, label, error = null, ...rest }, ref): JSX.Element => {
   const [isTextareaActive, setIsTextareaActive] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);

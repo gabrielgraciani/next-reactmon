@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Colors } from '../../styles/colors';
 
-import { SearchFieldStyledProps } from './SearchField.types';
+import { ISearchFieldStyledProps } from './SearchField.types';
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const ContentContainer = styled.div`
   }
 `;
 
-const Input = styled.input<SearchFieldStyledProps>`
+const Input = styled.input<ISearchFieldStyledProps>`
   width: ${props => (props.active ? '25rem' : '0')};
   padding: ${props => (props.active ? '0 0 0 1rem' : '0')};
   transition: all 0.4s ease;

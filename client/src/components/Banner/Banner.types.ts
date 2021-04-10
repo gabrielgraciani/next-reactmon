@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 
-export interface BannerProps {
+export interface IBannerProps {
   image: string;
   title: string;
   children: ReactNode;
 }
 
-export interface BannerStyledProps {
+export interface IBannerStyledProps {
   image: string;
 }

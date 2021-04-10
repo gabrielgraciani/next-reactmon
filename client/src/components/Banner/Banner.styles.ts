@@ -1,8 +1,8 @@
 import { Colors } from 'styles/colors';
 import styled from 'styled-components';
-import { BannerStyledProps } from './Banner.types';
+import { IBannerStyledProps } from './Banner.types';
 
-const Container = styled.div<BannerStyledProps>`
+const Container = styled.div<IBannerStyledProps>`
   background: url(${props => props.image});
   min-height: 40rem;
   background-size: cover;

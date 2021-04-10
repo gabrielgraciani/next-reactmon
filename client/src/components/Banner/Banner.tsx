@@ -4,9 +4,9 @@ import {
   TextContainer,
   Title,
 } from './Banner.styles';
-import { BannerProps } from './Banner.types';
+import { IBannerProps } from './Banner.types';
 
-const Banner = ({ children, image, title }: BannerProps): JSX.Element => {
+const Banner = ({ children, image, title }: IBannerProps): JSX.Element => {
   return (
     <Container image={image}>
       <ContentContainer>

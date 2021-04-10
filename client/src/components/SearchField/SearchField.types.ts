@@ -1,9 +1,9 @@
-export interface SearchFieldProps {
+export interface ISearchFieldProps {
   value: string;
   placeholder: string;
   onChange: (e: any) => void;
 }
 
-export interface SearchFieldStyledProps {
+export interface ISearchFieldStyledProps {
   active: boolean;
 }

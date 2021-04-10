@@ -1,6 +1,6 @@
 import { ReactElement, ElementType } from 'react';
 
-export interface DrawerProps {
+export interface IDrawerProps {
   children: ReactElement;
   content: ElementType;
   onClose: () => void;

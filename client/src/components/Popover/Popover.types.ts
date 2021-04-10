@@ -1,6 +1,6 @@
 import { ElementType, ReactElement } from 'react';
 
-export interface PopoverTypes {
+export interface IPopoverTypes {
   children: ReactElement;
   content: ElementType;
   onClose: () => void;

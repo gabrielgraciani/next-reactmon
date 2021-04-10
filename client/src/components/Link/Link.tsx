@@ -2,13 +2,13 @@ import { useRouter } from 'next/dist/client/router';
 import NextLink from 'next/link';
 import { cloneElement, ReactElement } from 'react';
 
-import { LinkProps } from './Link.types';
+import { ILinkProps } from './Link.types';
 
 const Link = ({
   children,
   activeClassName,
   ...rest
-}: LinkProps): ReactElement => {
+}: ILinkProps): ReactElement => {
   const { asPath } = useRouter();
 
   const className = asPath === rest.href ? activeClassName : '';

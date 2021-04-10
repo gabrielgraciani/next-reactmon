@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { LinkProps as NextLinkProps } from 'next/link';
 
-export interface LinkProps extends NextLinkProps {
+export interface ILinkProps extends NextLinkProps {
   children: ReactElement;
   activeClassName: string;
 }

@@ -11,7 +11,7 @@ import { Form } from 'components/Form';
 import ApplicationRoutes from 'config/ApplicationRoutes';
 
 import { Container, Title, Text, CreateAccount } from './Register.styles';
-import { RegisterFormData } from './Register.types';
+import { IRegisterFormData } from './Register.types';
 
 const registerFormSchema = yup.object().shape({
   name: yup.string().required('Nome obrigatório'),
@@ -26,13 +26,13 @@ const registerFormSchema = yup.object().shape({
 });
 
 export default function Register(): JSX.Element {
-  const { register, handleSubmit, formState } = useForm<RegisterFormData>({
+  const { register, handleSubmit, formState } = useForm<IRegisterFormData>({
     resolver: yupResolver(registerFormSchema),
   });
 
   const { errors } = formState;
 
-  const handleRegister: SubmitHandler<RegisterFormData> = async values => {
+  const handleRegister: SubmitHandler<IRegisterFormData> = async values => {
     console.log(values);
   };
   return (

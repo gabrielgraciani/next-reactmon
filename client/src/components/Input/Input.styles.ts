@@ -1,13 +1,13 @@
 import { Colors } from 'styles/colors';
 import styled from 'styled-components';
 
-import { InputStyledProps } from './Input.types';
+import { IInputStyledProps } from './Input.types';
 
 const Container = styled.div`
   width: 100%;
 `;
 
-const InputContainer = styled.div<InputStyledProps>`
+const InputContainer = styled.div<IInputStyledProps>`
   width: 100%;
   border: 0.1rem solid ${Colors.grayOpacity50};
   border-radius: 0.4rem;
@@ -23,7 +23,7 @@ const InputContainer = styled.div<InputStyledProps>`
   }
 `;
 
-const Label = styled.label<InputStyledProps>`
+const Label = styled.label<IInputStyledProps>`
   pointer-events: none;
   background: ${Colors.darkGray};
   transition: all 0.2s ease;

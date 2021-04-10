@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface ButtonProps {
+export interface IButtonProps {
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   children: ReactNode;

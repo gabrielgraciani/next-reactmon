@@ -2,7 +2,7 @@ import { cloneElement, useRef, useEffect } from 'react';
 import { useTransition } from 'react-spring';
 
 import { useRouter } from 'next/router';
-import { DrawerProps } from './Drawer.types';
+import { IDrawerProps } from './Drawer.types';
 import { Container, DrawerContent, CloseIcon } from './Drawer.styles';
 
 const Drawer = ({
@@ -11,7 +11,7 @@ const Drawer = ({
   content: Content,
   onClose,
   onVisibleChange,
-}: DrawerProps): JSX.Element => {
+}: IDrawerProps): JSX.Element => {
   const drawerRef = useRef<HTMLDivElement>(null);
   const { asPath } = useRouter();
 
