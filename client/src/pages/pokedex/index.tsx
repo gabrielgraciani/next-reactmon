@@ -1,10 +1,11 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import Head from 'next/head';
 
 import { Card } from 'components/Card';
 import { Banner } from 'components/Banner';
 
 import { useInfinitePokemons } from 'services/hooks/useInfinitePokemons';
+import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
 import { SearchField } from 'components/SearchField';
 import { Loading } from 'components/Loading';
@@ -17,7 +18,6 @@ import {
 
 export default function Pokedex(): JSX.Element {
   const [search, setSearch] = useState('');
-  const [isBottom, setIsBottom] = useState(false);
 
   const {
     data,
@@ -28,33 +28,11 @@ export default function Pokedex(): JSX.Element {
     hasNextPage,
   } = useInfinitePokemons();
 
-  const handleFetchMorePokemons = useCallback(() => {
-    fetchNextPage();
-    setIsBottom(false);
-  }, [fetchNextPage]);
-
-  const handleScroll = useCallback(() => {
-    const scrollTop =
-      (document.documentElement && document.documentElement.scrollTop) ||
-      document.body.scrollTop;
-    const scrollHeight =
-      (document.documentElement && document.documentElement.scrollHeight) ||
-      document.body.scrollHeight;
-    if (scrollTop + window.innerHeight + 50 >= scrollHeight && !isFetching) {
-      setIsBottom(true);
-    }
-  }, [isFetching]);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
-
-  useEffect(() => {
-    if (isBottom && hasNextPage) {
-      handleFetchMorePokemons();
-    }
-  }, [isBottom, hasNextPage, handleFetchMorePokemons]);
+  useInfiniteScroll({
+    isFetching,
+    hasNextPage,
+    handleLoadMore: fetchNextPage,
+  });
 
   return (
     <>
