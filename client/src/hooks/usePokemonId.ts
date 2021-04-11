@@ -3,12 +3,12 @@ import { api } from 'services/api';
 import { IPokemon } from 'interfaces/Pokemon';
 
 interface IFetchPokemonProps {
-  id: string;
+  id: string | string[];
 }
 
 interface IUsePokemonIdProps {
   initialData: IPokemon;
-  id: string;
+  id: string | string[];
 }
 
 export async function fetchPokemon({
@@ -23,7 +23,7 @@ export function usePokemonsFeatured({
   initialData,
   id,
 }: IUsePokemonIdProps): UseQueryResult<IPokemon, unknown> {
-  return useQuery(['pokemon'], () => fetchPokemon({ id }), {
+  return useQuery(['pokemon', id], () => fetchPokemon({ id }), {
     staleTime: 1000 * 60 * 5, // 5 minutes
     initialData,
   });

@@ -1,5 +1,64 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Colors } from '../../../styles/colors';
+
+import { IPokemonStyledProps } from './Pokemon.types';
+
+const typesVariation = {
+  normal: css`
+    background: ${Colors.normal};
+  `,
+  water: css`
+    background: ${Colors.water};
+  `,
+  electric: css`
+    background: ${Colors.electric};
+  `,
+  fire: css`
+    background: ${Colors.fire};
+  `,
+  psychic: css`
+    background: ${Colors.psychic};
+  `,
+  grass: css`
+    background: ${Colors.grass};
+  `,
+  ice: css`
+    background: ${Colors.ice};
+  `,
+  fairy: css`
+    background: ${Colors.fairy};
+  `,
+  poison: css`
+    background: ${Colors.poison};
+  `,
+  bug: css`
+    background: ${Colors.bug};
+  `,
+  fighting: css`
+    background: ${Colors.fighting};
+  `,
+  rock: css`
+    background: ${Colors.rock};
+  `,
+  ghost: css`
+    background: ${Colors.ghost};
+  `,
+  flying: css`
+    background: ${Colors.flying};
+  `,
+  ground: css`
+    background: ${Colors.ground};
+  `,
+  dragon: css`
+    background: ${Colors.dragon};
+  `,
+  dark: css`
+    background: ${Colors.darkpokemon};
+  `,
+  steel: css`
+    background: ${Colors.steel};
+  `,
+};
 
 const Container = styled.div`
   width: 100%;
@@ -96,14 +155,18 @@ const TypesOrWeaknessTitle = styled.h4`
   font-size: 2.2rem;
 `;
 
-const TypeOrWeaknessItem = styled.span`
+const TypeOrWeaknessItem = styled.span<IPokemonStyledProps>`
   display: block;
   padding: 1rem 3rem;
-  background: green;
   border-radius: 0.5rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  ${props => typesVariation[props.type]}
+  margin-right:1rem;
+  margin-bottom: 1rem;
 
-  & + span {
-    margin-left: 1rem;
+  &:last-child {
+    margin-right: 0;
   }
 `;
 

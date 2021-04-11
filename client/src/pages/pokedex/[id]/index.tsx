@@ -1,6 +1,13 @@
 import { useRouter } from 'next/router';
 import { BiFemaleSign, BiMaleSign } from 'react-icons/bi';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
+import { usePokemonsFeatured, fetchPokemon } from 'hooks/usePokemonId';
+
+import { IPokemon } from 'interfaces/Pokemon';
+import { formatWeight } from 'helpers/formatWeight';
+import { formatHeight } from 'helpers/formatHeight';
+import { formatLowerCase } from 'helpers/formatLowerCase';
 import {
   Container,
   HeaderContainer,
@@ -19,10 +26,21 @@ import {
   TypeOrWeaknessItem,
 } from './Pokemon.styles';
 
-export default function Pokemon(): JSX.Element {
+interface IPokemonProps {
+  pokemonProps: IPokemon;
+  id: string;
+}
+
+export default function Pokemon({
+  pokemonProps,
+  id,
+}: IPokemonProps): JSX.Element {
   const router = useRouter();
 
-  const { id } = router.query;
+  const { data: pokemon } = usePokemonsFeatured({
+    id,
+    initialData: pokemonProps,
+  });
 
   return (
     <Container>
@@ -31,21 +49,28 @@ export default function Pokemon(): JSX.Element {
       </HeaderContainer>
       <PokemonContainer>
         <ImageContainer>
-          <Image src="/images/dratini.png" alt="" />
+          <Image
+            src={`${process.env.NEXT_PUBLIC_API_URL}/files/${pokemon.image}`}
+            alt={pokemon.name}
+          />
         </ImageContainer>
 
         <InfoContainer>
-          <Name>Mew</Name>
+          <Name>{pokemon.name}</Name>
 
           <SpecificationsContainer>
             <SpecificationItem>
               <SpecificationItemTitle>Peso</SpecificationItemTitle>
-              <SpecificationItemText>4.0kg</SpecificationItemText>
+              <SpecificationItemText>
+                {formatWeight(pokemon.weight)}
+              </SpecificationItemText>
             </SpecificationItem>
 
             <SpecificationItem>
               <SpecificationItemTitle>Altura</SpecificationItemTitle>
-              <SpecificationItemText>0.41m</SpecificationItemText>
+              <SpecificationItemText>
+                {formatHeight(pokemon.height)}
+              </SpecificationItemText>
             </SpecificationItem>
 
             <SpecificationItem>
@@ -59,17 +84,41 @@ export default function Pokemon(): JSX.Element {
 
           <TypesOrWeaknessContainer>
             <TypesOrWeaknessTitle>Tipos</TypesOrWeaknessTitle>
-            <TypeOrWeaknessItem>PSYCHIC</TypeOrWeaknessItem>
-            <TypeOrWeaknessItem>PSYCHIC</TypeOrWeaknessItem>
+            {pokemon.types.map(type => (
+              <TypeOrWeaknessItem type={formatLowerCase(type)} key={type}>
+                {type}
+              </TypeOrWeaknessItem>
+            ))}
           </TypesOrWeaknessContainer>
 
           <TypesOrWeaknessContainer>
             <TypesOrWeaknessTitle>Fraquezas</TypesOrWeaknessTitle>
-            <TypeOrWeaknessItem>PSYCHIC</TypeOrWeaknessItem>
-            <TypeOrWeaknessItem>PSYCHIC</TypeOrWeaknessItem>
+            {pokemon.weakness.map(weak => (
+              <TypeOrWeaknessItem type={formatLowerCase(weak)} key={weak}>
+                {weak}
+              </TypeOrWeaknessItem>
+            ))}
           </TypesOrWeaknessContainer>
         </InfoContainer>
       </PokemonContainer>
     </Container>
   );
 }
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { id } = params;
+
+  const pokemonProps = await fetchPokemon({ id });
+
+  return {
+    props: { pokemonProps, id },
+    revalidate: 60 * 30, // 30 minutes
+  };
+};
