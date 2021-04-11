@@ -6,7 +6,7 @@ interface IUseCitiesFeaturedProps {
   initialData: ICity[];
 }
 
-export async function getCitiesFeatured(): Promise<ICity[]> {
+export async function fetchCitiesFeatured(): Promise<ICity[]> {
   const { data } = await api.get('/cities-featured');
 
   return data;
@@ -15,7 +15,7 @@ export async function getCitiesFeatured(): Promise<ICity[]> {
 export function useCitiesFeatured({
   initialData,
 }: IUseCitiesFeaturedProps): UseQueryResult<ICity[], unknown> {
-  return useQuery('cities_featured', getCitiesFeatured, {
+  return useQuery('cities_featured', fetchCitiesFeatured, {
     staleTime: 1000 * 60 * 5, // 5 minutes
     initialData,
   });

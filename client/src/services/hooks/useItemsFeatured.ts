@@ -6,7 +6,7 @@ interface IUseItemsFeaturedProps {
   initialData: IItem[];
 }
 
-export async function getItemsFeatured(): Promise<IItem[]> {
+export async function fetchItemsFeatured(): Promise<IItem[]> {
   const { data } = await api.get('/items-featured');
 
   return data;
@@ -15,7 +15,7 @@ export async function getItemsFeatured(): Promise<IItem[]> {
 export function useItemsFeatured({
   initialData,
 }: IUseItemsFeaturedProps): UseQueryResult<IItem[], unknown> {
-  return useQuery('items_featured', getItemsFeatured, {
+  return useQuery('items_featured', fetchItemsFeatured, {
     staleTime: 1000 * 60 * 5, // 5 minutes
     initialData,
   });

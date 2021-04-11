@@ -4,11 +4,28 @@ import Head from 'next/head';
 import { Card } from 'components/Card';
 import { Banner } from 'components/Banner';
 
+import { useInfinitePokemons } from 'services/hooks/useInfinitePokemons';
+
 import { SearchField } from 'components/SearchField';
-import { Container, FilterContainer, CardsContainer } from './Pokedex.styles';
+import { Loading } from 'components/Loading';
+import {
+  Container,
+  FilterContainer,
+  CardsContainer,
+  LoadingOrErrorContainer,
+} from './Pokedex.styles';
 
 export default function Pokedex(): JSX.Element {
   const [search, setSearch] = useState('');
+
+  const {
+    data,
+    error,
+    fetchNextPage,
+    isLoading,
+    isFetching,
+  } = useInfinitePokemons();
+
   return (
     <>
       <Head>
@@ -44,13 +61,37 @@ export default function Pokedex(): JSX.Element {
           />
         </FilterContainer>
 
-        <CardsContainer>
-          <Card mainType="dark" types={['dark', 'grass']} />
-          <Card mainType="grass" types={['grass', 'psychic']} />
-          <Card mainType="psychic" types={['psychic', 'electric']} />
-          <Card mainType="electric" types={['electric', 'normal']} />
-          <Card mainType="normal" types={['normal', 'dark']} />
-        </CardsContainer>
+        {isLoading ? (
+          <LoadingOrErrorContainer>
+            <Loading />
+          </LoadingOrErrorContainer>
+        ) : error ? (
+          <LoadingOrErrorContainer>
+            Ocorreu um erro ao carregar os pokémons. Tente novamente mais tarde
+          </LoadingOrErrorContainer>
+        ) : (
+          <CardsContainer>
+            {data.pages.map(pokemons =>
+              pokemons.data.map(pokemon => (
+                <Card pokemon={pokemon} key={pokemon.id} />
+              )),
+            )}
+          </CardsContainer>
+        )}
+
+        {!isLoading && isFetching && (
+          <LoadingOrErrorContainer>
+            <Loading />
+          </LoadingOrErrorContainer>
+        )}
+
+        <button
+          style={{ marginLeft: 200 }}
+          type="button"
+          onClick={fetchNextPage}
+        >
+          mais
+        </button>
       </Container>
     </>
   );
