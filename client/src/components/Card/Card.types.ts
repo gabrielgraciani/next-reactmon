@@ -12,3 +12,7 @@ export interface ICardSpecificationItemProps {
   title: string;
   value: string;
 }
+
+export interface ICardSpecificationItemStyledProps {
+  align: 'left' | 'right';
+}

@@ -9,6 +9,7 @@ import { City } from 'components/City';
 import { Loading } from 'components/Loading';
 
 import ApplicationRoutes from 'config/ApplicationRoutes';
+
 import {
   fetchPokemonsFeatured,
   usePokemonsFeatured,
@@ -18,9 +19,6 @@ import {
   fetchCitiesFeatured,
   useCitiesFeatured,
 } from 'hooks/useCitiesFeatured';
-import { IPokemon } from 'interfaces/Pokemon';
-import { IItem } from 'interfaces/Item';
-import { ICity } from 'interfaces/City';
 
 import {
   Container,
@@ -30,19 +28,14 @@ import {
   CardInfos,
   LoadingOrErrorContainer,
   AbsoluteLoadingContainer,
-} from './Home.styles';
-
-interface IHomeProps {
-  pokemonsFeaturedProps: IPokemon[];
-  itemsFeaturedProps: IItem[];
-  citiesFeaturedProps: ICity[];
-}
+} from './HomePage.styles';
+import { IHomePageProps } from './HomePage.types';
 
 export default function Home({
   pokemonsFeaturedProps,
   itemsFeaturedProps,
   citiesFeaturedProps,
-}: IHomeProps): JSX.Element {
+}: IHomePageProps): JSX.Element {
   const {
     data: pokemonsFeatured,
     isLoading: isLoadingPokemonsFeatured,

@@ -17,8 +17,8 @@ const ImageContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  height: 16rem;
   justify-content: center;
-  padding: 4rem 0;
   background: linear-gradient(
     45deg,
     #7f9686 0%,

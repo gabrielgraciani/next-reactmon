@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Colors } from 'styles/colors';
 import { Breakpoints } from 'styles/breakpoints';
 
-import { IPokemonStyledProps } from './Pokemon.types';
+import { IPokemonStyledProps } from './PokemonPage.types';
 
 const typesVariation = {
   normal: css`
@@ -84,7 +84,7 @@ const GoBack = styled.a`
   justify-content: center;
 `;
 
-const PokemonContainer = styled.div`
+const PokemonContainer = styled.section`
   width: 100%;
   padding: 0 5%;
   display: flex;

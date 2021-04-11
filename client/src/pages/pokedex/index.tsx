@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
-import { InfiniteData } from 'react-query';
 
 import { Card } from 'components/Card';
 import { Banner } from 'components/Banner';
@@ -11,20 +10,17 @@ import { Loading } from 'components/Loading';
 import { useInfinitePokemons, fetchPokemons } from 'hooks/useInfinitePokemons';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
-import { IPokemonsResponse } from 'interfaces/responses/PokemonsResponse';
-
 import {
   Container,
   FilterContainer,
   CardsContainer,
   LoadingOrErrorContainer,
-} from './Pokedex.styles';
+} from './PokedexPage.styles';
+import { IPokedexPageProps } from './PokedexPage.types';
 
-interface IPokedexProps {
-  pokemonsProps: InfiniteData<IPokemonsResponse>;
-}
-
-export default function Pokedex({ pokemonsProps }: IPokedexProps): JSX.Element {
+export default function Pokedex({
+  pokemonsProps,
+}: IPokedexPageProps): JSX.Element {
   const [search, setSearch] = useState('');
 
   const {

@@ -1,13 +1,10 @@
 import { GetServerSideProps } from 'next';
 import { useState } from 'react';
-import { InfiniteData } from 'react-query';
 import Head from 'next/head';
 
 import { Banner } from 'components/Banner';
 import { City } from 'components/City';
 import { Loading } from 'components/Loading';
-
-import { ICitiesResponse } from 'interfaces/responses/CitiesResponse';
 
 import { fetchCities, useInfiniteCities } from 'hooks/useInfiniteCities';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
@@ -18,13 +15,10 @@ import {
   FilterContainer,
   CardsContainer,
   LoadingOrErrorContainer,
-} from './Cities.styles';
+} from './CitiesPage.styles';
+import { ICitiesPageProps } from './CitiesPage.types';
 
-interface ICitiesProps {
-  citiesProps: InfiniteData<ICitiesResponse>;
-}
-
-export default function Cities({ citiesProps }: ICitiesProps): JSX.Element {
+export default function Cities({ citiesProps }: ICitiesPageProps): JSX.Element {
   const [search, setSearch] = useState('');
 
   const {

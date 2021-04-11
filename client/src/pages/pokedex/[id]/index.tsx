@@ -4,7 +4,6 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 
 import { usePokemonsFeatured, fetchPokemon } from 'hooks/usePokemonId';
 
-import { IPokemon } from 'interfaces/Pokemon';
 import { formatWeight } from 'helpers/formatWeight';
 import { formatHeight } from 'helpers/formatHeight';
 import { formatLowerCase } from 'helpers/formatLowerCase';
@@ -24,17 +23,13 @@ import {
   TypesOrWeaknessContainer,
   TypesOrWeaknessTitle,
   TypeOrWeaknessItem,
-} from './Pokemon.styles';
-
-interface IPokemonProps {
-  pokemonProps: IPokemon;
-  id: string;
-}
+} from './PokemonPage.styles';
+import { IPokemonPageProps } from './PokemonPage.types';
 
 export default function Pokemon({
   pokemonProps,
   id,
-}: IPokemonProps): JSX.Element {
+}: IPokemonPageProps): JSX.Element {
   const router = useRouter();
 
   const { data: pokemon } = usePokemonsFeatured({

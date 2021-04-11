@@ -1,14 +1,11 @@
 import { GetServerSideProps } from 'next';
 import { useState } from 'react';
-import { InfiniteData } from 'react-query';
 import Head from 'next/head';
 
 import { Banner } from 'components/Banner';
 import { Item } from 'components/Item';
 import { SearchField } from 'components/SearchField';
 import { Loading } from 'components/Loading';
-
-import { IItemsResponse } from 'interfaces/responses/ItemsResponse';
 
 import { fetchItems, useInfiniteItems } from 'hooks/useInfiniteItems';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
@@ -18,13 +15,10 @@ import {
   FilterContainer,
   CardsContainer,
   LoadingOrErrorContainer,
-} from './Items.styles';
+} from './ItemsPage.styles';
+import { IItemsPageProps } from './ItemsPage.types';
 
-interface IItemsProps {
-  itemsProps: InfiniteData<IItemsResponse>;
-}
-
-export default function Items({ itemsProps }: IItemsProps): JSX.Element {
+export default function Items({ itemsProps }: IItemsPageProps): JSX.Element {
   const [search, setSearch] = useState('');
 
   const {

@@ -13,7 +13,6 @@ import {
   TypeItem,
   TypeText,
   Name,
-  NameText,
   Specifications,
 } from './Card.styles';
 import { ICardProps } from './Card.types';
@@ -38,9 +37,7 @@ const Card = ({ pokemon }: ICardProps): JSX.Element => {
             ))}
           </Types>
 
-          <Name>
-            <NameText>{pokemon.name}</NameText>
-          </Name>
+          <Name>{pokemon.name}</Name>
 
           <Specifications>
             <CardSpecificationItem

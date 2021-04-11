@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 
 import ApplicationRoutes from 'config/ApplicationRoutes';
 
-import { Link } from '../Link';
+import { ActiveLink } from '../ActiveLink';
 import { Popover } from '../Popover';
 
 import {
@@ -48,18 +48,18 @@ const Header = (): JSX.Element => {
         <ProjectName>Reactmon</ProjectName>
 
         <Menu>
-          <Link href={ApplicationRoutes.ROOT} activeClassName="active">
+          <ActiveLink href={ApplicationRoutes.ROOT} activeClassName="active">
             <MenuItem>Home</MenuItem>
-          </Link>
-          <Link href={ApplicationRoutes.POKEDEX} activeClassName="active">
+          </ActiveLink>
+          <ActiveLink href={ApplicationRoutes.POKEDEX} activeClassName="active">
             <MenuItem>Pokédex</MenuItem>
-          </Link>
-          <Link href={ApplicationRoutes.ITEMS} activeClassName="active">
+          </ActiveLink>
+          <ActiveLink href={ApplicationRoutes.ITEMS} activeClassName="active">
             <MenuItem>Itens</MenuItem>
-          </Link>
-          <Link href={ApplicationRoutes.CITIES} activeClassName="active">
+          </ActiveLink>
+          <ActiveLink href={ApplicationRoutes.CITIES} activeClassName="active">
             <MenuItem>Cidades</MenuItem>
-          </Link>
+          </ActiveLink>
         </Menu>
 
         {userLogged ? (

@@ -20,6 +20,10 @@ const HeaderContent = styled.div`
 
 const ProjectName = styled.h2`
   font-size: 2.5rem;
+
+  @media (max-width: ${Breakpoints.tiny}) {
+    display: none;
+  }
 `;
 
 const Menu = styled.nav`
@@ -57,12 +61,6 @@ const MenuItem = styled.a`
       width: 100%;
       height: 0.3rem;
       background: ${Colors.white};
-    }
-  }
-
-  @media (max-width: ${Breakpoints.tiny}) {
-    &:first-child {
-      display: none;
     }
   }
 `;

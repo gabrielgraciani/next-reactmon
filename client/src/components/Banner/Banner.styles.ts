@@ -2,7 +2,7 @@ import { Colors } from 'styles/colors';
 import styled from 'styled-components';
 import { IBannerStyledProps } from './Banner.types';
 
-const Container = styled.div<IBannerStyledProps>`
+const Container = styled.section<IBannerStyledProps>`
   background: url(${props => props.image});
   min-height: 40rem;
   background-size: cover;

@@ -2,7 +2,10 @@ import styled, { css } from 'styled-components';
 
 import { Colors } from 'styles/colors';
 
-import { ICardStyledProps } from './Card.types';
+import {
+  ICardStyledProps,
+  ICardSpecificationItemStyledProps,
+} from './Card.types';
 
 const cardVariations = {
   normal: css`
@@ -121,7 +124,6 @@ const cardTypeVariations = {
 const Image = styled.img`
   width: 100%;
   max-width: 20rem;
-  height: 20rem;
   transition: transform 0.3s ease;
 `;
 
@@ -168,7 +170,6 @@ const Container = styled.a<ICardStyledProps>`
 const ImageContainer = styled.div`
   width: 100%;
   height: 26rem;
-  padding: 4rem 0 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -193,13 +194,16 @@ const Types = styled.div`
 `;
 
 const TypeItem = styled.div<ICardStyledProps>`
-  margin: 0 0 0 1rem;
   padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
 
   ${props => cardTypeVariations[props.type]};
+
+  & + div {
+    margin-left: 1rem;
+  }
 `;
 
 const TypeText = styled.span`
@@ -211,12 +215,10 @@ const TypeText = styled.span`
   letter-spacing: 0.1rem;
 `;
 
-const Name = styled.div`
+const Name = styled.h4`
+  margin-top: 1rem;
   width: 100%;
   text-align: center;
-`;
-
-const NameText = styled.h4`
   color: ${Colors.black};
   font-size: 2.4rem;
   font-weight: 700;
@@ -238,22 +240,14 @@ const SpecificationsRow = styled.div`
   justify-content: space-between;
 `;
 
-const SpecificationsColLeft = styled.div`
+const SpecificationsText = styled.span<ICardSpecificationItemStyledProps>`
+  display: block;
   width: 50%;
-  padding-right: 1rem;
-  text-align: right;
-`;
-
-const SpecificationsColRight = styled.div`
-  width: 50%;
-  padding-left: 1rem;
-  text-align: left;
-`;
-
-const SpecificationsText = styled.span`
   font-size: 1.6rem;
   font-weight: 300;
   color: ${Colors.black};
+  text-align: ${props => props.align};
+  padding: ${props => (props.align === 'left' ? '0 0 0 1rem' : '0 1rem 0 0')};
 `;
 
 export {
@@ -265,10 +259,7 @@ export {
   TypeItem,
   TypeText,
   Name,
-  NameText,
   Specifications,
   SpecificationsRow,
-  SpecificationsColLeft,
-  SpecificationsColRight,
   SpecificationsText,
 };

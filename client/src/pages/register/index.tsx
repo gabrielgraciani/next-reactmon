@@ -10,8 +10,8 @@ import { Form } from 'components/Form';
 
 import ApplicationRoutes from 'config/ApplicationRoutes';
 
-import { Container, Title, Text, CreateAccount } from './Register.styles';
-import { IRegisterFormData } from './Register.types';
+import { Container, Title, Text, CreateAccount } from './RegisterPage.styles';
+import { IRegisterFormData } from './RegisterPage.types';
 
 const registerFormSchema = yup.object().shape({
   name: yup.string().required('Nome obrigatório'),

@@ -11,7 +11,7 @@ import { Form } from 'components/Form';
 import ApplicationRoutes from 'config/ApplicationRoutes';
 
 import { Container, Title, Text, CreateAccount } from './Login.styles';
-import { ISignInFormData } from './Login.types';
+import { ISignInFormData } from './LoginPage.types';
 
 const signInFormSchema = yup.object().shape({
   email: yup.string().required('E-mail obrigatório').email('E-mail inválido'),

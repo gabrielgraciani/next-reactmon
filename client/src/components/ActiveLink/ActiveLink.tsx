@@ -2,13 +2,13 @@ import { useRouter } from 'next/dist/client/router';
 import NextLink from 'next/link';
 import { cloneElement, ReactElement } from 'react';
 
-import { ILinkProps } from './Link.types';
+import { IActiveLinkProps } from './ActiveLink.types';
 
-const Link = ({
+const ActiveLink = ({
   children,
   activeClassName,
   ...rest
-}: ILinkProps): ReactElement => {
+}: IActiveLinkProps): ReactElement => {
   const { asPath } = useRouter();
 
   const className = asPath === rest.href ? activeClassName : '';
@@ -21,4 +21,4 @@ const Link = ({
   );
 };
 
-export default Link;
+export default ActiveLink;
