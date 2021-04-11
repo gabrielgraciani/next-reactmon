@@ -177,7 +177,7 @@ export default function Home({
         ) : (
           <CardsContainer>
             {citiesFeatured.map(city => (
-              <City city={city} />
+              <City city={city} key={city.id} />
             ))}
           </CardsContainer>
         )}

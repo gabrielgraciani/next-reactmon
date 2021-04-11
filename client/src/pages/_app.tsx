@@ -1,15 +1,15 @@
 import { AppProps } from 'next/app';
+import { useRef } from 'react';
 import GlobalStyles from 'styles/global';
 import NProgress from 'nprogress';
 import Router, { useRouter } from 'next/router';
-import { QueryClientProvider } from 'react-query';
+import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import 'nprogress/nprogress.css';
 import 'antd/dist/antd.css';
 
 import { Header } from 'components/Header';
 import { HeaderAdmin } from 'components/HeaderAdmin';
-import { queryClient } from 'services/queryClient';
 
 NProgress.configure({
   speed: 800,
@@ -23,9 +23,14 @@ Router.events.on('routeChangeError', () => NProgress.done());
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const { asPath } = useRouter();
 
+  const queryClientRef = useRef(null);
+  if (!queryClientRef.current) {
+    queryClientRef.current = new QueryClient();
+  }
+
   const showDefaultHeader = !asPath.startsWith('/admin');
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClientRef.current}>
       {showDefaultHeader ? <Header /> : <HeaderAdmin />}
       <Component {...pageProps} />
       <GlobalStyles />
