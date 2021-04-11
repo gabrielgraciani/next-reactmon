@@ -40,6 +40,7 @@ class PokemonsController {
         total_records: pokemons.total_records,
         total_pages: totalPages,
         has_next_page: hasNextPage,
+        current_page: pageInt,
       },
     });
   }
