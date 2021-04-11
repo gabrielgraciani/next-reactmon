@@ -1,4 +1,8 @@
-import { InfiniteQueryObserverResult, useInfiniteQuery } from 'react-query';
+import {
+  InfiniteQueryObserverResult,
+  useInfiniteQuery,
+  InfiniteData,
+} from 'react-query';
 
 import { IPokemonsResponse } from 'interfaces/responses/PokemonsResponse';
 
@@ -6,6 +10,10 @@ import { api } from 'services/api';
 
 interface IFetchPokemons {
   pageParam: number;
+}
+
+interface IUseInfinitePokemons {
+  initialData: InfiniteData<IPokemonsResponse>;
 }
 
 export async function fetchPokemons({
@@ -16,7 +24,9 @@ export async function fetchPokemons({
   return data;
 }
 
-export function useInfinitePokemons(): InfiniteQueryObserverResult<IPokemonsResponse> {
+export function useInfinitePokemons({
+  initialData,
+}: IUseInfinitePokemons): InfiniteQueryObserverResult<IPokemonsResponse> {
   return useInfiniteQuery(
     'pokemons',
     async ({ pageParam = 1 }) => {
@@ -25,6 +35,7 @@ export function useInfinitePokemons(): InfiniteQueryObserverResult<IPokemonsResp
       return response;
     },
     {
+      initialData,
       getNextPageParam: lastPage => {
         const totalRecords = lastPage.meta.total_records;
         const currentPage = lastPage.meta.current_page;
