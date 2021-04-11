@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { BiFemaleSign, BiMaleSign } from 'react-icons/bi';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import Head from 'next/head';
 
 import { usePokemonsFeatured, fetchPokemon } from 'hooks/usePokemonId';
 
@@ -38,65 +39,70 @@ export default function Pokemon({
   });
 
   return (
-    <Container>
-      <HeaderContainer>
-        <GoBack onClick={() => router.back()}>Voltar</GoBack>
-      </HeaderContainer>
-      <PokemonContainer>
-        <ImageContainer>
-          <Image
-            src={`${process.env.NEXT_PUBLIC_API_URL}/files/${pokemon.image}`}
-            alt={pokemon.name}
-          />
-        </ImageContainer>
+    <>
+      <Head>
+        <title>{pokemon.name} | Reactmon</title>
+      </Head>
+      <Container>
+        <HeaderContainer>
+          <GoBack onClick={() => router.back()}>Voltar</GoBack>
+        </HeaderContainer>
+        <PokemonContainer>
+          <ImageContainer>
+            <Image
+              src={`${process.env.NEXT_PUBLIC_API_URL}/files/${pokemon.image}`}
+              alt={pokemon.name}
+            />
+          </ImageContainer>
 
-        <InfoContainer>
-          <Name>{pokemon.name}</Name>
+          <InfoContainer>
+            <Name>{pokemon.name}</Name>
 
-          <SpecificationsContainer>
-            <SpecificationItem>
-              <SpecificationItemTitle>Peso</SpecificationItemTitle>
-              <SpecificationItemText>
-                {formatWeight(pokemon.weight)}
-              </SpecificationItemText>
-            </SpecificationItem>
+            <SpecificationsContainer>
+              <SpecificationItem>
+                <SpecificationItemTitle>Peso</SpecificationItemTitle>
+                <SpecificationItemText>
+                  {formatWeight(pokemon.weight)}
+                </SpecificationItemText>
+              </SpecificationItem>
 
-            <SpecificationItem>
-              <SpecificationItemTitle>Altura</SpecificationItemTitle>
-              <SpecificationItemText>
-                {formatHeight(pokemon.height)}
-              </SpecificationItemText>
-            </SpecificationItem>
+              <SpecificationItem>
+                <SpecificationItemTitle>Altura</SpecificationItemTitle>
+                <SpecificationItemText>
+                  {formatHeight(pokemon.height)}
+                </SpecificationItemText>
+              </SpecificationItem>
 
-            <SpecificationItem>
-              <SpecificationItemTitle>Gênero</SpecificationItemTitle>
-              <SpecificationItemText>
-                <BiMaleSign fontSize="1.8rem" />
-                <BiFemaleSign fontSize="1.8rem" />
-              </SpecificationItemText>
-            </SpecificationItem>
-          </SpecificationsContainer>
+              <SpecificationItem>
+                <SpecificationItemTitle>Gênero</SpecificationItemTitle>
+                <SpecificationItemText>
+                  <BiMaleSign fontSize="1.8rem" />
+                  <BiFemaleSign fontSize="1.8rem" />
+                </SpecificationItemText>
+              </SpecificationItem>
+            </SpecificationsContainer>
 
-          <TypesOrWeaknessContainer>
-            <TypesOrWeaknessTitle>Tipos</TypesOrWeaknessTitle>
-            {pokemon.types.map(type => (
-              <TypeOrWeaknessItem type={formatLowerCase(type)} key={type}>
-                {type}
-              </TypeOrWeaknessItem>
-            ))}
-          </TypesOrWeaknessContainer>
+            <TypesOrWeaknessContainer>
+              <TypesOrWeaknessTitle>Tipos</TypesOrWeaknessTitle>
+              {pokemon.types.map(type => (
+                <TypeOrWeaknessItem type={formatLowerCase(type)} key={type}>
+                  {type}
+                </TypeOrWeaknessItem>
+              ))}
+            </TypesOrWeaknessContainer>
 
-          <TypesOrWeaknessContainer>
-            <TypesOrWeaknessTitle>Fraquezas</TypesOrWeaknessTitle>
-            {pokemon.weakness.map(weak => (
-              <TypeOrWeaknessItem type={formatLowerCase(weak)} key={weak}>
-                {weak}
-              </TypeOrWeaknessItem>
-            ))}
-          </TypesOrWeaknessContainer>
-        </InfoContainer>
-      </PokemonContainer>
-    </Container>
+            <TypesOrWeaknessContainer>
+              <TypesOrWeaknessTitle>Fraquezas</TypesOrWeaknessTitle>
+              {pokemon.weakness.map(weak => (
+                <TypeOrWeaknessItem type={formatLowerCase(weak)} key={weak}>
+                  {weak}
+                </TypeOrWeaknessItem>
+              ))}
+            </TypesOrWeaknessContainer>
+          </InfoContainer>
+        </PokemonContainer>
+      </Container>
+    </>
   );
 }
 

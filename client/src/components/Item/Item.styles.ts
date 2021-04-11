@@ -55,7 +55,6 @@ const Name = styled.h4`
 const Description = styled.span`
   width: 100%;
   text-align: center;
-  font-size: 1.4rem;
   color: ${Colors.darkGrayOpacity50};
 `;
 

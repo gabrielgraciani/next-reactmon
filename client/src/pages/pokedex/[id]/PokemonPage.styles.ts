@@ -133,7 +133,7 @@ const SpecificationsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  background: #30a7d7;
+  background: ${Colors.lightGray};
   margin-top: 1rem;
   border-radius: 0.5rem;
 `;
@@ -149,8 +149,8 @@ const SpecificationItem = styled.div`
 const SpecificationItemTitle = styled.span`
   font-weight: bold;
   display: block;
+  color: ${Colors.blue};
   margin-bottom: 0.5rem;
-  font-size: 1.4rem;
 `;
 
 const SpecificationItemText = styled.span`
@@ -177,7 +177,6 @@ const TypeOrWeaknessItem = styled.span<IPokemonStyledProps>`
   display: block;
   padding: 1rem 3rem;
   border-radius: 0.5rem;
-  font-size: 1.4rem;
   text-transform: uppercase;
   ${props => typesVariation[props.type]}
   margin-right:1rem;

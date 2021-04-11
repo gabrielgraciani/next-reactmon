@@ -33,7 +33,6 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     color: ${Colors.white};
     font-size: 1.4rem;
-    line-height:1.4rem;
     border:0;
   }
 
@@ -42,10 +41,15 @@ const GlobalStyles = createGlobalStyle`
     color:${Colors.white};
   }
 
+  span, p, label, input, textarea, select, button, div {
+    font-size:1.4rem;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
     cursor: pointer;
+    font-size: 1.4rem;
   }
 `;
 

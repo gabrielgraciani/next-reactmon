@@ -185,7 +185,7 @@ const ContentContainer = styled.div`
 `;
 
 const Types = styled.div`
-  margin-top: -1.7rem;
+  margin-top: -1.3rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -209,8 +209,6 @@ const TypeItem = styled.div<ICardStyledProps>`
 const TypeText = styled.span`
   text-transform: uppercase;
   color: ${Colors.white};
-  font-size: 1.5rem;
-  font-family: 'Open Sans';
   font-weight: 400;
   letter-spacing: 0.1rem;
 `;
@@ -248,6 +246,7 @@ const SpecificationsText = styled.span<ICardSpecificationItemStyledProps>`
   color: ${Colors.black};
   text-align: ${props => props.align};
   padding: ${props => (props.align === 'left' ? '0 0 0 1rem' : '0 1rem 0 0')};
+  font-style: italic;
 `;
 
 export {

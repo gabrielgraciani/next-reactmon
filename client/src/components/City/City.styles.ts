@@ -55,7 +55,6 @@ const Description = styled.span`
   display: block;
   width: 100%;
   margin-top: 1.5rem;
-  font-size: 1.5rem;
   color: ${Colors.gray};
 `;
 

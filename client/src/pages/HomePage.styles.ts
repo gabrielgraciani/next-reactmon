@@ -51,7 +51,6 @@ const SeeAll = styled.a`
 const LoadingOrErrorContainer = styled.div`
   margin: 3rem auto 4rem;
   text-align: center;
-  font-size: 1.4rem;
   color: ${Colors.red};
   display: flex;
   align-items: center;

@@ -38,7 +38,7 @@ export default function Register(): JSX.Element {
   return (
     <>
       <Head>
-        <title>Register | Reactmon</title>
+        <title>Crie sua conta | Reactmon</title>
       </Head>
 
       <Container>

@@ -18,7 +18,6 @@ const Title = styled.h1`
 const Text = styled.span`
   display: block;
   margin-top: 2rem;
-  font-size: 1.4rem;
 `;
 
 const CreateAccount = styled.a`

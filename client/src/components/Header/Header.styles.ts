@@ -40,7 +40,6 @@ const Menu = styled.nav`
 
 const MenuItem = styled.a`
   display: inline-block;
-  font-size: 1.4rem;
   line-height: 8rem;
   cursor: pointer;
   position: relative;
@@ -65,9 +64,7 @@ const MenuItem = styled.a`
   }
 `;
 
-const LoginButton = styled.a`
-  font-size: 1.4rem;
-`;
+const LoginButton = styled.a``;
 
 const UserInformation = styled.div`
   display: flex;
@@ -76,8 +73,6 @@ const UserInformation = styled.div`
 `;
 
 const UserName = styled.span`
-  font-size: 1.4rem;
-
   @media (max-width: ${Breakpoints.tiny}) {
     display: none;
   }
@@ -101,7 +96,6 @@ const PopoverContent = styled.div``;
 
 const PopoverContentItem = styled.a`
   display: block;
-  font-size: 1.4rem;
 
   & + a {
     margin-top: 1rem;

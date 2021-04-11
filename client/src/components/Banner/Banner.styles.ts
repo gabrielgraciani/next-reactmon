@@ -38,6 +38,7 @@ const TextContainer = styled.div`
     color: ${Colors.white};
     font-weight: 100;
     font-size: 2rem;
+    line-height: 2rem;
     margin: 2rem 0 0;
   }
 `;

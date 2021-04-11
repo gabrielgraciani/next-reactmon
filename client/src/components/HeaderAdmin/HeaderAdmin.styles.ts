@@ -14,9 +14,7 @@ const ProjectName = styled.h2`
   font-size: 1.6rem;
 `;
 
-const UserName = styled.span`
-  font-size: 1.4rem;
-`;
+const UserName = styled.span``;
 
 const DrawerContent = styled.nav`
   display: flex;
@@ -24,7 +22,6 @@ const DrawerContent = styled.nav`
 `;
 
 const DrawerItem = styled.a`
-  font-size: 1.4rem;
   font-weight: bold;
 
   & + a {

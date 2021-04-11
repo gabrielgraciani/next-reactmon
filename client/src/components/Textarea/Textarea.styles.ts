@@ -27,7 +27,6 @@ const Label = styled.label<ITextareaStyledProps>`
   pointer-events: none;
   background: ${Colors.darkGray};
   transition: all 0.2s ease;
-  font-size: 1.4rem;
   margin-bottom: 0.4rem;
   display: block;
 
@@ -45,7 +44,6 @@ const StyledTextarea = styled.textarea`
   outline: 0;
   border: 0;
   background: transparent;
-  font-size: 1.4rem;
   padding: 1.5rem 0.8rem;
   color: ${Colors.white};
   min-height: 15rem;
