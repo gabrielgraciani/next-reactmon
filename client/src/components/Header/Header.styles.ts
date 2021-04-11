@@ -1,5 +1,7 @@
-import { Colors } from 'styles/colors';
 import styled from 'styled-components';
+
+import { Colors } from 'styles/colors';
+import { Breakpoints } from 'styles/breakpoints';
 
 const Container = styled.header`
   width: 100%;
@@ -27,7 +29,7 @@ const Menu = styled.nav`
   align-items: center;
   flex-grow: 1;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${Breakpoints.tiny}) {
     margin-left: 0rem;
   }
 `;
@@ -58,7 +60,7 @@ const MenuItem = styled.a`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${Breakpoints.tiny}) {
     &:first-child {
       display: none;
     }
@@ -78,7 +80,7 @@ const UserInformation = styled.div`
 const UserName = styled.span`
   font-size: 1.4rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${Breakpoints.tiny}) {
     display: none;
   }
 `;
@@ -109,7 +111,7 @@ const PopoverContentItem = styled.a`
 `;
 
 const PopoverIconContainer = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: ${Breakpoints.tiny}) {
     display: none;
   }
 `;

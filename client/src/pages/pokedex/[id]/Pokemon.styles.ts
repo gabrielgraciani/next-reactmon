@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
-import { Colors } from '../../../styles/colors';
+
+import { Colors } from 'styles/colors';
+import { Breakpoints } from 'styles/breakpoints';
 
 import { IPokemonStyledProps } from './Pokemon.types';
 
@@ -83,17 +85,29 @@ const GoBack = styled.a`
 `;
 
 const PokemonContainer = styled.div`
-  width: 90%;
+  width: 100%;
   padding: 0 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: ${Breakpoints.small}) {
+    flex-direction: column;
+  }
 `;
 
 const ImageContainer = styled.div`
   width: 48%;
   background: ${Colors.lightGray};
   border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: ${Breakpoints.small}) {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
 `;
 
 const Image = styled.img`
@@ -105,6 +119,10 @@ const InfoContainer = styled.div`
   width: 48%;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: ${Breakpoints.small}) {
+    width: 100%;
+  }
 `;
 
 const Name = styled.h1`
