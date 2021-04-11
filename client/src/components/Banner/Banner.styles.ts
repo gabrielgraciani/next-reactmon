@@ -8,7 +8,7 @@ const Container = styled.div<IBannerStyledProps>`
   background-size: cover;
   padding: 10rem 5%;
   position: relative;
-  background-position: color-interpolation-filters;
+  background-position: center;
 
   &:after {
     position: absolute;

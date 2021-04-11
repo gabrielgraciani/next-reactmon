@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.0.0",
-    "antd": "^4.15.0",
     "axios": "^0.21.1",
     "next": "10.0.9",
     "nprogress": "^0.2.0",

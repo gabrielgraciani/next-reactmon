@@ -125,7 +125,7 @@ const Image = styled.img`
   transition: transform 0.3s ease;
 `;
 
-const Container = styled.div<ICardStyledProps>`
+const Container = styled.a<ICardStyledProps>`
   transition: all 0.3s ease;
   overflow: hidden;
   width: 100%;

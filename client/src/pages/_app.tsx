@@ -6,7 +6,6 @@ import Router, { useRouter } from 'next/router';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import 'nprogress/nprogress.css';
-import 'antd/dist/antd.css';
 
 import { Header } from 'components/Header';
 import { HeaderAdmin } from 'components/HeaderAdmin';
