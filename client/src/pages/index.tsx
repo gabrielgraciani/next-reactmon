@@ -10,15 +10,15 @@ import { Loading } from 'components/Loading';
 
 import ApplicationRoutes from 'config/ApplicationRoutes';
 import {
-  getPokemonsFeatured,
+  fetchPokemonsFeatured,
   usePokemonsFeatured,
 } from 'services/hooks/usePokemonsFeatured';
 import {
-  getItemsFeatured,
+  fetchItemsFeatured,
   useItemsFeatured,
 } from 'services/hooks/useItemsFeatured';
 import {
-  getCitiesFeatured,
+  fetchCitiesFeatured,
   useCitiesFeatured,
 } from 'services/hooks/useCitiesFeatured';
 import { IPokemon } from 'interfaces/Pokemon';
@@ -187,9 +187,9 @@ export default function Home({
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const pokemonsFeaturedProps = await getPokemonsFeatured();
-  const itemsFeaturedProps = await getItemsFeatured();
-  const citiesFeaturedProps = await getCitiesFeatured();
+  const pokemonsFeaturedProps = await fetchPokemonsFeatured();
+  const itemsFeaturedProps = await fetchItemsFeatured();
+  const citiesFeaturedProps = await fetchCitiesFeatured();
 
   return {
     props: { pokemonsFeaturedProps, itemsFeaturedProps, citiesFeaturedProps },
