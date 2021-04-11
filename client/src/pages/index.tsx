@@ -12,15 +12,12 @@ import ApplicationRoutes from 'config/ApplicationRoutes';
 import {
   fetchPokemonsFeatured,
   usePokemonsFeatured,
-} from 'services/hooks/usePokemonsFeatured';
-import {
-  fetchItemsFeatured,
-  useItemsFeatured,
-} from 'services/hooks/useItemsFeatured';
+} from 'hooks/usePokemonsFeatured';
+import { fetchItemsFeatured, useItemsFeatured } from 'hooks/useItemsFeatured';
 import {
   fetchCitiesFeatured,
   useCitiesFeatured,
-} from 'services/hooks/useCitiesFeatured';
+} from 'hooks/useCitiesFeatured';
 import { IPokemon } from 'interfaces/Pokemon';
 import { IItem } from 'interfaces/Item';
 import { ICity } from 'interfaces/City';

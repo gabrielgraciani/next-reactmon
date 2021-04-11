@@ -8,17 +8,17 @@ import { IPokemonsResponse } from 'interfaces/responses/PokemonsResponse';
 
 import { api } from 'services/api';
 
-interface IFetchPokemons {
+interface IFetchPokemonsProps {
   pageParam: number;
 }
 
-interface IUseInfinitePokemons {
+interface IUseInfinitePokemonsProps {
   initialData: InfiniteData<IPokemonsResponse>;
 }
 
 export async function fetchPokemons({
   pageParam = 1,
-}: IFetchPokemons): Promise<IPokemonsResponse> {
+}: IFetchPokemonsProps): Promise<IPokemonsResponse> {
   const { data } = await api.get(`/pokemons?page=${pageParam}`);
 
   return data;
@@ -26,7 +26,7 @@ export async function fetchPokemons({
 
 export function useInfinitePokemons({
   initialData,
-}: IUseInfinitePokemons): InfiniteQueryObserverResult<IPokemonsResponse> {
+}: IUseInfinitePokemonsProps): InfiniteQueryObserverResult<IPokemonsResponse> {
   return useInfiniteQuery(
     'pokemons',
     async ({ pageParam = 1 }) => {

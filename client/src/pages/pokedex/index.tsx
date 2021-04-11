@@ -8,10 +8,7 @@ import { Banner } from 'components/Banner';
 import { SearchField } from 'components/SearchField';
 import { Loading } from 'components/Loading';
 
-import {
-  useInfinitePokemons,
-  fetchPokemons,
-} from 'services/hooks/useInfinitePokemons';
+import { useInfinitePokemons, fetchPokemons } from 'hooks/useInfinitePokemons';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
 import { IPokemonsResponse } from 'interfaces/responses/PokemonsResponse';
@@ -23,11 +20,11 @@ import {
   LoadingOrErrorContainer,
 } from './Pokedex.styles';
 
-interface IPokedex {
+interface IPokedexProps {
   pokemonsProps: InfiniteData<IPokemonsResponse>;
 }
 
-export default function Pokedex({ pokemonsProps }: IPokedex): JSX.Element {
+export default function Pokedex({ pokemonsProps }: IPokedexProps): JSX.Element {
   const [search, setSearch] = useState('');
 
   const {
