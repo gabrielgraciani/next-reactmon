@@ -1,14 +1,47 @@
+import { GetServerSideProps } from 'next';
 import { useState } from 'react';
+import { InfiniteData } from 'react-query';
 import Head from 'next/head';
 
 import { Banner } from 'components/Banner';
 import { City } from 'components/City';
+import { Loading } from 'components/Loading';
+
+import { ICitiesResponse } from 'interfaces/responses/CitiesResponse';
+
+import { fetchCities, useInfiniteCities } from 'hooks/useInfiniteCities';
+import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
 import { SearchField } from 'components/SearchField';
-import { Container, FilterContainer, CardsContainer } from './Cities.styles';
+import {
+  Container,
+  FilterContainer,
+  CardsContainer,
+  LoadingOrErrorContainer,
+} from './Cities.styles';
 
-export default function Cities(): JSX.Element {
+interface ICitiesProps {
+  citiesProps: InfiniteData<ICitiesResponse>;
+}
+
+export default function Cities({ citiesProps }: ICitiesProps): JSX.Element {
   const [search, setSearch] = useState('');
+
+  const {
+    data,
+    error,
+    fetchNextPage,
+    isLoading,
+    isFetching,
+    hasNextPage,
+  } = useInfiniteCities({ initialData: citiesProps });
+
+  useInfiniteScroll({
+    isFetching,
+    hasNextPage,
+    handleLoadMore: fetchNextPage,
+  });
+
   return (
     <>
       <Head>
@@ -42,18 +75,46 @@ export default function Cities(): JSX.Element {
         <FilterContainer>
           <SearchField
             value={search}
-            placeholder="Pesquise um item"
+            placeholder="Pesquise uma cidade"
             onChange={e => setSearch(e.target.value)}
           />
         </FilterContainer>
 
-        <CardsContainer>
-          <City />
-          <City />
-          <City />
-          <City />
-        </CardsContainer>
+        {isLoading ? (
+          <LoadingOrErrorContainer>
+            <Loading />
+          </LoadingOrErrorContainer>
+        ) : error ? (
+          <LoadingOrErrorContainer>
+            Ocorreu um erro ao carregar as cidades. Tente novamente mais tarde
+          </LoadingOrErrorContainer>
+        ) : (
+          <CardsContainer>
+            {data.pages.map(cities =>
+              cities.data.map(city => <City city={city} key={city.id} />),
+            )}
+          </CardsContainer>
+        )}
+
+        {!isLoading && isFetching && (
+          <LoadingOrErrorContainer>
+            <Loading />
+          </LoadingOrErrorContainer>
+        )}
       </Container>
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const citiesProps = await fetchCities({ pageParam: 1 });
+
+  const citiesPropsFormatted = {
+    pageParams: [1],
+    pages: [citiesProps],
+  };
+
+  return {
+    props: { citiesProps: citiesPropsFormatted },
+  };
+};

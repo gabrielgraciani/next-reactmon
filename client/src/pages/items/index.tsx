@@ -6,13 +6,13 @@ import Head from 'next/head';
 import { Banner } from 'components/Banner';
 import { Item } from 'components/Item';
 import { SearchField } from 'components/SearchField';
+import { Loading } from 'components/Loading';
 
 import { IItemsResponse } from 'interfaces/responses/ItemsResponse';
 
 import { fetchItems, useInfiniteItems } from 'hooks/useInfiniteItems';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
-import { Loading } from 'components/Loading';
 import {
   Container,
   FilterContainer,
@@ -83,7 +83,7 @@ export default function Items({ itemsProps }: IItemsProps): JSX.Element {
           </LoadingOrErrorContainer>
         ) : error ? (
           <LoadingOrErrorContainer>
-            Ocorreu um erro ao carregar os pokémons. Tente novamente mais tarde
+            Ocorreu um erro ao carregar os itens. Tente novamente mais tarde
           </LoadingOrErrorContainer>
         ) : (
           <CardsContainer>
