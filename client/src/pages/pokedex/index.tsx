@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Head from 'next/head';
 
 import { Card } from 'components/Card';
@@ -17,6 +17,7 @@ import {
 
 export default function Pokedex(): JSX.Element {
   const [search, setSearch] = useState('');
+  const [isBottom, setIsBottom] = useState(false);
 
   const {
     data,
@@ -24,7 +25,36 @@ export default function Pokedex(): JSX.Element {
     fetchNextPage,
     isLoading,
     isFetching,
+    hasNextPage,
   } = useInfinitePokemons();
+
+  const handleFetchMorePokemons = useCallback(() => {
+    fetchNextPage();
+    setIsBottom(false);
+  }, [fetchNextPage]);
+
+  const handleScroll = useCallback(() => {
+    const scrollTop =
+      (document.documentElement && document.documentElement.scrollTop) ||
+      document.body.scrollTop;
+    const scrollHeight =
+      (document.documentElement && document.documentElement.scrollHeight) ||
+      document.body.scrollHeight;
+    if (scrollTop + window.innerHeight + 50 >= scrollHeight && !isFetching) {
+      setIsBottom(true);
+    }
+  }, [isFetching]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  useEffect(() => {
+    if (isBottom && hasNextPage) {
+      handleFetchMorePokemons();
+    }
+  }, [isBottom, hasNextPage, handleFetchMorePokemons]);
 
   return (
     <>
@@ -84,14 +114,6 @@ export default function Pokedex(): JSX.Element {
             <Loading />
           </LoadingOrErrorContainer>
         )}
-
-        <button
-          style={{ marginLeft: 200 }}
-          type="button"
-          onClick={fetchNextPage}
-        >
-          mais
-        </button>
       </Container>
     </>
   );
