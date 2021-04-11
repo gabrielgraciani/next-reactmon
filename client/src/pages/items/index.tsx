@@ -1,14 +1,47 @@
+import { GetServerSideProps } from 'next';
 import { useState } from 'react';
+import { InfiniteData } from 'react-query';
 import Head from 'next/head';
 
 import { Banner } from 'components/Banner';
 import { Item } from 'components/Item';
-
 import { SearchField } from 'components/SearchField';
-import { Container, FilterContainer, CardsContainer } from './Items.styles';
 
-export default function Items(): JSX.Element {
+import { IItemsResponse } from 'interfaces/responses/ItemsResponse';
+
+import { fetchItems, useInfiniteItems } from 'hooks/useInfiniteItems';
+import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
+
+import { Loading } from 'components/Loading';
+import {
+  Container,
+  FilterContainer,
+  CardsContainer,
+  LoadingOrErrorContainer,
+} from './Items.styles';
+
+interface IItemsProps {
+  itemsProps: InfiniteData<IItemsResponse>;
+}
+
+export default function Items({ itemsProps }: IItemsProps): JSX.Element {
   const [search, setSearch] = useState('');
+
+  const {
+    data,
+    error,
+    fetchNextPage,
+    isLoading,
+    isFetching,
+    hasNextPage,
+  } = useInfiniteItems({ initialData: itemsProps });
+
+  useInfiniteScroll({
+    isFetching,
+    hasNextPage,
+    handleLoadMore: fetchNextPage,
+  });
+
   return (
     <>
       <Head>
@@ -44,14 +77,41 @@ export default function Items(): JSX.Element {
           />
         </FilterContainer>
 
-        <CardsContainer>
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-        </CardsContainer>
+        {isLoading ? (
+          <LoadingOrErrorContainer>
+            <Loading />
+          </LoadingOrErrorContainer>
+        ) : error ? (
+          <LoadingOrErrorContainer>
+            Ocorreu um erro ao carregar os pokémons. Tente novamente mais tarde
+          </LoadingOrErrorContainer>
+        ) : (
+          <CardsContainer>
+            {data.pages.map(items =>
+              items.data.map(item => <Item item={item} key={item.id} />),
+            )}
+          </CardsContainer>
+        )}
+
+        {!isLoading && isFetching && (
+          <LoadingOrErrorContainer>
+            <Loading />
+          </LoadingOrErrorContainer>
+        )}
       </Container>
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const itemsProps = await fetchItems({ pageParam: 1 });
+
+  const itemsPropsFormatted = {
+    pageParams: [1],
+    pages: [itemsProps],
+  };
+
+  return {
+    props: { itemsProps: itemsPropsFormatted },
+  };
+};

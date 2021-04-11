@@ -108,12 +108,12 @@ export default function Pokedex({ pokemonsProps }: IPokedexProps): JSX.Element {
 export const getServerSideProps: GetServerSideProps = async () => {
   const pokemonsProps = await fetchPokemons({ pageParam: 1 });
 
-  const formatted = {
-    pageParams: [null],
+  const pokemonsPropsFormatted = {
+    pageParams: [1],
     pages: [pokemonsProps],
   };
 
   return {
-    props: { pokemonsProps: formatted },
+    props: { pokemonsProps: pokemonsPropsFormatted },
   };
 };
