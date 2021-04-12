@@ -30,7 +30,6 @@ export default function Login(): JSX.Element {
   const { errors } = formState;
 
   const handleSignIn: SubmitHandler<ISignInFormData> = async values => {
-    console.log(values);
     const { email, password } = values;
 
     const res = await signIn('credentials', {
@@ -38,7 +37,6 @@ export default function Login(): JSX.Element {
       password,
       redirect: false,
     });
-    console.log('res', res);
 
     if (res?.error) {
       alert(res?.error);
@@ -62,7 +60,6 @@ export default function Login(): JSX.Element {
               name="email"
               type="email"
               label="Digite seu e-mail"
-              value="gabriel@hotmail.com"
               {...register('email')}
               error={errors.email}
             />
@@ -72,7 +69,6 @@ export default function Login(): JSX.Element {
               name="password"
               label="Digite sua senha"
               type="password"
-              value="teste123"
               {...register('password')}
               error={errors.password}
             />

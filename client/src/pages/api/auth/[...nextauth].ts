@@ -1,8 +1,13 @@
-import NextAuth from 'next-auth';
+import NextAuth, { User } from 'next-auth';
 import Providers from 'next-auth/providers';
 import { api } from 'services/api';
 
-const options = {
+interface IUserProps extends User {
+  token: string;
+  accessToken: string;
+}
+
+export default NextAuth({
   providers: [
     Providers.Credentials({
       name: 'credentials',
@@ -35,21 +40,19 @@ const options = {
     maxAge: 1 * 24 * 60 * 60, // 1 day
   },
   callbacks: {
-    async jwt(token: { accessToken: string }, user) {
+    async jwt(token, user: IUserProps) {
       if (user) {
         token.accessToken = user.token;
       }
 
       return token;
     },
-    async session(session, token) {
-      session.accessToken = token.accessToken;
+    async session(session, user?: IUserProps) {
+      session.accessToken = user.accessToken;
       return session;
     },
   },
   pages: {
     error: '/login',
   },
-};
-
-export default (req, res) => NextAuth(req, res, options);
+});
