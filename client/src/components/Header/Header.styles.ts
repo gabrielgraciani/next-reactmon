@@ -28,7 +28,6 @@ const ProjectName = styled.h2`
 
 const Menu = styled.nav`
   margin-left: 5rem;
-  height: 8rem;
   display: flex;
   align-items: center;
   flex-grow: 1;

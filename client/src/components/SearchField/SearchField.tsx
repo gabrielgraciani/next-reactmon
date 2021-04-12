@@ -23,7 +23,7 @@ const SearchField = ({
           onChange={onChange}
         />
         <Button>
-          <FiSearch />
+          <FiSearch fontSize="1.6rem" />
         </Button>
       </ContentContainer>
     </Container>

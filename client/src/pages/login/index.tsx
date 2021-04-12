@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { signIn } from 'next-auth/client';
+import { useRouter } from 'next/router';
 
 import { Input } from 'components/Input';
 import { Button } from 'components/Button';
@@ -19,6 +21,8 @@ const signInFormSchema = yup.object().shape({
 });
 
 export default function Login(): JSX.Element {
+  const { push } = useRouter();
+
   const { register, handleSubmit, formState } = useForm<ISignInFormData>({
     resolver: yupResolver(signInFormSchema),
   });
@@ -27,6 +31,20 @@ export default function Login(): JSX.Element {
 
   const handleSignIn: SubmitHandler<ISignInFormData> = async values => {
     console.log(values);
+    const { email, password } = values;
+
+    const res = await signIn('credentials', {
+      email,
+      password,
+      redirect: false,
+    });
+    console.log('res', res);
+
+    if (res?.error) {
+      alert(res?.error);
+    } else {
+      push(ApplicationRoutes.ADMIN.ROOT);
+    }
   };
 
   return (
@@ -44,6 +62,7 @@ export default function Login(): JSX.Element {
               name="email"
               type="email"
               label="Digite seu e-mail"
+              value="gabriel@hotmail.com"
               {...register('email')}
               error={errors.email}
             />
@@ -53,6 +72,7 @@ export default function Login(): JSX.Element {
               name="password"
               label="Digite sua senha"
               type="password"
+              value="teste123"
               {...register('password')}
               error={errors.password}
             />

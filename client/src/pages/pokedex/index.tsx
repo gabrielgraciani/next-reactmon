@@ -15,6 +15,7 @@ import {
   FilterContainer,
   CardsContainer,
   LoadingOrErrorContainer,
+  NoMoreRegisters,
 } from './PokedexPage.styles';
 import { IPokedexPageProps } from './PokedexPage.types';
 
@@ -95,6 +96,10 @@ export default function Pokedex({
           <LoadingOrErrorContainer>
             <Loading />
           </LoadingOrErrorContainer>
+        )}
+
+        {!hasNextPage && (
+          <NoMoreRegisters>Não há mais registros abaixo</NoMoreRegisters>
         )}
       </Container>
     </>

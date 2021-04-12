@@ -13,8 +13,9 @@ import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 import {
   Container,
   FilterContainer,
-  CardsContainer,
+  ItemsContainer,
   LoadingOrErrorContainer,
+  NoMoreRegisters,
 } from './ItemsPage.styles';
 import { IItemsPageProps } from './ItemsPage.types';
 
@@ -80,17 +81,21 @@ export default function Items({ itemsProps }: IItemsPageProps): JSX.Element {
             Ocorreu um erro ao carregar os itens. Tente novamente mais tarde
           </LoadingOrErrorContainer>
         ) : (
-          <CardsContainer>
+          <ItemsContainer>
             {data.pages.map(items =>
               items.data.map(item => <Item item={item} key={item.id} />),
             )}
-          </CardsContainer>
+          </ItemsContainer>
         )}
 
         {!isLoading && isFetching && (
           <LoadingOrErrorContainer>
             <Loading />
           </LoadingOrErrorContainer>
+        )}
+
+        {!hasNextPage && (
+          <NoMoreRegisters>Não há mais registros abaixo</NoMoreRegisters>
         )}
       </Container>
     </>

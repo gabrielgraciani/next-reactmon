@@ -4,7 +4,6 @@ import { IBannerStyledProps } from './Banner.types';
 
 const Container = styled.section<IBannerStyledProps>`
   background: url(${props => props.image});
-  min-height: 40rem;
   background-size: cover;
   padding: 10rem 5%;
   position: relative;

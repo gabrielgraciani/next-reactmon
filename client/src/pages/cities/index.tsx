@@ -13,8 +13,9 @@ import { SearchField } from 'components/SearchField';
 import {
   Container,
   FilterContainer,
-  CardsContainer,
+  CitiesContainer,
   LoadingOrErrorContainer,
+  NoMoreRegisters,
 } from './CitiesPage.styles';
 import { ICitiesPageProps } from './CitiesPage.types';
 
@@ -83,17 +84,21 @@ export default function Cities({ citiesProps }: ICitiesPageProps): JSX.Element {
             Ocorreu um erro ao carregar as cidades. Tente novamente mais tarde
           </LoadingOrErrorContainer>
         ) : (
-          <CardsContainer>
+          <CitiesContainer>
             {data.pages.map(cities =>
               cities.data.map(city => <City city={city} key={city.id} />),
             )}
-          </CardsContainer>
+          </CitiesContainer>
         )}
 
         {!isLoading && isFetching && (
           <LoadingOrErrorContainer>
             <Loading />
           </LoadingOrErrorContainer>
+        )}
+
+        {!hasNextPage && (
+          <NoMoreRegisters>Não há mais registros abaixo</NoMoreRegisters>
         )}
       </Container>
     </>

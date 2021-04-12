@@ -1,15 +1,21 @@
-import { Colors } from 'styles/colors';
 import styled from 'styled-components';
+
+import { Colors } from 'styles/colors';
+import { Breakpoints } from 'styles/breakpoints';
 
 const Container = styled.div``;
 
 const CardsContainer = styled.div`
-  width: 90%;
-  max-width: 150rem;
+  width: 100%;
+  padding: 0 5%;
   margin: 3rem auto 4rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   grid-gap: 4rem 1.6rem;
+
+  @media (max-width: ${Breakpoints.tiny}) {
+    padding: 0 2%;
+  }
 `;
 
 const CardInfos = styled.div`
