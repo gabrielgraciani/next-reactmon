@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import NextLink from 'next/link';
-import { useSession, signOut } from 'next-auth/client';
 
 import ApplicationRoutes from 'config/ApplicationRoutes';
+
+import { useAuth } from 'contexts/AuthContext';
 
 import { ActiveLink } from '../ActiveLink';
 import { Popover } from '../Popover';
@@ -25,7 +26,7 @@ import {
 } from './Header.styles';
 
 const Header = (): JSX.Element => {
-  const [session] = useSession();
+  const { user, signOut } = useAuth();
 
   const [isPopoverVisible, setIsPopoverVisible] = useState(false);
 
@@ -35,7 +36,7 @@ const Header = (): JSX.Element => {
         <NextLink href={ApplicationRoutes.ADMIN.ROOT}>
           <PopoverContentItem>Admin</PopoverContentItem>
         </NextLink>
-        <PopoverContentItem onClick={() => signOut()}>Sair</PopoverContentItem>
+        <PopoverContentItem onClick={signOut}>Sair</PopoverContentItem>
       </PopoverContent>
     );
   };
@@ -64,7 +65,7 @@ const Header = (): JSX.Element => {
           </ActiveLink>
         </Menu>
 
-        {session ? (
+        {user ? (
           <Popover
             visible={isPopoverVisible}
             content={content}

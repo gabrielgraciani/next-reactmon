@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signIn } from 'next-auth/client';
 import { useRouter } from 'next/router';
 
 import { Input } from 'components/Input';
@@ -11,6 +10,8 @@ import { Button } from 'components/Button';
 import { Form } from 'components/Form';
 
 import ApplicationRoutes from 'config/ApplicationRoutes';
+
+import { useAuth } from 'contexts/AuthContext';
 
 import { Container, Title, Text, CreateAccount } from './Login.styles';
 import { ISignInFormData } from './LoginPage.types';
@@ -22,6 +23,7 @@ const signInFormSchema = yup.object().shape({
 
 export default function Login(): JSX.Element {
   const { push } = useRouter();
+  const { signIn } = useAuth();
 
   const { register, handleSubmit, formState } = useForm<ISignInFormData>({
     resolver: yupResolver(signInFormSchema),
@@ -30,18 +32,17 @@ export default function Login(): JSX.Element {
   const { errors } = formState;
 
   const handleSignIn: SubmitHandler<ISignInFormData> = async values => {
-    const { email, password } = values;
+    try {
+      const { email, password } = values;
 
-    const res = await signIn('credentials', {
-      email,
-      password,
-      redirect: false,
-    });
+      await signIn({
+        email,
+        password,
+      });
 
-    if (res?.error) {
-      alert(res?.error);
-    } else {
-      push(ApplicationRoutes.ADMIN.ROOT);
+      push('/admin');
+    } catch (err) {
+      console.log('entrou aqui1');
     }
   };
 
