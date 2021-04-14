@@ -1,3 +1,5 @@
+import { useTransition } from 'react-spring';
+
 import { IToast } from 'interfaces/Toast';
 import Toast from './Toast';
 
@@ -8,10 +10,16 @@ interface IToastContainer {
 }
 
 const ToastContainer = ({ messages }: IToastContainer): JSX.Element => {
+  const messagesWithTransitions = useTransition(messages, {
+    from: { right: '-120%', opacity: 0 },
+    enter: { right: '0%', opacity: 1 },
+    leave: { right: '-120%', opacity: 0 },
+  });
+
   return (
     <Container>
-      {messages.map(message => (
-        <Toast message={message} key={message.id} />
+      {messagesWithTransitions((style, item) => (
+        <Toast message={item} style={style} />
       ))}
     </Container>
   );
