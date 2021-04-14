@@ -12,6 +12,7 @@ import { Form } from 'components/Form';
 import ApplicationRoutes from 'config/ApplicationRoutes';
 
 import { useAuth } from 'contexts/AuthContext';
+import { useToast } from 'contexts/ToastContext';
 
 import { Container, Title, Text, CreateAccount } from './Login.styles';
 import { ISignInFormData } from './LoginPage.types';
@@ -24,6 +25,7 @@ const signInFormSchema = yup.object().shape({
 export default function Login(): JSX.Element {
   const { push } = useRouter();
   const { signIn } = useAuth();
+  const { addToast } = useToast();
 
   const { register, handleSubmit, formState } = useForm<ISignInFormData>({
     resolver: yupResolver(signInFormSchema),
@@ -42,7 +44,11 @@ export default function Login(): JSX.Element {
 
       push('/admin');
     } catch (err) {
-      console.log('entrou aqui1');
+      addToast({
+        type: 'error',
+        title: 'Erro na autenticação',
+        description: 'deu erro ai em',
+      });
     }
   };
 

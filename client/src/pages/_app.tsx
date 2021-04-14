@@ -9,7 +9,8 @@ import 'nprogress/nprogress.css';
 
 import { Header } from 'components/Header';
 import { HeaderAdmin } from 'components/HeaderAdmin';
-import { AuthProvider } from 'contexts/AuthContext';
+
+import AppProvider from 'contexts';
 
 NProgress.configure({
   speed: 800,
@@ -30,7 +31,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
   const showDefaultHeader = !asPath.startsWith('/admin');
   return (
-    <AuthProvider>
+    <AppProvider>
       <QueryClientProvider client={queryClientRef.current}>
         {showDefaultHeader ? <Header /> : <HeaderAdmin />}
         <Component {...pageProps} />
@@ -38,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
         <ReactQueryDevtools />
       </QueryClientProvider>
-    </AuthProvider>
+    </AppProvider>
   );
 }
 
