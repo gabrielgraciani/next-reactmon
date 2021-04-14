@@ -3,12 +3,18 @@ import Head from 'next/head';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from 'next/router';
 
 import { Input } from 'components/Input';
 import { Button } from 'components/Button';
 import { Form } from 'components/Form';
 
 import ApplicationRoutes from 'config/ApplicationRoutes';
+
+import { useToast } from 'contexts/ToastContext';
+import { useAuth } from 'contexts/AuthContext';
+
+import { api } from 'services/api';
 
 import { Container, Title, Text, CreateAccount } from './RegisterPage.styles';
 import { IRegisterFormData } from './RegisterPage.types';
@@ -26,6 +32,10 @@ const registerFormSchema = yup.object().shape({
 });
 
 export default function Register(): JSX.Element {
+  const { addToast } = useToast();
+  const { signIn } = useAuth();
+  const { push } = useRouter();
+
   const { register, handleSubmit, formState } = useForm<IRegisterFormData>({
     resolver: yupResolver(registerFormSchema),
   });
@@ -33,7 +43,23 @@ export default function Register(): JSX.Element {
   const { errors } = formState;
 
   const handleRegister: SubmitHandler<IRegisterFormData> = async values => {
-    console.log(values);
+    try {
+      const { email, password, name } = values;
+      await api.post('users', {
+        email,
+        password,
+        name,
+      });
+
+      await signIn({ email, password });
+      push(ApplicationRoutes.ADMIN.ROOT);
+    } catch (err) {
+      addToast({
+        type: 'error',
+        title: 'Erro no registro',
+        description: 'Tente novamente mais tarde',
+      });
+    }
   };
   return (
     <>

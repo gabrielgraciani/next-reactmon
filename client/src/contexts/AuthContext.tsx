@@ -9,35 +9,32 @@ import Cookies from 'js-cookie';
 
 import { api } from 'services/api';
 
-interface IUser {
-  name: string;
-  email: string;
-}
+import { IUser } from 'interfaces/User';
 
-interface ISignInCredentials {
+interface ISignInCredentialsProps {
   email: string;
   password: string;
 }
 
-interface IAuthContext {
+interface IAuthContextProps {
   user: IUser;
-  signIn(credentials: ISignInCredentials): Promise<void>;
+  signIn(credentials: ISignInCredentialsProps): Promise<void>;
   signOut(): void;
 }
 
-interface IAuthProvider {
+interface IAuthProviderProps {
   children: ReactNode;
 }
 
-interface IAuthState {
+interface IAuthStateProps {
   token: string;
   user: IUser;
 }
 
-const AuthContext = createContext<IAuthContext>({} as IAuthContext);
+const AuthContext = createContext<IAuthContextProps>({} as IAuthContextProps);
 
-const AuthProvider = ({ children }: IAuthProvider): JSX.Element => {
-  const [data, setData] = useState<IAuthState>(() => {
+const AuthProvider = ({ children }: IAuthProviderProps): JSX.Element => {
+  const [data, setData] = useState<IAuthStateProps>(() => {
     const token = Cookies.get('@Reactmon:token');
     const user = Cookies.get('@Reactmon:user');
 
@@ -46,7 +43,7 @@ const AuthProvider = ({ children }: IAuthProvider): JSX.Element => {
       return { token, user: JSON.parse(user) };
     }
 
-    return {} as IAuthState;
+    return {} as IAuthStateProps;
   });
 
   const signIn = useCallback(async ({ email, password }) => {
@@ -71,7 +68,7 @@ const AuthProvider = ({ children }: IAuthProvider): JSX.Element => {
 
     api.defaults.headers.authorization = '';
 
-    setData({} as IAuthState);
+    setData({} as IAuthStateProps);
   }, []);
 
   return (
@@ -81,7 +78,7 @@ const AuthProvider = ({ children }: IAuthProvider): JSX.Element => {
   );
 };
 
-function useAuth(): IAuthContext {
+function useAuth(): IAuthContextProps {
   const context = useContext(AuthContext);
 
   if (!context) {

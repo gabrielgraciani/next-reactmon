@@ -1,6 +1,6 @@
 export interface IToast {
   id: string;
-  type?: 'success' | 'error' | 'info';
+  type?: 'success' | 'error';
   title: string;
   description?: string;
 }

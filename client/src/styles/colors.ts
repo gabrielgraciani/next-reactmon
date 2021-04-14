@@ -16,6 +16,10 @@ export enum Colors {
   lightBlue = '#90cac9',
   blue = '#1890ff',
   red = '#f44336',
+  lightGreen = '#C6F6D5',
+  mediumGreen = '#2F855A',
+  lightRed = '#FED7D7',
+  mediumRed = '#C53030',
 
   // pokemons colors
   grass = '#6e7f0e',

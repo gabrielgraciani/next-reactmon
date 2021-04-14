@@ -9,18 +9,20 @@ import { v4 as uuid } from 'uuid';
 import { IToast } from 'interfaces/Toast';
 import { ToastContainer } from '../components/ToastContainer';
 
-interface IToastContextData {
+interface IToastContextProps {
   addToast(message: Omit<IToast, 'id'>): void;
   removeToast(id: string): void;
 }
 
-interface IToastProvider {
+interface IToastProviderProps {
   children: ReactNode;
 }
 
-const ToastContext = createContext<IToastContextData>({} as IToastContextData);
+const ToastContext = createContext<IToastContextProps>(
+  {} as IToastContextProps,
+);
 
-const ToastProvider = ({ children }: IToastProvider): JSX.Element => {
+const ToastProvider = ({ children }: IToastProviderProps): JSX.Element => {
   const [messages, setMessages] = useState<IToast[]>([]);
 
   const addToast = useCallback(
@@ -53,7 +55,7 @@ const ToastProvider = ({ children }: IToastProvider): JSX.Element => {
   );
 };
 
-function useToast(): IToastContextData {
+function useToast(): IToastContextProps {
   const context = useContext(ToastContext);
 
   if (!context) {

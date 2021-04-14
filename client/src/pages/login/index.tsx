@@ -42,12 +42,12 @@ export default function Login(): JSX.Element {
         password,
       });
 
-      push('/admin');
+      push(ApplicationRoutes.ADMIN.ROOT);
     } catch (err) {
       addToast({
         type: 'error',
         title: 'Erro na autenticação',
-        description: 'deu erro ai em',
+        description: 'Tente novamente mais tarde',
       });
     }
   };

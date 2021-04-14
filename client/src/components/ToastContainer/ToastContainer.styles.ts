@@ -1,22 +1,19 @@
 import styled, { css } from 'styled-components';
 import { animated } from 'react-spring';
 
-interface IToastProps {
-  type?: 'success' | 'error' | 'info';
-}
+import { Colors } from 'styles/colors';
+import { Breakpoints } from '../../styles/breakpoints';
+
+import { IToastStyledProps } from './Toast.types';
 
 const toastTypeVariations = {
-  info: css`
-    background: #ebf8ff;
-    color: #3172b7;
-  `,
   success: css`
-    background: #e6fffa;
-    color: #2e656a;
+    background: ${Colors.lightGreen};
+    color: ${Colors.mediumGreen};
   `,
   error: css`
-    background: #fddede;
-    color: #c53030;
+    background: ${Colors.lightRed};
+    color: ${Colors.mediumRed};
   `,
 };
 
@@ -24,49 +21,49 @@ const Container = styled.div`
   position: absolute;
   right: 0;
   top: 0;
-  padding: 30px;
+  padding: 3rem;
   overflow: hidden;
 `;
 
-const ToastContainer = styled(animated.div)<IToastProps>`
-  width: 360px;
+const ToastContainer = styled(animated.div)<IToastStyledProps>`
+  width: 30rem;
   position: relative;
-  padding: 16px 30px 16px 16px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-
+  padding: 1.5rem;
+  border-radius: 1rem;
   display: flex;
+  align-items: center;
 
-  ${props => toastTypeVariations[props.type || 'info']}
-
-  > svg {
-    margin: 4px 12px 00;
-  }
-
-  div {
-    flex: 1;
-
-    p {
-      margin-top: 4px;
-      font-size: 12px;
-      opacity: 0.8;
-      line-height: 20px;
-    }
-  }
-
-  button {
-    position: absolute;
-    right: 16px;
-    right: 19px;
-    opacity: 0.6;
-    border: 0;
-    background: transparent;
-    color: inherit;
-  }
+  ${props => toastTypeVariations[props.type || 'success']}
 
   & + div {
-    margin-top: 8px;
+    margin-top: 0.8rem;
+  }
+
+  @media (max-width: ${Breakpoints.tiny}) {
+    width: 24rem;
   }
 `;
 
-export { Container, ToastContainer };
+const InfoContainer = styled.div`
+  margin: 0 1.2rem;
+  width: fit-content;
+`;
+
+const Title = styled.h4`
+  color: inherit;
+`;
+
+const Description = styled.span``;
+
+const Button = styled.button`
+  display: flex;
+  opacity: 0.7;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+`;
+
+export { Container, ToastContainer, InfoContainer, Title, Description, Button };
