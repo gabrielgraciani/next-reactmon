@@ -35,8 +35,8 @@ const AuthContext = createContext<IAuthContextProps>({} as IAuthContextProps);
 
 const AuthProvider = ({ children }: IAuthProviderProps): JSX.Element => {
   const [data, setData] = useState<IAuthStateProps>(() => {
-    const token = Cookies.get('@Reactmon:token');
-    const user = Cookies.get('@Reactmon:user');
+    const token = Cookies.get('reactmon_token');
+    const user = Cookies.get('reactmon_user');
 
     if (token && user) {
       api.defaults.headers.authorization = `Bearer ${token}`;
@@ -54,8 +54,12 @@ const AuthProvider = ({ children }: IAuthProviderProps): JSX.Element => {
 
     const { token, user } = response.data;
 
-    Cookies.set('@Reactmon:token', token);
-    Cookies.set('@Reactmon:user', JSON.stringify(user));
+    Cookies.set('reactmon_token', token, {
+      expires: 1,
+    });
+    Cookies.set('reactmon_user', JSON.stringify(user), {
+      expires: 1,
+    });
 
     api.defaults.headers.authorization = `Bearer ${token}`;
 
@@ -63,8 +67,8 @@ const AuthProvider = ({ children }: IAuthProviderProps): JSX.Element => {
   }, []);
 
   const signOut = useCallback(() => {
-    Cookies.remove('@Reactmon:token');
-    Cookies.remove('@Reactmon:user');
+    Cookies.remove('reactmon_token');
+    Cookies.remove('reactmon_user');
 
     api.defaults.headers.authorization = '';
 

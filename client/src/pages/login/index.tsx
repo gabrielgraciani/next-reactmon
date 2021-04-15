@@ -14,6 +14,7 @@ import ApplicationRoutes from 'config/ApplicationRoutes';
 import { useAuth } from 'contexts/AuthContext';
 import { useToast } from 'contexts/ToastContext';
 
+import { GetServerSideProps } from 'next';
 import { Container, Title, Text, CreateAccount } from './Login.styles';
 import { ISignInFormData } from './LoginPage.types';
 
@@ -96,3 +97,20 @@ export default function Login(): JSX.Element {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const { reactmon_token, reactmon_user } = req.cookies;
+
+  if (reactmon_token && reactmon_user) {
+    return {
+      redirect: {
+        destination: ApplicationRoutes.ADMIN.ROOT,
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};

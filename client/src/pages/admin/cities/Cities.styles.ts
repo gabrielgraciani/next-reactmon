@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Button } from 'antd';
 
 const Container = styled.div`
   width: 100%;
@@ -19,8 +18,4 @@ const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 
-const StyledButton = styled(Button)`
-  margin-bottom: 2rem;
-`;
-
-export { Container, Title, ButtonsContainer, StyledButton };
+export { Container, Title, ButtonsContainer };
