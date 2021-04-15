@@ -1,20 +1,33 @@
-import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
+import React, { ElementType, ComponentType, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 import ApplicationRoutes from 'config/ApplicationRoutes';
 
-export const withAuth: GetServerSideProps = async ({ req }) => {
-  const { reactmon_token, reactmon_user } = req.cookies;
+export function withAuth(WrappedComponent: ElementType): ElementType {
+  const Wrapper = (props: unknown) => {
+    const router = useRouter();
 
-  if (!reactmon_token && !reactmon_user) {
-    return {
-      redirect: {
-        destination: ApplicationRoutes.LOGIN,
-        permanent: false,
-      },
-    };
-  }
+    const token = Cookies.get('reactmon_token');
+    const user = Cookies.get('reactmon_user');
 
-  return {
-    props: {},
+    const hasSession = token && user;
+
+    useEffect(() => {
+      if (hasSession && router.asPath === ApplicationRoutes.LOGIN) {
+        router.push(ApplicationRoutes.ADMIN.ROOT);
+      }
+
+      if (
+        !hasSession &&
+        router.asPath.startsWith(ApplicationRoutes.ADMIN.ROOT)
+      ) {
+        router.push(ApplicationRoutes.LOGIN);
+      }
+    }, [router, hasSession]);
+
+    return <WrappedComponent {...props} />;
   };
-};
+
+  return Wrapper;
+}

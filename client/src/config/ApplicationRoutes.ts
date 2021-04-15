@@ -6,7 +6,7 @@ const ApplicationRoutes = {
   LOGIN: '/login',
   REGISTER: '/register',
   ADMIN: {
-    ROOT: '/admin/pokemons',
+    ROOT: '/admin',
     ITEMS: '/admin/items',
     CITIES: {
       LIST: '/admin/cities',

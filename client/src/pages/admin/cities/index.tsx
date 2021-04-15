@@ -1,5 +1,3 @@
-import { withAuth } from 'helpers/withAuth';
-
 import { Container, Title, ButtonsContainer } from './Cities.styles';
 
 export default function CitiesList(): JSX.Element {
@@ -11,5 +9,3 @@ export default function CitiesList(): JSX.Element {
     </Container>
   );
 }
-
-export const getServerSideProps = withAuth;

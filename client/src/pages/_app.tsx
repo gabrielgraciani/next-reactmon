@@ -12,6 +12,8 @@ import { HeaderAdmin } from 'components/HeaderAdmin';
 
 import AppProvider from 'contexts';
 
+import { withAuth } from 'helpers/withAuth';
+
 NProgress.configure({
   speed: 800,
   showSpinner: false,
@@ -43,4 +45,4 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   );
 }
 
-export default MyApp;
+export default withAuth(MyApp);
