@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { ElementType, ComponentType, useEffect } from 'react';
+import React, { ElementType, useEffect } from 'react';
 import Cookies from 'js-cookie';
 
 import ApplicationRoutes from 'config/ApplicationRoutes';
