@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Colors } from 'styles/colors';
+
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -18,4 +20,13 @@ const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 
-export { Container, Title, ButtonsContainer };
+const LoadingOrErrorContainer = styled.div`
+  margin: 3rem auto 4rem;
+  text-align: center;
+  color: ${Colors.red};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export { Container, Title, ButtonsContainer, LoadingOrErrorContainer };

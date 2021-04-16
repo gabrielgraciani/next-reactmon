@@ -3,7 +3,10 @@ import { BiFemaleSign, BiMaleSign } from 'react-icons/bi';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 
-import { usePokemonsFeatured, fetchPokemon } from 'hooks/usePokemonId';
+import {
+  usePokemonsFeatured,
+  fetchPokemon,
+} from 'hooks/reactQuery/usePokemonId';
 
 import { formatWeight } from 'helpers/formatWeight';
 import { formatHeight } from 'helpers/formatHeight';

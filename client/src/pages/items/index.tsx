@@ -7,7 +7,10 @@ import { Item } from 'components/Item';
 import { SearchField } from 'components/SearchField';
 import { Loading } from 'components/Loading';
 
-import { fetchItems, useInfiniteItems } from 'hooks/useInfiniteItems';
+import {
+  fetchItems,
+  useInfiniteItems,
+} from 'hooks/reactQuery/useInfiniteItems';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
 import {

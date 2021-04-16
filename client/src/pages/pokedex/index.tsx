@@ -7,7 +7,10 @@ import { Banner } from 'components/Banner';
 import { SearchField } from 'components/SearchField';
 import { Loading } from 'components/Loading';
 
-import { useInfinitePokemons, fetchPokemons } from 'hooks/useInfinitePokemons';
+import {
+  useInfinitePokemons,
+  fetchPokemons,
+} from 'hooks/reactQuery/useInfinitePokemons';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
 import {

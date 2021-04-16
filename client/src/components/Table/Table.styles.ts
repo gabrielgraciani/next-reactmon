@@ -12,7 +12,13 @@ const THead = styled.thead``;
 
 const TBody = styled.tbody``;
 
-const Tr = styled.tr``;
+const Tr = styled.tr`
+  border-bottom: 0.1rem solid ${Colors.gray};
+
+  &:last-child {
+    border-bottom: 0;
+  }
+`;
 
 const Th = styled.th`
   border-bottom: 0.1rem solid ${Colors.gray};
@@ -21,7 +27,6 @@ const Th = styled.th`
 `;
 
 const Td = styled.td`
-  border-bottom: 0.1rem solid ${Colors.gray};
   padding: 1.6rem;
 `;
 

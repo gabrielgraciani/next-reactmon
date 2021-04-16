@@ -11,7 +11,7 @@ const ApplicationRoutes = {
     CITIES: {
       LIST: '/admin/cities',
       CREATE: '/admin/cities/create',
-      EDIT: '/admin/cities',
+      EDIT: '/admin/cities/edit',
     },
   },
 };

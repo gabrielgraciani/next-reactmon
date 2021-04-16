@@ -6,7 +6,10 @@ import { Banner } from 'components/Banner';
 import { City } from 'components/City';
 import { Loading } from 'components/Loading';
 
-import { fetchCities, useInfiniteCities } from 'hooks/useInfiniteCities';
+import {
+  fetchCities,
+  useInfiniteCities,
+} from 'hooks/reactQuery/useInfiniteCities';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
 import { SearchField } from 'components/SearchField';
