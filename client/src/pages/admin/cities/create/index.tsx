@@ -27,13 +27,6 @@ import { ICreateCityFormData } from './CreateCityAdminPage.types';
 const createCityFormSchema = yup.object().shape({
   name: yup.string().required('Nome obrigatório'),
   description: yup.string().required('Descrição obrigatória'),
-  image: yup
-    .mixed()
-    .required()
-    .test('isNullable', 'Imagem obrigatória', value => {
-      if (!value.length) return false;
-      return true;
-    }),
 });
 
 export default function CreateCity(): JSX.Element {
@@ -106,12 +99,7 @@ export default function CreateCity(): JSX.Element {
             />
           </Form.FormItem>
           <Form.FormItem>
-            <Input
-              type="file"
-              name="image"
-              {...register('image')}
-              error={errors.image}
-            />
+            <Input type="file" name="image" {...register('image')} />
           </Form.FormItem>
 
           <Form.FormItem>

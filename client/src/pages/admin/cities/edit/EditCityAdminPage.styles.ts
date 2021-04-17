@@ -26,4 +26,27 @@ const StyledLink = styled.a`
   border-radius: 0.4rem;
 `;
 
-export { Container, Title, HeaderContainer, StyledLink };
+const LoadingOrErrorContainer = styled.div`
+  margin: 3rem auto 4rem;
+  text-align: center;
+  color: ${Colors.red};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 25rem;
+  object-fit: cover;
+  border-radius: 0.4rem;
+`;
+
+export {
+  Container,
+  Title,
+  HeaderContainer,
+  StyledLink,
+  LoadingOrErrorContainer,
+  Image,
+};

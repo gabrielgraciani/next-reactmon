@@ -4,7 +4,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 
 import {
-  usePokemonsFeatured,
+  usePokemonId,
   fetchPokemon,
 } from 'hooks/reactQuery/pokemons/usePokemonId';
 
@@ -36,7 +36,7 @@ export default function Pokemon({
 }: IPokemonPageProps): JSX.Element {
   const router = useRouter();
 
-  const { data: pokemon } = usePokemonsFeatured({
+  const { data: pokemon } = usePokemonId({
     id,
     initialData: pokemonProps,
   });

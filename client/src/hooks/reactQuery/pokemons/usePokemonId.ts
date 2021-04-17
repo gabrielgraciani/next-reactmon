@@ -19,7 +19,7 @@ export async function fetchPokemon({
   return data;
 }
 
-export function usePokemonsFeatured({
+export function usePokemonId({
   initialData,
   id,
 }: IUsePokemonIdProps): UseQueryResult<IPokemon, unknown> {
