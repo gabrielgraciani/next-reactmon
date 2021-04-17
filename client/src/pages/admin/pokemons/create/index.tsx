@@ -10,53 +10,58 @@ import { ApplicationRoutes } from 'config/ApplicationRoutes';
 import { Form } from 'components/Form';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
-import { Textarea } from 'components/Textarea';
 
 import { useToast } from 'contexts/ToastContext';
 
-import { useCreateCity } from 'hooks/reactQuery/cities/useCreateCity';
+import { useCreatePokemon } from 'hooks/reactQuery/pokemons/useCreatePokemon';
 
 import {
   Container,
   Title,
   HeaderContainer,
   StyledLink,
-} from './CreateCityAdminPage.styles';
-import { ICreateCityFormData } from './CreateCityAdminPage.types';
+} from './CreatePokemonAdminPage.styles';
+import { ICreatePokemonFormData } from './CreatePokemonAdminPage.types';
 
-const createCityFormSchema = yup.object().shape({
+const createPokemonFormSchema = yup.object().shape({
   name: yup.string().required('Nome obrigatório'),
-  description: yup.string().required('Descrição obrigatória'),
+  weight: yup.string().required('Peso obrigatório'),
+  height: yup.string().required('Altura obrigatória'),
 });
 
-export default function CreateCity(): JSX.Element {
+export default function CreatePokemon(): JSX.Element {
   const { addToast } = useToast();
   const router = useRouter();
-  const { mutateAsync } = useCreateCity();
+  const { mutateAsync } = useCreatePokemon();
 
-  const { register, handleSubmit, formState } = useForm<ICreateCityFormData>({
-    resolver: yupResolver(createCityFormSchema),
-  });
+  const { register, handleSubmit, formState } = useForm<ICreatePokemonFormData>(
+    {
+      resolver: yupResolver(createPokemonFormSchema),
+    },
+  );
 
   const { errors } = formState;
 
-  const handleCreateCity: SubmitHandler<ICreateCityFormData> = async values => {
+  const handleCreatePokemon: SubmitHandler<ICreatePokemonFormData> = async values => {
     try {
       const formData = new FormData();
 
-      const { name, description, image } = values;
+      const { name, weight, height, types, weakness, image } = values;
 
       formData.append('name', name);
-      formData.append('description', description);
+      formData.append('weight', weight);
+      formData.append('height', height);
+      formData.append('types', types);
+      formData.append('weakness', weakness);
       formData.append('image', image[0]);
       await mutateAsync({ data: formData });
 
       addToast({
         type: 'success',
-        title: 'Cidade criada com sucesso',
+        title: 'Pokemon criado com sucesso',
       });
 
-      router.push(ApplicationRoutes.ADMIN.CITIES.LIST);
+      router.push(ApplicationRoutes.ADMIN.POKEMONS.LIST);
     } catch (err) {
       addToast({
         type: 'error',
@@ -69,35 +74,44 @@ export default function CreateCity(): JSX.Element {
   return (
     <>
       <Head>
-        <title>Criar Cidade | Reactmon</title>
+        <title>Criar Pokemon | Reactmon</title>
       </Head>
 
       <Container>
-        <Title>Crie uma nova cidade</Title>
+        <Title>Crie um novo pokemon</Title>
 
         <HeaderContainer>
-          <Link href={ApplicationRoutes.ADMIN.CITIES.LIST}>
+          <Link href={ApplicationRoutes.ADMIN.POKEMONS.LIST}>
             <StyledLink>Voltar</StyledLink>
           </Link>
         </HeaderContainer>
 
-        <Form onSubmit={handleSubmit(handleCreateCity)}>
+        <Form onSubmit={handleSubmit(handleCreatePokemon)}>
           <Form.FormItem>
             <Input
               name="name"
-              label="Digite o nome da cidade"
+              label="Digite o nome do pokemon"
               {...register('name')}
               error={errors.name}
             />
           </Form.FormItem>
           <Form.FormItem>
-            <Textarea
-              name="description"
-              label="Digite a descrição da cidade"
-              {...register('description')}
-              error={errors.description}
+            <Input
+              name="weight"
+              label="Digite o peso do pokemon"
+              {...register('weight')}
+              error={errors.weight}
             />
           </Form.FormItem>
+          <Form.FormItem>
+            <Input
+              name="height"
+              label="Digite a altura do pokemon"
+              {...register('height')}
+              error={errors.height}
+            />
+          </Form.FormItem>
+
           <Form.FormItem>
             <Input type="file" name="image" {...register('image')} />
           </Form.FormItem>
