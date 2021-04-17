@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 
 interface IColumn {
   title: string;
-  key: string;
 }
 
 export interface ITableProps {
