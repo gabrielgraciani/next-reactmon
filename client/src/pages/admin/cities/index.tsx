@@ -7,8 +7,7 @@ import { Table } from 'components/Table';
 import { Loading } from 'components/Loading';
 
 import { usePaginatedCities } from 'hooks/reactQuery/usePaginatedCities';
-
-import { api } from 'services/api';
+import { useDeleteCity } from 'hooks/reactQuery/useDeleteCity';
 
 import { Pagination } from 'components/Pagination';
 import { ApplicationRoutes } from 'config/ApplicationRoutes';
@@ -23,6 +22,7 @@ import {
 export default function CitiesList(): JSX.Element {
   const [page, setPage] = useState(1);
   const router = useRouter();
+  const { mutateAsync } = useDeleteCity();
 
   const { data, isLoading, error, isFetching } = usePaginatedCities({ page });
 
@@ -46,8 +46,7 @@ export default function CitiesList(): JSX.Element {
   ];
 
   const handleDeleteCity = async (id: string) => {
-    const teste = await api.delete(`cities/${id}`);
-    console.log('teste', teste);
+    await mutateAsync({ id });
   };
 
   return (
@@ -76,22 +75,22 @@ export default function CitiesList(): JSX.Element {
         ) : (
           <>
             <Table columns={columns} isAdmin>
-              {data.cities.map(item => (
-                <Table.Tr key={item.id}>
-                  <Table.Td>{item.id}</Table.Td>
-                  <Table.Td>{item.name}</Table.Td>
-                  <Table.Td>{item.description}</Table.Td>
+              {data.cities.map(city => (
+                <Table.Tr key={city.id}>
+                  <Table.Td>{city.id}</Table.Td>
+                  <Table.Td>{city.name}</Table.Td>
+                  <Table.Td>{city.description}</Table.Td>
                   <Table.Td>
                     <Table.Image
-                      src={`${process.env.NEXT_PUBLIC_API_URL}/files/${item.image}`}
-                      alt={item.name}
+                      src={`${process.env.NEXT_PUBLIC_API_URL}/files/${city.image}`}
+                      alt={city.name}
                     />
                   </Table.Td>
                   <Table.Td>
                     <Table.TdContainer
                       onClick={() => {
                         router.push(
-                          `${ApplicationRoutes.ADMIN.CITIES.EDIT}/${item.id}`,
+                          `${ApplicationRoutes.ADMIN.CITIES.EDIT}/${city.id}`,
                         );
                       }}
                     >
@@ -100,7 +99,7 @@ export default function CitiesList(): JSX.Element {
                   </Table.Td>
                   <Table.Td>
                     <Table.TdContainer
-                      onClick={() => handleDeleteCity(item.id)}
+                      onClick={() => handleDeleteCity(city.id)}
                     >
                       <Table.RemoveIcon /> Remover
                     </Table.TdContainer>
