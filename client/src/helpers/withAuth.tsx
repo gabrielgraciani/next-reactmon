@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React, { ElementType, useEffect } from 'react';
 import Cookies from 'js-cookie';
 
-import { ApplicationRoutes }  from 'config/ApplicationRoutes';
+import { ApplicationRoutes } from 'config/ApplicationRoutes';
 
 export function withAuth(WrappedComponent: ElementType): ElementType {
   const Wrapper = (props: unknown) => {

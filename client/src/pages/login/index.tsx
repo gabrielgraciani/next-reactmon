@@ -9,7 +9,7 @@ import { Input } from 'components/Input';
 import { Button } from 'components/Button';
 import { Form } from 'components/Form';
 
-import { ApplicationRoutes }  from 'config/ApplicationRoutes';
+import { ApplicationRoutes } from 'config/ApplicationRoutes';
 
 import { useAuth } from 'contexts/AuthContext';
 import { useToast } from 'contexts/ToastContext';

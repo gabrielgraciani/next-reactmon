@@ -8,7 +8,7 @@ import { Loading } from 'components/Loading';
 import { usePaginatedCities } from 'hooks/reactQuery/usePaginatedCities';
 
 import { Pagination } from 'components/Pagination';
-import { ApplicationRoutes } from 'config/ApplicationRoutes';
+import { ApplicationRoutes }from 'config/ApplicationRoutes';
 import {
   Container,
   Title,
