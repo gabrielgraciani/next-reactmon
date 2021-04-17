@@ -13,7 +13,7 @@ const Title = styled.h1`
   margin: 5rem 0 3rem;
 `;
 
-const ButtonsContainer = styled.div`
+const HeaderContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
@@ -38,7 +38,7 @@ const LoadingOrErrorContainer = styled.div`
 export {
   Container,
   Title,
-  ButtonsContainer,
+  HeaderContainer,
   StyledLink,
   LoadingOrErrorContainer,
 };

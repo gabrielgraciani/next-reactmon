@@ -12,10 +12,10 @@ import { ApplicationRoutes } from 'config/ApplicationRoutes';
 import {
   Container,
   Title,
-  ButtonsContainer,
+  HeaderContainer,
   LoadingOrErrorContainer,
   StyledLink,
-} from './Cities.styles';
+} from './CitiesAdminPage.styles';
 
 export default function CitiesList(): JSX.Element {
   const [page, setPage] = useState(1);
@@ -44,13 +44,13 @@ export default function CitiesList(): JSX.Element {
 
   return (
     <Container>
-      <ButtonsContainer>
+      <HeaderContainer>
         <Title>Lista de cidades</Title>
 
         <Link href={ApplicationRoutes.ADMIN.CITIES.CREATE}>
           <StyledLink>Criar uma cidade</StyledLink>
         </Link>
-      </ButtonsContainer>
+      </HeaderContainer>
 
       {isLoading ? (
         <LoadingOrErrorContainer>

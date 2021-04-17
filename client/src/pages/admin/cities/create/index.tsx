@@ -7,18 +7,23 @@ import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { Textarea } from 'components/Textarea';
 
-import { Container, Title, ButtonsContainer } from './Cities.styles';
+import {
+  Container,
+  Title,
+  HeaderContainer,
+  StyledLink,
+} from './CreateCityAdminPage.styles';
 
 export default function CreateCity(): JSX.Element {
   return (
     <Container>
       <Title>Crie uma nova cidade</Title>
 
-      <ButtonsContainer>
+      <HeaderContainer>
         <Link href={ApplicationRoutes.ADMIN.CITIES.LIST}>
-          <a>Voltar</a>
+          <StyledLink>Voltar</StyledLink>
         </Link>
-      </ButtonsContainer>
+      </HeaderContainer>
 
       <Form>
         <Form.FormItem>
