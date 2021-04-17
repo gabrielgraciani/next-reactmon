@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -7,8 +8,10 @@ import { Loading } from 'components/Loading';
 
 import { usePaginatedCities } from 'hooks/reactQuery/usePaginatedCities';
 
+import { api } from 'services/api';
+
 import { Pagination } from 'components/Pagination';
-import { ApplicationRoutes }from 'config/ApplicationRoutes';
+import { ApplicationRoutes } from 'config/ApplicationRoutes';
 import {
   Container,
   Title,
@@ -42,75 +45,84 @@ export default function CitiesList(): JSX.Element {
     },
   ];
 
+  const handleDeleteCity = async (id: string) => {
+    const teste = await api.delete(`cities/${id}`);
+    console.log('teste', teste);
+  };
+
   return (
-    <Container>
-      <HeaderContainer>
-        <Title>Lista de cidades</Title>
+    <>
+      <Head>
+        <title>Listagem de Cidades | Reactmon</title>
+      </Head>
 
-        <Link href={ApplicationRoutes.ADMIN.CITIES.CREATE}>
-          <StyledLink>Criar uma cidade</StyledLink>
-        </Link>
-      </HeaderContainer>
+      <Container>
+        <HeaderContainer>
+          <Title>Lista de cidades</Title>
 
-      {isLoading ? (
-        <LoadingOrErrorContainer>
-          <Loading />
-        </LoadingOrErrorContainer>
-      ) : error ? (
-        <LoadingOrErrorContainer>
-          Ocorreu um erro ao carregar as cidades. Tente novamente mais tarde
-        </LoadingOrErrorContainer>
-      ) : (
-        <>
-          <Table columns={columns} isAdmin>
-            {data.cities.map(item => (
-              <Table.Tr key={item.id}>
-                <Table.Td>{item.id}</Table.Td>
-                <Table.Td>{item.name}</Table.Td>
-                <Table.Td>{item.description}</Table.Td>
-                <Table.Td>
-                  <Table.Image
-                    src={`${process.env.NEXT_PUBLIC_API_URL}/files/${item.image}`}
-                    alt={item.name}
-                  />
-                </Table.Td>
-                <Table.Td>
-                  <Table.TdContainer
-                    onClick={() => {
-                      router.push(
-                        `${ApplicationRoutes.ADMIN.CITIES.EDIT}/${item.id}`,
-                      );
-                    }}
-                  >
-                    <Table.EditIcon /> Editar
-                  </Table.TdContainer>
-                </Table.Td>
-                <Table.Td>
-                  <Table.TdContainer
-                    onClick={() => {
-                      console.log('remover');
-                    }}
-                  >
-                    <Table.RemoveIcon /> Remover
-                  </Table.TdContainer>
-                </Table.Td>
-              </Table.Tr>
-            ))}
-          </Table>
+          <Link href={ApplicationRoutes.ADMIN.CITIES.CREATE}>
+            <StyledLink>Criar uma cidade</StyledLink>
+          </Link>
+        </HeaderContainer>
 
-          <Pagination
-            totalCountOfRegisters={data.totalCount}
-            currentPage={page}
-            onPageChange={setPage}
-          />
-        </>
-      )}
+        {isLoading ? (
+          <LoadingOrErrorContainer>
+            <Loading />
+          </LoadingOrErrorContainer>
+        ) : error ? (
+          <LoadingOrErrorContainer>
+            Ocorreu um erro ao carregar as cidades. Tente novamente mais tarde
+          </LoadingOrErrorContainer>
+        ) : (
+          <>
+            <Table columns={columns} isAdmin>
+              {data.cities.map(item => (
+                <Table.Tr key={item.id}>
+                  <Table.Td>{item.id}</Table.Td>
+                  <Table.Td>{item.name}</Table.Td>
+                  <Table.Td>{item.description}</Table.Td>
+                  <Table.Td>
+                    <Table.Image
+                      src={`${process.env.NEXT_PUBLIC_API_URL}/files/${item.image}`}
+                      alt={item.name}
+                    />
+                  </Table.Td>
+                  <Table.Td>
+                    <Table.TdContainer
+                      onClick={() => {
+                        router.push(
+                          `${ApplicationRoutes.ADMIN.CITIES.EDIT}/${item.id}`,
+                        );
+                      }}
+                    >
+                      <Table.EditIcon /> Editar
+                    </Table.TdContainer>
+                  </Table.Td>
+                  <Table.Td>
+                    <Table.TdContainer
+                      onClick={() => handleDeleteCity(item.id)}
+                    >
+                      <Table.RemoveIcon /> Remover
+                    </Table.TdContainer>
+                  </Table.Td>
+                </Table.Tr>
+              ))}
+            </Table>
 
-      {!isLoading && isFetching && (
-        <LoadingOrErrorContainer>
-          <Loading />
-        </LoadingOrErrorContainer>
-      )}
-    </Container>
+            <Pagination
+              totalCountOfRegisters={data.totalCount}
+              currentPage={page}
+              onPageChange={setPage}
+            />
+          </>
+        )}
+
+        {!isLoading && isFetching && (
+          <LoadingOrErrorContainer>
+            <Loading />
+          </LoadingOrErrorContainer>
+        )}
+      </Container>
+    </>
   );
 }

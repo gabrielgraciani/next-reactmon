@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import * as yup from 'yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -13,7 +14,7 @@ import { Textarea } from 'components/Textarea';
 
 import { useToast } from 'contexts/ToastContext';
 
-import { api } from 'services/api';
+import { useCreateCity } from 'hooks/reactQuery/useCreateCity';
 
 import {
   Container,
@@ -38,6 +39,7 @@ const createCityFormSchema = yup.object().shape({
 export default function CreateCity(): JSX.Element {
   const { addToast } = useToast();
   const router = useRouter();
+  const { mutateAsync } = useCreateCity();
 
   const { register, handleSubmit, formState } = useForm<ICreateCityFormData>({
     resolver: yupResolver(createCityFormSchema),
@@ -54,8 +56,7 @@ export default function CreateCity(): JSX.Element {
       formData.append('name', name);
       formData.append('description', description);
       formData.append('image', image[0]);
-
-      await api.post('/cities', formData);
+      await mutateAsync({ data: formData });
 
       addToast({
         type: 'success',
@@ -73,45 +74,51 @@ export default function CreateCity(): JSX.Element {
   };
 
   return (
-    <Container>
-      <Title>Crie uma nova cidade</Title>
+    <>
+      <Head>
+        <title>Criar Cidade | Reactmon</title>
+      </Head>
 
-      <HeaderContainer>
-        <Link href={ApplicationRoutes.ADMIN.CITIES.LIST}>
-          <StyledLink>Voltar</StyledLink>
-        </Link>
-      </HeaderContainer>
+      <Container>
+        <Title>Crie uma nova cidade</Title>
 
-      <Form onSubmit={handleSubmit(handleCreateCity)}>
-        <Form.FormItem>
-          <Input
-            name="name"
-            label="Digite o nome da cidade"
-            {...register('name')}
-            error={errors.name}
-          />
-        </Form.FormItem>
-        <Form.FormItem>
-          <Textarea
-            name="description"
-            label="Digite a descrição da cidade"
-            {...register('description')}
-            error={errors.description}
-          />
-        </Form.FormItem>
-        <Form.FormItem>
-          <Input
-            type="file"
-            name="image"
-            {...register('image')}
-            error={errors.image}
-          />
-        </Form.FormItem>
+        <HeaderContainer>
+          <Link href={ApplicationRoutes.ADMIN.CITIES.LIST}>
+            <StyledLink>Voltar</StyledLink>
+          </Link>
+        </HeaderContainer>
 
-        <Form.FormItem>
-          <Button type="submit">Criar</Button>
-        </Form.FormItem>
-      </Form>
-    </Container>
+        <Form onSubmit={handleSubmit(handleCreateCity)}>
+          <Form.FormItem>
+            <Input
+              name="name"
+              label="Digite o nome da cidade"
+              {...register('name')}
+              error={errors.name}
+            />
+          </Form.FormItem>
+          <Form.FormItem>
+            <Textarea
+              name="description"
+              label="Digite a descrição da cidade"
+              {...register('description')}
+              error={errors.description}
+            />
+          </Form.FormItem>
+          <Form.FormItem>
+            <Input
+              type="file"
+              name="image"
+              {...register('image')}
+              error={errors.image}
+            />
+          </Form.FormItem>
+
+          <Form.FormItem>
+            <Button type="submit">Criar</Button>
+          </Form.FormItem>
+        </Form>
+      </Container>
+    </>
   );
 }
