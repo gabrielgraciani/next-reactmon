@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import NextLink from 'next/link';
 
-import ApplicationRoutes from 'config/ApplicationRoutes';
+import { ApplicationRoutes }  from 'config/ApplicationRoutes';
 
 import { useAuth } from 'contexts/AuthContext';
 

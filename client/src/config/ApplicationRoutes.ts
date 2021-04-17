@@ -1,4 +1,4 @@
-const ApplicationRoutes = {
+export const ApplicationRoutes = {
   ROOT: '/',
   POKEDEX: '/pokedex',
   ITEMS: '/items',
@@ -15,5 +15,3 @@ const ApplicationRoutes = {
     },
   },
 };
-
-export default ApplicationRoutes;

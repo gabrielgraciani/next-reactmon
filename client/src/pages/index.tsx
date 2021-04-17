@@ -8,7 +8,7 @@ import { Item } from 'components/Item';
 import { City } from 'components/City';
 import { Loading } from 'components/Loading';
 
-import ApplicationRoutes from 'config/ApplicationRoutes';
+import { ApplicationRoutes }  from 'config/ApplicationRoutes';
 
 import {
   fetchPokemonsFeatured,

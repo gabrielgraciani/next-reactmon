@@ -1,5 +1,6 @@
-import ApplicationRoutes from 'config/ApplicationRoutes';
 import Link from 'next/link';
+
+import { ApplicationRoutes } from 'config/ApplicationRoutes';
 
 import { Form } from 'components/Form';
 import { Button } from 'components/Button';

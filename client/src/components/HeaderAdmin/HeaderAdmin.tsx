@@ -4,7 +4,7 @@ import { FiMenu } from 'react-icons/fi';
 
 import { Drawer } from 'components/Drawer';
 
-import ApplicationRoutes from 'config/ApplicationRoutes';
+import { ApplicationRoutes }  from 'config/ApplicationRoutes';
 
 import {
   Container,
