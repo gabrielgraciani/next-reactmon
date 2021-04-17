@@ -8,7 +8,8 @@ import DeletePokemonService from '../services/DeletePokemonService';
 
 interface PokemonsListRequest extends Request {
   query: {
-    page: string;
+    page?: string;
+    limit?: string;
   };
 }
 
@@ -17,21 +18,21 @@ class PokemonsController {
     request: PokemonsListRequest,
     response: Response,
   ): Promise<Response> {
-    const { page = '1' } = request.query;
-    const limit = 12;
+    const { page = '1', limit = '12' } = request.query;
 
     const pageInt = parseInt(page, 10);
+    const limitInt = parseInt(limit, 10);
 
-    const startOffset = (pageInt - 1) * limit;
-    const endOffset = pageInt * limit;
+    const startOffset = (pageInt - 1) * limitInt;
+    const endOffset = pageInt * limitInt;
 
     const listPokemons = new ListPokemonsService();
     const pokemons = await listPokemons.execute({
       offset: startOffset,
-      limit,
+      limit: limitInt,
     });
 
-    const totalPages = Math.ceil(pokemons.total_records / limit);
+    const totalPages = Math.ceil(pokemons.total_records / limitInt);
     const hasNextPage = pokemons.total_records > endOffset;
 
     return response.json({

@@ -74,7 +74,14 @@ $ yarn down:docker or npm run down:docker
 # Pokemons
 ### GET /pokemons
 
-Example: http://localhost:3333/pokemons?page=2
+Example: http://localhost:3333/pokemons?page=1&limit=12
+
+Request query:
+
+    {
+      "page": "1",
+      "limit: "12",
+    }
 
 Response body:
 
@@ -153,7 +160,9 @@ Response body:
       ],
       "meta": {
         "total_records": 154,
-        "has_next_page": true
+        "total_pages": 13,
+        "has_next_page": true,
+        "current_page": 1
       }
     }
 
@@ -193,7 +202,13 @@ Response body:
 
 ### GET /pokemons-featured
 
-Example: http://localhost:3333/pokemons-featured
+Example: http://localhost:3333/pokemons-featured?limit=12
+
+Request query:
+
+    {
+      "limit: "12",
+    }
 
 Response body:
 
@@ -371,7 +386,14 @@ Response body:
 # Cities
 ### GET /cities
 
-Example: http://localhost:3333/cities?page=2
+Example: http://localhost:3333/cities?page=1&limit=12
+
+Request query:
+
+    {
+      "page": "1",
+      "limit: "12",
+    }
 
 Response body:
 
@@ -401,7 +423,9 @@ Response body:
       ],
       "meta": {
         "total_records": 25,
-        "has_next_page": true
+        "total_pages": 3,
+        "has_next_page": true,
+        "current_page": 1
       }
     }
 
@@ -428,7 +452,13 @@ Response body:
 
 ### GET /cities-featured
 
-Example: http://localhost:3333/cities-featured
+Example: http://localhost:3333/cities-featured?limit=12
+
+Request query:
+
+    {
+      "limit: "12",
+    }
 
 Response body:
 
@@ -547,7 +577,14 @@ Response body:
 # Items
 ### GET /items
 
-Example: http://localhost:3333/items?page=2
+Example: http://localhost:3333/items?page=1&limit=12
+
+Request query:
+
+    {
+      "page": "1",
+      "limit: "12",
+    }
 
 Response body:
 
@@ -580,7 +617,9 @@ Response body:
       ],
       "meta": {
         "total_records": 18,
-        "has_next_page": true
+        "total_pages": 2,
+        "has_next_page": true,
+        "current_page": 1
       }
     }
 
@@ -608,7 +647,13 @@ Response body:
 
 ### GET /items-featured
 
-Example: http://localhost:3333/items-featured
+Example: http://localhost:3333/items-featured?limit=12
+
+Request query:
+
+    {
+      "limit: "12",
+    }
 
 Response body:
 

@@ -8,7 +8,8 @@ import ListCityByIdService from '../services/ListCityByIdService';
 
 interface CitiesListRequest extends Request {
   query: {
-    page: string;
+    page?: string;
+    limit?: string;
   };
 }
 
@@ -17,22 +18,22 @@ class CitiesController {
     request: CitiesListRequest,
     response: Response,
   ): Promise<Response> {
-    const { page = '1' } = request.query;
-    const limit = 12;
+    const { page = '1', limit = '12' } = request.query;
 
     const pageInt = parseInt(page, 10);
+    const limitInt = parseInt(limit, 10);
 
-    const startOffset = (pageInt - 1) * limit;
-    const endOffset = pageInt * limit;
+    const startOffset = (pageInt - 1) * limitInt;
+    const endOffset = pageInt * limitInt;
 
     const listCities = new ListCitiesService();
 
     const cities = await listCities.execute({
       offset: startOffset,
-      limit,
+      limit: limitInt,
     });
 
-    const totalPages = Math.ceil(cities.total_records / limit);
+    const totalPages = Math.ceil(cities.total_records / limitInt);
     const hasNextPage = cities.total_records > endOffset;
 
     return response.json({
