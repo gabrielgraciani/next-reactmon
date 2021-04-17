@@ -10,7 +10,7 @@ import { Loading } from 'components/Loading';
 import {
   useInfinitePokemons,
   fetchPokemons,
-} from 'hooks/reactQuery/useInfinitePokemons';
+} from 'hooks/reactQuery/pokemons/useInfinitePokemons';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
 import {

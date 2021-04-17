@@ -14,7 +14,7 @@ import { Textarea } from 'components/Textarea';
 
 import { useToast } from 'contexts/ToastContext';
 
-import { useCreateCity } from 'hooks/reactQuery/useCreateCity';
+import { useCreateCity } from 'hooks/reactQuery/cities/useCreateCity';
 
 import {
   Container,

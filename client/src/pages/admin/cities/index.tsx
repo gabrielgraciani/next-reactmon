@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { Table } from 'components/Table';
 import { Loading } from 'components/Loading';
 
-import { usePaginatedCities } from 'hooks/reactQuery/usePaginatedCities';
-import { useDeleteCity } from 'hooks/reactQuery/useDeleteCity';
+import { usePaginatedCities } from 'hooks/reactQuery/cities/usePaginatedCities';
+import { useDeleteCity } from 'hooks/reactQuery/cities/useDeleteCity';
 
 import { Pagination } from 'components/Pagination';
 import { ApplicationRoutes } from 'config/ApplicationRoutes';

@@ -6,7 +6,7 @@ import Head from 'next/head';
 import {
   usePokemonsFeatured,
   fetchPokemon,
-} from 'hooks/reactQuery/usePokemonId';
+} from 'hooks/reactQuery/pokemons/usePokemonId';
 
 import { formatWeight } from 'helpers/formatWeight';
 import { formatHeight } from 'helpers/formatHeight';

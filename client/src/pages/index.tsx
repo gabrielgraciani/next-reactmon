@@ -13,15 +13,15 @@ import { ApplicationRoutes } from 'config/ApplicationRoutes';
 import {
   fetchPokemonsFeatured,
   usePokemonsFeatured,
-} from 'hooks/reactQuery/usePokemonsFeatured';
+} from 'hooks/reactQuery/pokemons/usePokemonsFeatured';
 import {
   fetchItemsFeatured,
   useItemsFeatured,
-} from 'hooks/reactQuery/useItemsFeatured';
+} from 'hooks/reactQuery/items/useItemsFeatured';
 import {
   fetchCitiesFeatured,
   useCitiesFeatured,
-} from 'hooks/reactQuery/useCitiesFeatured';
+} from 'hooks/reactQuery/cities/useCitiesFeatured';
 
 import {
   Container,

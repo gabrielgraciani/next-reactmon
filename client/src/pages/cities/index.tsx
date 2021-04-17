@@ -9,7 +9,7 @@ import { Loading } from 'components/Loading';
 import {
   fetchCities,
   useInfiniteCities,
-} from 'hooks/reactQuery/useInfiniteCities';
+} from 'hooks/reactQuery/cities/useInfiniteCities';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
 import { SearchField } from 'components/SearchField';

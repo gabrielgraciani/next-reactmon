@@ -10,7 +10,7 @@ import { Loading } from 'components/Loading';
 import {
   fetchItems,
   useInfiniteItems,
-} from 'hooks/reactQuery/useInfiniteItems';
+} from 'hooks/reactQuery/items/useInfiniteItems';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
 import {
