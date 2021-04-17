@@ -35,16 +35,10 @@ const LoadingOrErrorContainer = styled.div`
   justify-content: center;
 `;
 
-const Image = styled.img`
-  max-width: 30rem;
-  height: auto;
-`;
-
 export {
   Container,
   Title,
   HeaderContainer,
   StyledLink,
   LoadingOrErrorContainer,
-  Image,
 };

@@ -8,13 +8,13 @@ interface IPaginatedCitiesResponse {
   cities: ICity[];
 }
 
-interface IFetchCitiessProps {
+interface IFetchCitiesProps {
   page: number;
 }
 
 export async function fetchCities({
   page = 1,
-}: IFetchCitiessProps): Promise<IPaginatedCitiesResponse> {
+}: IFetchCitiesProps): Promise<IPaginatedCitiesResponse> {
   const { data } = await api.get(`/cities?page=${page}`);
 
   return { cities: data.data, totalCount: data.meta.total_records };
@@ -22,7 +22,7 @@ export async function fetchCities({
 
 export function usePaginatedCities({
   page,
-}: IFetchCitiessProps): UseQueryResult<IPaginatedCitiesResponse, unknown> {
+}: IFetchCitiesProps): UseQueryResult<IPaginatedCitiesResponse, unknown> {
   return useQuery(['cities_paginated', page], () => fetchCities({ page }), {
     staleTime: 1000 * 60 * 10, // 10 minutes
   });

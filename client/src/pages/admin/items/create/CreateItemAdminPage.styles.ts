@@ -26,25 +26,4 @@ const StyledLink = styled.a`
   border-radius: 0.4rem;
 `;
 
-const LoadingOrErrorContainer = styled.div`
-  margin: 3rem auto 4rem;
-  text-align: center;
-  color: ${Colors.red};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Image = styled.img`
-  max-width: 30rem;
-  height: auto;
-`;
-
-export {
-  Container,
-  Title,
-  HeaderContainer,
-  StyledLink,
-  LoadingOrErrorContainer,
-  Image,
-};
+export { Container, Title, HeaderContainer, StyledLink };
