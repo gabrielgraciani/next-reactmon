@@ -6,12 +6,7 @@ import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { Textarea } from 'components/Textarea';
 
-import {
-  Container,
-  Title,
-  ButtonsContainer,
-  StyledButton,
-} from './Cities.styles';
+import { Container, Title, ButtonsContainer } from './Cities.styles';
 
 export default function CreateCity(): JSX.Element {
   return (
@@ -20,7 +15,7 @@ export default function CreateCity(): JSX.Element {
 
       <ButtonsContainer>
         <Link href={ApplicationRoutes.ADMIN.CITIES.LIST}>
-          <StyledButton>Voltar</StyledButton>
+          <a>Voltar</a>
         </Link>
       </ButtonsContainer>
 

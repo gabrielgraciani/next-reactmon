@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Link from 'next/link';
 
 import { Table } from 'components/Table';
 import { Loading } from 'components/Loading';
@@ -13,6 +14,7 @@ import {
   Title,
   ButtonsContainer,
   LoadingOrErrorContainer,
+  StyledLink,
 } from './Cities.styles';
 
 export default function CitiesList(): JSX.Element {
@@ -42,9 +44,13 @@ export default function CitiesList(): JSX.Element {
 
   return (
     <Container>
-      <Title>Lista de cidades</Title>
+      <ButtonsContainer>
+        <Title>Lista de cidades</Title>
 
-      <ButtonsContainer />
+        <Link href={ApplicationRoutes.ADMIN.CITIES.CREATE}>
+          <StyledLink>Criar uma cidade</StyledLink>
+        </Link>
+      </ButtonsContainer>
 
       {isLoading ? (
         <LoadingOrErrorContainer>

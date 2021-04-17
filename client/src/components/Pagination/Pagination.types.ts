@@ -1,6 +1,8 @@
 export interface IPaginationProps {
   totalCountOfRegisters: number;
   currentPage?: number;
+  limitPerPage?: number;
+  siblingsCount?: number;
   onPageChange: (page: number) => void;
 }
 

@@ -20,6 +20,12 @@ const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 
+const StyledLink = styled.a`
+  border: 1px solid ${Colors.white};
+  padding: 1rem;
+  border-radius: 0.4rem;
+`;
+
 const LoadingOrErrorContainer = styled.div`
   margin: 3rem auto 4rem;
   text-align: center;
@@ -29,4 +35,10 @@ const LoadingOrErrorContainer = styled.div`
   justify-content: center;
 `;
 
-export { Container, Title, ButtonsContainer, LoadingOrErrorContainer };
+export {
+  Container,
+  Title,
+  ButtonsContainer,
+  StyledLink,
+  LoadingOrErrorContainer,
+};

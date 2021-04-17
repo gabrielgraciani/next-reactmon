@@ -8,9 +8,6 @@ import {
 } from './Pagination.styles';
 import { IPaginationProps } from './Pagination.types';
 
-const registerPerPage = 12;
-const siblingsCount = 1;
-
 function generatePagesArray(from: number, to: number) {
   return [...new Array(to - from)]
     .map((_, index) => {
@@ -22,15 +19,17 @@ function generatePagesArray(from: number, to: number) {
 const Pagination = ({
   currentPage,
   onPageChange,
+  limitPerPage = 12,
+  siblingsCount = 1,
   totalCountOfRegisters,
 }: IPaginationProps): JSX.Element => {
-  const totalOfPages = Math.ceil(totalCountOfRegisters / registerPerPage);
+  const totalOfPages = Math.ceil(totalCountOfRegisters / limitPerPage);
 
-  const startIndex = (currentPage - 1) * registerPerPage;
+  const startIndex = (currentPage - 1) * limitPerPage;
   const endIndex =
-    startIndex + registerPerPage > totalCountOfRegisters
+    startIndex + limitPerPage > totalCountOfRegisters
       ? totalCountOfRegisters
-      : startIndex + registerPerPage;
+      : startIndex + limitPerPage;
 
   const previousPages =
     currentPage > 1
