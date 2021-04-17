@@ -33,7 +33,7 @@ const Header = (): JSX.Element => {
   const content = () => {
     return (
       <PopoverContent>
-        <NextLink href={ApplicationRoutes.ADMIN.ROOT}>
+        <NextLink href={ApplicationRoutes.ADMIN.POKEMONS.LIST}>
           <PopoverContentItem>Admin</PopoverContentItem>
         </NextLink>
         <PopoverContentItem onClick={signOut}>Sair</PopoverContentItem>

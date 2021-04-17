@@ -6,10 +6,6 @@ interface IFetchItemProps {
   id: string | string[];
 }
 
-interface IUseItemIdProps {
-  id: string | string[];
-}
-
 export async function fetchItem({ id }: IFetchItemProps): Promise<IItem> {
   const { data } = await api.get(`/items/${id}`);
 
@@ -18,7 +14,7 @@ export async function fetchItem({ id }: IFetchItemProps): Promise<IItem> {
 
 export function useItemId({
   id,
-}: IUseItemIdProps): UseQueryResult<IItem, unknown> {
+}: IFetchItemProps): UseQueryResult<IItem, unknown> {
   return useQuery(['item', id], () => fetchItem({ id }), {
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
