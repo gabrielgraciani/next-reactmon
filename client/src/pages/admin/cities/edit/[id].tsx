@@ -40,11 +40,7 @@ export default function EditCity({ id }: IEditCityAdminPageProps): JSX.Element {
   const { addToast } = useToast();
   const router = useRouter();
 
-  const {
-    data: dataCity,
-    isLoading: isLoadingFetchCity,
-    isError: isErrorFetchCity,
-  } = useCityId({ id });
+  const { data, isLoading, isError } = useCityId({ id });
   const { mutateAsync } = useUpdateCity();
 
   const { register, handleSubmit, formState } = useForm<IUpdateCityFormData>({
@@ -94,11 +90,11 @@ export default function EditCity({ id }: IEditCityAdminPageProps): JSX.Element {
           </Link>
         </HeaderContainer>
 
-        {isLoadingFetchCity ? (
+        {isLoading ? (
           <LoadingOrErrorContainer>
             <Loading />
           </LoadingOrErrorContainer>
-        ) : isErrorFetchCity ? (
+        ) : isError ? (
           <LoadingOrErrorContainer>
             Ocorreu um erro ao carregar cidade. Tente novamente mais tarde.
           </LoadingOrErrorContainer>
@@ -108,7 +104,7 @@ export default function EditCity({ id }: IEditCityAdminPageProps): JSX.Element {
               <Input
                 name="name"
                 label="Digite o nome da cidade"
-                defaultValue={dataCity.name}
+                defaultValue={data.name}
                 {...register('name')}
                 error={errors.name}
               />
@@ -117,16 +113,16 @@ export default function EditCity({ id }: IEditCityAdminPageProps): JSX.Element {
               <Textarea
                 name="description"
                 label="Digite a descrição da cidade"
-                defaultValue={dataCity.description}
+                defaultValue={data.description}
                 {...register('description')}
                 error={errors.description}
               />
             </Form.FormItem>
             <Form.FormItem>
-              {dataCity.image && (
+              {data.image && (
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_API_URL}/files/${dataCity.image}`}
-                  alt={dataCity.name}
+                  src={`${process.env.NEXT_PUBLIC_API_URL}/files/${data.image}`}
+                  alt={data.name}
                 />
               )}
               <Input type="file" name="image" {...register('image')} />

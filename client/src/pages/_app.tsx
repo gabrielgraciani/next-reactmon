@@ -12,6 +12,8 @@ import { HeaderAdmin } from 'components/HeaderAdmin';
 
 import AppProvider from 'contexts';
 
+import { ApplicationRoutes } from 'config/ApplicationRoutes';
+
 import { withAuth } from 'helpers/withAuth';
 
 NProgress.configure({
@@ -31,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     queryClientRef.current = new QueryClient();
   }
 
-  const showDefaultHeader = !asPath.startsWith('/admin');
+  const showDefaultHeader = !asPath.startsWith(ApplicationRoutes.ADMIN.ROOT);
   return (
     <AppProvider>
       <QueryClientProvider client={queryClientRef.current}>

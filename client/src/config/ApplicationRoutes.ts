@@ -7,11 +7,20 @@ export const ApplicationRoutes = {
   REGISTER: '/register',
   ADMIN: {
     ROOT: '/admin',
-    ITEMS: '/admin/items',
+    ITEMS: {
+      LIST: '/admin/items',
+      CREATE: '/admin/items/create',
+      EDIT: '/admin/items/edit',
+    },
     CITIES: {
       LIST: '/admin/cities',
       CREATE: '/admin/cities/create',
       EDIT: '/admin/cities/edit',
+    },
+    POKEMONS: {
+      LIST: '/admin/pokemons',
+      CREATE: '/admin/pokemons/create',
+      EDIT: '/admin/pokemons/edit',
     },
   },
 };

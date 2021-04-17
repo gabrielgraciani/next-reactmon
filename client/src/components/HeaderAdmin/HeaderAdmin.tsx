@@ -20,10 +20,10 @@ const HeaderAdmin = (): JSX.Element => {
   const contentDrawer = () => {
     return (
       <DrawerContent>
-        <Link href={ApplicationRoutes.ADMIN.ROOT}>
+        <Link href={ApplicationRoutes.ADMIN.POKEMONS.LIST}>
           <DrawerItem>Gerenciar Pokémons</DrawerItem>
         </Link>
-        <Link href={ApplicationRoutes.ADMIN.ITEMS}>
+        <Link href={ApplicationRoutes.ADMIN.ITEMS.LIST}>
           <DrawerItem>Gerenciar Itens</DrawerItem>
         </Link>
         <Link href={ApplicationRoutes.ADMIN.CITIES.LIST}>

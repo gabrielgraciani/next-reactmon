@@ -23,6 +23,7 @@ const DrawerContent = styled.nav`
 
 const DrawerItem = styled.a`
   font-weight: bold;
+  padding: 1rem 0;
 
   & + a {
     margin-top: 1rem;

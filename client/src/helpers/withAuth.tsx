@@ -15,7 +15,7 @@ export function withAuth(WrappedComponent: ElementType): ElementType {
 
     useEffect(() => {
       if (hasSession && router.asPath === ApplicationRoutes.LOGIN) {
-        router.push(ApplicationRoutes.ADMIN.ROOT);
+        router.push(ApplicationRoutes.ADMIN.POKEMONS.LIST);
       }
 
       if (
