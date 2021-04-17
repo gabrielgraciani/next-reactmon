@@ -29,19 +29,15 @@ export default function CitiesList(): JSX.Element {
   const columns = [
     {
       title: 'ID',
-      key: 'id',
     },
     {
       title: 'Nome',
-      key: 'name',
     },
     {
       title: 'Descrição',
-      key: 'description',
     },
     {
       title: 'Imagem',
-      key: 'image',
     },
   ];
 

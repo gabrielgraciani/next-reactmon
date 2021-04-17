@@ -18,7 +18,7 @@ const Table = ({ columns, isAdmin, children }: ITableProps): JSX.Element => {
       <THead>
         <Tr>
           {columns.map(column => (
-            <Th key={column.key}>{column.title}</Th>
+            <Th key={column.title}>{column.title}</Th>
           ))}
           {isAdmin && (
             <>

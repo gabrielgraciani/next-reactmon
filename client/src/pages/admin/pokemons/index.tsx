@@ -29,23 +29,18 @@ export default function PokemonsList(): JSX.Element {
   const columns = [
     {
       title: 'ID',
-      key: 'id',
     },
     {
       title: 'Nome',
-      key: 'name',
     },
     {
       title: 'Tipos',
-      key: 'types',
     },
     {
       title: 'Fraquezas',
-      key: 'weakness',
     },
     {
       title: 'Imagem',
-      key: 'image',
     },
   ];
 

@@ -29,23 +29,18 @@ export default function ItemsList(): JSX.Element {
   const columns = [
     {
       title: 'ID',
-      key: 'id',
     },
     {
       title: 'Nome',
-      key: 'name',
     },
     {
       title: 'Descrição',
-      key: 'description',
     },
     {
       title: 'Função',
-      key: 'function',
     },
     {
       title: 'Imagem',
-      key: 'image',
     },
   ];
 

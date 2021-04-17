@@ -42,7 +42,7 @@ export default function Login(): JSX.Element {
         password,
       });
 
-      push(ApplicationRoutes.ADMIN.ROOT);
+      push(ApplicationRoutes.ADMIN.POKEMONS.LIST);
     } catch (err) {
       addToast({
         type: 'error',
