@@ -3,13 +3,18 @@ import { useQuery, UseQueryResult } from 'react-query';
 import { api } from 'services/api';
 import { IPokemon } from 'interfaces/Pokemon';
 
-interface IPaginatedPokemonsResponse {
+export interface IPaginatedPokemonsResponse {
   totalCount: number;
   pokemons: IPokemon[];
 }
 
 interface IFetchPokemonsProps {
   page: number;
+}
+
+interface IUsePaginatedPokemonsProps {
+  page: number;
+  initialData: IPaginatedPokemonsResponse;
 }
 
 export async function fetchPokemons({
@@ -22,8 +27,13 @@ export async function fetchPokemons({
 
 export function usePaginatedPokemons({
   page,
-}: IFetchPokemonsProps): UseQueryResult<IPaginatedPokemonsResponse, unknown> {
+  initialData,
+}: IUsePaginatedPokemonsProps): UseQueryResult<
+  IPaginatedPokemonsResponse,
+  unknown
+> {
   return useQuery(['pokemons_paginated', page], () => fetchPokemons({ page }), {
     staleTime: 1000 * 60 * 10, // 10 minutes
+    initialData,
   });
 }

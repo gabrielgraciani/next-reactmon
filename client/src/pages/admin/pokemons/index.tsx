@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -6,7 +7,10 @@ import Link from 'next/link';
 import { Table } from 'components/Table';
 import { Loading } from 'components/Loading';
 
-import { usePaginatedPokemons } from 'hooks/reactQuery/pokemons/usePaginatedPokemons';
+import {
+  usePaginatedPokemons,
+  fetchPokemons,
+} from 'hooks/reactQuery/pokemons/usePaginatedPokemons';
 import { useDeletePokemon } from 'hooks/reactQuery/pokemons/useDeletePokemon';
 
 import { Pagination } from 'components/Pagination';
@@ -18,13 +22,19 @@ import {
   LoadingOrErrorContainer,
   StyledLink,
 } from './PokemonsAdminPage.styles';
+import { IPokemonsAdminPageProps } from './PokemonsAdminPage.types';
 
-export default function PokemonsList(): JSX.Element {
+export default function PokemonsList({
+  pokemonsProps,
+}: IPokemonsAdminPageProps): JSX.Element {
   const [page, setPage] = useState(1);
   const router = useRouter();
   const { mutateAsync } = useDeletePokemon();
 
-  const { data, isLoading, error, isFetching } = usePaginatedPokemons({ page });
+  const { data, isLoading, error, isFetching } = usePaginatedPokemons({
+    page,
+    initialData: pokemonsProps,
+  });
 
   const columns = [
     {
@@ -129,3 +139,10 @@ export default function PokemonsList(): JSX.Element {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const pokemonsProps = await fetchPokemons({ page: 1 });
+  return {
+    props: { pokemonsProps },
+  };
+};
