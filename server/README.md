@@ -4,6 +4,8 @@
 
 ## :notebook: Executando
 
+### Para executar, primeiramente é necessário a instalação do docker desktop, encontrado neste link: https://www.docker.com/products/docker-desktop . Após a instalação, basta seguir os passos abaixo, caso ocorra um erro relacionado ao WSL durante a instalação, recomendo o este link de resolução: https://docs.microsoft.com/pt-br/windows/wsl/install-win10
+
 ```bash
 # Clone este repositório
 $ git clone https://link-a-definir.com.br
