@@ -10,16 +10,23 @@ import { ApplicationRoutes } from 'config/ApplicationRoutes';
 import { Form } from 'components/Form';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
+import { Checkbox } from 'components/Checkbox';
+import { Loading } from 'components/Loading';
 
 import { useToast } from 'contexts/ToastContext';
 
 import { useCreatePokemon } from 'hooks/reactQuery/pokemons/useCreatePokemon';
+import { useTypes } from 'hooks/reactQuery/types/useTypes';
 
+import { useState } from 'react';
 import {
   Container,
   Title,
   HeaderContainer,
   StyledLink,
+  CheckboxContainer,
+  LoadingOrErrorContainer,
+  TypesOrWeaknessTitle,
 } from './CreatePokemonAdminPage.styles';
 import { ICreatePokemonFormData } from './CreatePokemonAdminPage.types';
 
@@ -33,6 +40,11 @@ export default function CreatePokemon(): JSX.Element {
   const { addToast } = useToast();
   const router = useRouter();
   const { mutateAsync } = useCreatePokemon();
+  const { data, isLoading } = useTypes();
+
+  const [checkedTypes, setCheckedTypes] = useState([]);
+  const [checkedWeakness, setCheckedWeakness] = useState([]);
+  console.log('checkedTypes', checkedTypes);
 
   const { register, handleSubmit, formState } = useForm<ICreatePokemonFormData>(
     {
@@ -68,6 +80,26 @@ export default function CreatePokemon(): JSX.Element {
         title: 'Erro na criação',
         description: 'Tente novamente mais tarde',
       });
+    }
+  };
+
+  const handleChangeTypes = event => {
+    if (checkedTypes.includes(event.target.name)) {
+      setCheckedTypes([
+        ...checkedTypes.filter(item => item !== event.target.name),
+      ]);
+    } else {
+      setCheckedTypes([...checkedTypes, event.target.name]);
+    }
+  };
+
+  const handleChangeWeakness = event => {
+    if (checkedWeakness.includes(event.target.name)) {
+      setCheckedWeakness([
+        ...checkedWeakness.filter(item => item !== event.target.name),
+      ]);
+    } else {
+      setCheckedWeakness([...checkedWeakness, event.target.name]);
     }
   };
 
@@ -111,6 +143,47 @@ export default function CreatePokemon(): JSX.Element {
               error={errors.height}
             />
           </Form.FormItem>
+          {isLoading ? (
+            <LoadingOrErrorContainer>
+              <Loading />
+            </LoadingOrErrorContainer>
+          ) : (
+            <>
+              <Form.FormItem>
+                <TypesOrWeaknessTitle>
+                  Selecione os tipos do pokemon
+                </TypesOrWeaknessTitle>
+                <CheckboxContainer>
+                  {data.map(type => (
+                    <Checkbox
+                      name={type.name}
+                      checked={false}
+                      label={type.name}
+                      onChange={handleChangeTypes}
+                      key={type.id}
+                    />
+                  ))}
+                </CheckboxContainer>
+              </Form.FormItem>
+
+              <Form.FormItem>
+                <TypesOrWeaknessTitle>
+                  Selecione as fraquezas do pokemon
+                </TypesOrWeaknessTitle>
+                <CheckboxContainer>
+                  {data.map(type => (
+                    <Checkbox
+                      name={type.name}
+                      checked={false}
+                      label={type.name}
+                      onChange={handleChangeWeakness}
+                      key={type.id}
+                    />
+                  ))}
+                </CheckboxContainer>
+              </Form.FormItem>
+            </>
+          )}
 
           <Form.FormItem>
             <Input type="file" name="image" {...register('image')} />

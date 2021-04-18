@@ -26,4 +26,32 @@ const StyledLink = styled.a`
   border-radius: 0.4rem;
 `;
 
-export { Container, Title, HeaderContainer, StyledLink };
+const CheckboxContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  grid-gap: 1.5rem;
+`;
+
+const LoadingOrErrorContainer = styled.div`
+  margin: 2rem 0;
+  text-align: center;
+  color: ${Colors.red};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const TypesOrWeaknessTitle = styled.span`
+  display: block;
+  margin-bottom: 1rem;
+`;
+
+export {
+  Container,
+  Title,
+  HeaderContainer,
+  StyledLink,
+  CheckboxContainer,
+  LoadingOrErrorContainer,
+  TypesOrWeaknessTitle,
+};
