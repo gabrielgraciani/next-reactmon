@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -6,7 +7,10 @@ import Link from 'next/link';
 import { Table } from 'components/Table';
 import { Loading } from 'components/Loading';
 
-import { usePaginatedItems } from 'hooks/reactQuery/items/usePaginatedItems';
+import {
+  usePaginatedItems,
+  fetchItems,
+} from 'hooks/reactQuery/items/usePaginatedItems';
 import { useDeleteItem } from 'hooks/reactQuery/items/useDeleteItem';
 
 import { Pagination } from 'components/Pagination';
@@ -18,13 +22,19 @@ import {
   LoadingOrErrorContainer,
   StyledLink,
 } from './ItemsAdminPage.styles';
+import { IItemsAdminPageProps } from './ItemsAdminPage.types';
 
-export default function ItemsList(): JSX.Element {
+export default function ItemsList({
+  itemsProps,
+}: IItemsAdminPageProps): JSX.Element {
   const [page, setPage] = useState(1);
   const router = useRouter();
   const { mutateAsync } = useDeleteItem();
 
-  const { data, isLoading, error, isFetching } = usePaginatedItems({ page });
+  const { data, isLoading, error, isFetching } = usePaginatedItems({
+    page,
+    initialData: itemsProps,
+  });
 
   const columns = [
     {
@@ -125,3 +135,10 @@ export default function ItemsList(): JSX.Element {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const itemsProps = await fetchItems({ page: 1 });
+  return {
+    props: { itemsProps },
+  };
+};

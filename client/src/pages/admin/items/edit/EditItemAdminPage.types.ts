@@ -1,3 +1,5 @@
+import { IItem } from 'interfaces/Item';
+
 export interface IUpdateItemFormData {
   name: string;
   description: string;
@@ -7,4 +9,5 @@ export interface IUpdateItemFormData {
 
 export interface IEditItemAdminPageProps {
   id: string;
+  itemProps: IItem;
 }

@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 import { ApplicationRoutes } from 'config/ApplicationRoutes';
 
-import { useItemId } from 'hooks/reactQuery/items/useItemId';
+import { useItemId, fetchItem } from 'hooks/reactQuery/items/useItemId';
 import { useUpdateItem } from 'hooks/reactQuery/items/useUpdateItem';
 
 import { Form } from 'components/Form';
@@ -37,11 +37,17 @@ const updateItemFormSchema = yup.object().shape({
   function: yup.string().required('Função obrigatória'),
 });
 
-export default function EditItem({ id }: IEditItemAdminPageProps): JSX.Element {
+export default function EditItem({
+  id,
+  itemProps,
+}: IEditItemAdminPageProps): JSX.Element {
   const { addToast } = useToast();
   const router = useRouter();
 
-  const { data, isLoading, isError } = useItemId({ id });
+  const { data, isLoading, isError } = useItemId({
+    id,
+    initialData: itemProps,
+  });
   const { mutateAsync } = useUpdateItem();
 
   const { register, handleSubmit, formState } = useForm<IUpdateItemFormData>({
@@ -152,7 +158,9 @@ export default function EditItem({ id }: IEditItemAdminPageProps): JSX.Element {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { id } = params;
 
+  const itemProps = await fetchItem({ id });
+
   return {
-    props: { id },
+    props: { itemProps, id },
   };
 };

@@ -3,13 +3,18 @@ import { useQuery, UseQueryResult } from 'react-query';
 import { api } from 'services/api';
 import { IItem } from 'interfaces/Item';
 
-interface IPaginatedItemsResponse {
+export interface IPaginatedItemsResponse {
   totalCount: number;
   items: IItem[];
 }
 
 interface IFetchItemsProps {
   page: number;
+}
+
+interface IUsePaginatedItemsProps {
+  page: number;
+  initialData: IPaginatedItemsResponse;
 }
 
 export async function fetchItems({
@@ -22,8 +27,10 @@ export async function fetchItems({
 
 export function usePaginatedItems({
   page,
-}: IFetchItemsProps): UseQueryResult<IPaginatedItemsResponse, unknown> {
+  initialData,
+}: IUsePaginatedItemsProps): UseQueryResult<IPaginatedItemsResponse, unknown> {
   return useQuery(['items_paginated', page], () => fetchItems({ page }), {
     staleTime: 1000 * 60 * 10, // 10 minutes
+    initialData,
   });
 }
