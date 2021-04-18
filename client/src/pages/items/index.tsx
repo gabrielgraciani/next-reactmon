@@ -1,10 +1,8 @@
 import { GetServerSideProps } from 'next';
-import { useState } from 'react';
 import Head from 'next/head';
 
 import { Banner } from 'components/Banner';
 import { Item } from 'components/Item';
-import { SearchField } from 'components/SearchField';
 import { Loading } from 'components/Loading';
 
 import {
@@ -15,7 +13,6 @@ import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
 import {
   Container,
-  FilterContainer,
   ItemsContainer,
   LoadingOrErrorContainer,
   NoMoreRegisters,
@@ -23,8 +20,6 @@ import {
 import { IItemsPageProps } from './ItemsPage.types';
 
 export default function Items({ itemsProps }: IItemsPageProps): JSX.Element {
-  const [search, setSearch] = useState('');
-
   const {
     data,
     error,
@@ -66,14 +61,6 @@ export default function Items({ itemsProps }: IItemsPageProps): JSX.Element {
             ser utilizadas fora dela também.
           </p>
         </Banner>
-
-        <FilterContainer>
-          <SearchField
-            value={search}
-            placeholder="Pesquise um item"
-            onChange={e => setSearch(e.target.value)}
-          />
-        </FilterContainer>
 
         {isLoading ? (
           <LoadingOrErrorContainer>

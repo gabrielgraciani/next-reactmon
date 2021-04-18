@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 
 import { Card } from 'components/Card';
 import { Banner } from 'components/Banner';
-import { SearchField } from 'components/SearchField';
 import { Loading } from 'components/Loading';
 
 import {
@@ -15,7 +13,6 @@ import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
 import {
   Container,
-  FilterContainer,
   CardsContainer,
   LoadingOrErrorContainer,
   NoMoreRegisters,
@@ -25,8 +22,6 @@ import { IPokedexPageProps } from './PokedexPage.types';
 export default function Pokedex({
   pokemonsProps,
 }: IPokedexPageProps): JSX.Element {
-  const [search, setSearch] = useState('');
-
   const {
     data,
     error,
@@ -68,14 +63,6 @@ export default function Pokedex({
             de cada espécie é dividida é apenas da primeira geração.
           </p>
         </Banner>
-
-        <FilterContainer>
-          <SearchField
-            value={search}
-            placeholder="Pesquise um pokemon"
-            onChange={e => setSearch(e.target.value)}
-          />
-        </FilterContainer>
 
         {isLoading ? (
           <LoadingOrErrorContainer>

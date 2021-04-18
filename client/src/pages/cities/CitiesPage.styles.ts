@@ -5,11 +5,6 @@ import { Colors } from 'styles/colors';
 
 const Container = styled.div``;
 
-const FilterContainer = styled.div`
-  padding: 0 5%;
-  margin-top: 2rem;
-`;
-
 const CitiesContainer = styled.section`
   width: 100%;
   padding: 0 5%;
@@ -39,10 +34,4 @@ const NoMoreRegisters = styled.h4`
   margin-bottom: 3rem;
 `;
 
-export {
-  Container,
-  FilterContainer,
-  CitiesContainer,
-  LoadingOrErrorContainer,
-  NoMoreRegisters,
-};
+export { Container, CitiesContainer, LoadingOrErrorContainer, NoMoreRegisters };

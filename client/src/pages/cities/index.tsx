@@ -1,5 +1,4 @@
 import { GetServerSideProps } from 'next';
-import { useState } from 'react';
 import Head from 'next/head';
 
 import { Banner } from 'components/Banner';
@@ -12,10 +11,8 @@ import {
 } from 'hooks/reactQuery/cities/useInfiniteCities';
 import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
 
-import { SearchField } from 'components/SearchField';
 import {
   Container,
-  FilterContainer,
   CitiesContainer,
   LoadingOrErrorContainer,
   NoMoreRegisters,
@@ -23,8 +20,6 @@ import {
 import { ICitiesPageProps } from './CitiesPage.types';
 
 export default function Cities({ citiesProps }: ICitiesPageProps): JSX.Element {
-  const [search, setSearch] = useState('');
-
   const {
     data,
     error,
@@ -69,14 +64,6 @@ export default function Cities({ citiesProps }: ICitiesPageProps): JSX.Element {
             countrys.
           </p>
         </Banner>
-
-        <FilterContainer>
-          <SearchField
-            value={search}
-            placeholder="Pesquise uma cidade"
-            onChange={e => setSearch(e.target.value)}
-          />
-        </FilterContainer>
 
         {isLoading ? (
           <LoadingOrErrorContainer>

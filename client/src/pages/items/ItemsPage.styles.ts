@@ -7,11 +7,6 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const FilterContainer = styled.div`
-  padding: 0 5%;
-  margin-top: 2rem;
-`;
-
 const ItemsContainer = styled.section`
   width: 100%;
   padding: 0 5%;
@@ -41,10 +36,4 @@ const NoMoreRegisters = styled.h4`
   margin-bottom: 3rem;
 `;
 
-export {
-  Container,
-  FilterContainer,
-  ItemsContainer,
-  LoadingOrErrorContainer,
-  NoMoreRegisters,
-};
+export { Container, ItemsContainer, LoadingOrErrorContainer, NoMoreRegisters };
