@@ -43,7 +43,13 @@ const LoadingOrErrorContainer = styled.div`
 
 const TypesOrWeaknessTitle = styled.span`
   display: block;
-  margin-bottom: 1rem;
+  margin: 2rem 0 1rem;
+`;
+
+const CheckboxError = styled.span`
+  color: ${Colors.red};
+  display: block;
+  margin: 0.5rem 0;
 `;
 
 export {
@@ -54,4 +60,5 @@ export {
   CheckboxContainer,
   LoadingOrErrorContainer,
   TypesOrWeaknessTitle,
+  CheckboxError,
 };

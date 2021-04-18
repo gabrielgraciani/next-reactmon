@@ -18,7 +18,6 @@ import { useToast } from 'contexts/ToastContext';
 import { useCreatePokemon } from 'hooks/reactQuery/pokemons/useCreatePokemon';
 import { useTypes } from 'hooks/reactQuery/types/useTypes';
 
-import { useState } from 'react';
 import {
   Container,
   Title,
@@ -27,6 +26,7 @@ import {
   CheckboxContainer,
   LoadingOrErrorContainer,
   TypesOrWeaknessTitle,
+  CheckboxError,
 } from './CreatePokemonAdminPage.styles';
 import { ICreatePokemonFormData } from './CreatePokemonAdminPage.types';
 
@@ -34,6 +34,8 @@ const createPokemonFormSchema = yup.object().shape({
   name: yup.string().required('Nome obrigatório'),
   weight: yup.string().required('Peso obrigatório'),
   height: yup.string().required('Altura obrigatória'),
+  types: yup.array().min(1, 'Preencha ao menos 1 tipo'),
+  weakness: yup.array().min(1, 'Preencha ao menos 1 fraqueza'),
 });
 
 export default function CreatePokemon(): JSX.Element {
@@ -42,13 +44,13 @@ export default function CreatePokemon(): JSX.Element {
   const { mutateAsync } = useCreatePokemon();
   const { data, isLoading } = useTypes();
 
-  const [checkedTypes, setCheckedTypes] = useState([]);
-  const [checkedWeakness, setCheckedWeakness] = useState([]);
-  console.log('checkedTypes', checkedTypes);
-
   const { register, handleSubmit, formState } = useForm<ICreatePokemonFormData>(
     {
       resolver: yupResolver(createPokemonFormSchema),
+      defaultValues: {
+        types: [],
+        weakness: [],
+      },
     },
   );
 
@@ -63,8 +65,8 @@ export default function CreatePokemon(): JSX.Element {
       formData.append('name', name);
       formData.append('weight', weight);
       formData.append('height', height);
-      formData.append('types', types);
-      formData.append('weakness', weakness);
+      formData.append('types', JSON.stringify(types));
+      formData.append('weakness', JSON.stringify(weakness));
       formData.append('image', image[0]);
       await mutateAsync({ data: formData });
 
@@ -80,26 +82,6 @@ export default function CreatePokemon(): JSX.Element {
         title: 'Erro na criação',
         description: 'Tente novamente mais tarde',
       });
-    }
-  };
-
-  const handleChangeTypes = event => {
-    if (checkedTypes.includes(event.target.name)) {
-      setCheckedTypes([
-        ...checkedTypes.filter(item => item !== event.target.name),
-      ]);
-    } else {
-      setCheckedTypes([...checkedTypes, event.target.name]);
-    }
-  };
-
-  const handleChangeWeakness = event => {
-    if (checkedWeakness.includes(event.target.name)) {
-      setCheckedWeakness([
-        ...checkedWeakness.filter(item => item !== event.target.name),
-      ]);
-    } else {
-      setCheckedWeakness([...checkedWeakness, event.target.name]);
     }
   };
 
@@ -156,31 +138,36 @@ export default function CreatePokemon(): JSX.Element {
                 <CheckboxContainer>
                   {data.map(type => (
                     <Checkbox
-                      name={type.name}
-                      checked={false}
                       label={type.name}
-                      onChange={handleChangeTypes}
                       key={type.id}
+                      value={type.name}
+                      id={`types-${type.name}`}
+                      {...register('types')}
                     />
                   ))}
                 </CheckboxContainer>
+                {errors.types && (
+                  <CheckboxError>{errors.types.message}</CheckboxError>
+                )}
               </Form.FormItem>
-
               <Form.FormItem>
                 <TypesOrWeaknessTitle>
                   Selecione as fraquezas do pokemon
                 </TypesOrWeaknessTitle>
                 <CheckboxContainer>
-                  {data.map(type => (
+                  {data.map(weak => (
                     <Checkbox
-                      name={type.name}
-                      checked={false}
-                      label={type.name}
-                      onChange={handleChangeWeakness}
-                      key={type.id}
+                      label={weak.name}
+                      key={weak.id}
+                      value={weak.name}
+                      id={`weakness-${weak.name}`}
+                      {...register('weakness')}
                     />
                   ))}
                 </CheckboxContainer>
+                {errors.weakness && (
+                  <CheckboxError>{errors.weakness.message}</CheckboxError>
+                )}
               </Form.FormItem>
             </>
           )}

@@ -1,19 +1,28 @@
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
+
 import { Container, Input } from './Checkbox.styles';
 import { ICheckboxProps } from './Checkbox.types';
 
-const Checkbox = ({
-  checked,
-  name,
-  label,
-  onChange,
-  ...rest
-}: ICheckboxProps): JSX.Element => {
+const CheckboxBase: ForwardRefRenderFunction<
+  HTMLInputElement,
+  ICheckboxProps
+> = ({ id, name, label, ...rest }, ref): JSX.Element => {
   return (
-    <Container id={name}>
-      <Input type="checkbox" id={name} name={name} onChange={onChange} />
-      {label}
-    </Container>
+    <>
+      <Container htmlFor={id}>
+        <Input type="checkbox" id={id} name={name} ref={ref} {...rest} />
+        {label}
+      </Container>
+    </>
   );
 };
 
+const Checkbox = forwardRef(CheckboxBase);
 export default Checkbox;
