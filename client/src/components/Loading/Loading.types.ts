@@ -1,7 +1,7 @@
 type ILoadingSizeTypes = 'small' | 'normal';
 
 export interface ILoadingProps {
-  size: ILoadingSizeTypes;
+  size?: ILoadingSizeTypes;
 }
 
 export interface ILoadingStyledProps {

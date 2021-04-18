@@ -112,7 +112,7 @@ export default function CreatePokemon(): JSX.Element {
           <Form.FormItem>
             <Input
               name="weight"
-              label="Digite o peso do pokemon"
+              label="Digite o peso do pokemon (kg)"
               {...register('weight')}
               error={errors.weight}
             />
@@ -120,7 +120,7 @@ export default function CreatePokemon(): JSX.Element {
           <Form.FormItem>
             <Input
               name="height"
-              label="Digite a altura do pokemon"
+              label="Digite a altura do pokemon (metros)"
               {...register('height')}
               error={errors.height}
             />

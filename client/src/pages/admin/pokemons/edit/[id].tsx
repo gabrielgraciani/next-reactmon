@@ -139,7 +139,7 @@ export default function EditPokemon({
             <Form.FormItem>
               <Input
                 name="weight"
-                label="Digite o peso do pokemon"
+                label="Digite o peso do pokemon (kg)"
                 defaultValue={dataPokemon.weight}
                 {...register('weight')}
                 error={errors.weight}
@@ -148,7 +148,7 @@ export default function EditPokemon({
             <Form.FormItem>
               <Input
                 name="height"
-                label="Digite a altura do pokemon"
+                label="Digite a altura do pokemon (metros)"
                 defaultValue={dataPokemon.height}
                 {...register('height')}
                 error={errors.height}
