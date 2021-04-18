@@ -7,7 +7,7 @@ interface IFetchPokemonProps {
 }
 
 interface IUsePokemonIdProps {
-  initialData: IPokemon;
+  initialData?: IPokemon;
   id: string | string[];
 }
 

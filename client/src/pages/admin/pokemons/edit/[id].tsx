@@ -8,14 +8,15 @@ import { useRouter } from 'next/router';
 
 import { ApplicationRoutes } from 'config/ApplicationRoutes';
 
-import { useCityId } from 'hooks/reactQuery/cities/useCityId';
-import { useUpdateCity } from 'hooks/reactQuery/cities/useUpdateCity';
-
 import { Form } from 'components/Form';
 import { Button } from 'components/Button';
 import { Loading } from 'components/Loading';
 import { Input } from 'components/Input';
-import { Textarea } from 'components/Textarea';
+import { Checkbox } from 'components/Checkbox';
+
+import { usePokemonId } from 'hooks/reactQuery/pokemons/usePokemonId';
+import { useUpdatePokemon } from 'hooks/reactQuery/pokemons/useUpdatePokemon';
+import { useTypes } from 'hooks/reactQuery/types/useTypes';
 
 import { useToast } from 'contexts/ToastContext';
 import {
@@ -25,47 +26,69 @@ import {
   StyledLink,
   LoadingOrErrorContainer,
   Image,
-} from './EditCityAdminPage.styles';
+  TypesOrWeaknessTitle,
+  CheckboxContainer,
+  CheckboxError,
+} from './EditPokemonAdminPage.styles';
 import {
-  IUpdateCityFormData,
-  IEditCityAdminPageProps,
-} from './EditCityAdminPage.types';
+  IEditPokemonAdminPageProps,
+  IUpdatePokemonFormData,
+} from './EditPokemonAdminPage.types';
 
-const updateCityFormSchema = yup.object().shape({
+const updatePokemonFormSchema = yup.object().shape({
   name: yup.string().required('Nome obrigatório'),
-  description: yup.string().required('Descrição obrigatória'),
+  weight: yup.string().required('Peso obrigatório'),
+  height: yup.string().required('Altura obrigatória'),
+  types: yup.array().min(1, 'Preencha ao menos 1 tipo'),
+  weakness: yup.array().min(1, 'Preencha ao menos 1 fraqueza'),
 });
 
-export default function EditCity({ id }: IEditCityAdminPageProps): JSX.Element {
+export default function EditPokemon({
+  id,
+}: IEditPokemonAdminPageProps): JSX.Element {
   const { addToast } = useToast();
   const router = useRouter();
 
-  const { data, isLoading, isError } = useCityId({ id });
-  const { mutateAsync } = useUpdateCity();
+  const { data: dataTypes, isLoading: isLoadingTypes } = useTypes();
+  const {
+    data: dataPokemon,
+    isLoading: isLoadingPokemon,
+    isError: isErrorPokemon,
+  } = usePokemonId({ id });
+  const { mutateAsync } = useUpdatePokemon();
 
-  const { register, handleSubmit, formState } = useForm<IUpdateCityFormData>({
-    resolver: yupResolver(updateCityFormSchema),
-  });
+  const { register, handleSubmit, formState } = useForm<IUpdatePokemonFormData>(
+    {
+      resolver: yupResolver(updatePokemonFormSchema),
+      defaultValues: {
+        types: [],
+        weakness: [],
+      },
+    },
+  );
 
   const { errors } = formState;
 
-  const handleUpdateCity: SubmitHandler<IUpdateCityFormData> = async values => {
+  const handleUpdatePokemon: SubmitHandler<IUpdatePokemonFormData> = async values => {
     try {
       const formData = new FormData();
 
-      const { name, description, image } = values;
+      const { name, weight, height, types, weakness, image } = values;
 
       formData.append('name', name);
-      formData.append('description', description);
+      formData.append('weight', weight);
+      formData.append('height', height);
+      formData.append('types', JSON.stringify(types));
+      formData.append('weakness', JSON.stringify(weakness));
       formData.append('image', image[0]);
-      await mutateAsync({ id, data: formData });
+      await mutateAsync({ data: formData });
 
       addToast({
         type: 'success',
-        title: 'Cidade alterada com sucesso',
+        title: 'Pokemon alterado com sucesso',
       });
 
-      router.push(ApplicationRoutes.ADMIN.CITIES.LIST);
+      router.push(ApplicationRoutes.ADMIN.POKEMONS.LIST);
     } catch (err) {
       addToast({
         type: 'error',
@@ -78,51 +101,114 @@ export default function EditCity({ id }: IEditCityAdminPageProps): JSX.Element {
   return (
     <>
       <Head>
-        <title>Editar Cidade | Reactmon</title>
+        <title>Editar Pokemon | Reactmon</title>
       </Head>
 
       <Container>
-        <Title>Editando uma cidade</Title>
+        <Title>Editando um pokemon</Title>
 
         <HeaderContainer>
-          <Link href={ApplicationRoutes.ADMIN.CITIES.LIST}>
+          <Link href={ApplicationRoutes.ADMIN.POKEMONS.LIST}>
             <StyledLink>Voltar</StyledLink>
           </Link>
         </HeaderContainer>
 
-        {isLoading ? (
+        {isLoadingPokemon ? (
           <LoadingOrErrorContainer>
             <Loading />
           </LoadingOrErrorContainer>
-        ) : isError ? (
+        ) : isErrorPokemon ? (
           <LoadingOrErrorContainer>
-            Ocorreu um erro ao carregar cidade. Tente novamente mais tarde.
+            Ocorreu um erro ao carregar pokemons. Tente novamente mais tarde.
           </LoadingOrErrorContainer>
         ) : (
-          <Form onSubmit={handleSubmit(handleUpdateCity)}>
+          <Form onSubmit={handleSubmit(handleUpdatePokemon)}>
             <Form.FormItem>
               <Input
                 name="name"
-                label="Digite o nome da cidade"
-                defaultValue={data.name}
+                label="Digite o nome do pokemon"
+                defaultValue={dataPokemon.name}
                 {...register('name')}
                 error={errors.name}
               />
             </Form.FormItem>
             <Form.FormItem>
-              <Textarea
-                name="description"
-                label="Digite a descrição da cidade"
-                defaultValue={data.description}
-                {...register('description')}
-                error={errors.description}
+              <Input
+                name="weight"
+                label="Digite o peso do pokemon"
+                defaultValue={dataPokemon.weight}
+                {...register('weight')}
+                error={errors.weight}
               />
             </Form.FormItem>
             <Form.FormItem>
-              {data.image && (
+              <Input
+                name="height"
+                label="Digite a altura do pokemon"
+                defaultValue={dataPokemon.height}
+                {...register('height')}
+                error={errors.height}
+              />
+            </Form.FormItem>
+
+            {isLoadingTypes ? (
+              <LoadingOrErrorContainer>
+                <Loading />
+              </LoadingOrErrorContainer>
+            ) : (
+              <>
+                <Form.FormItem>
+                  <TypesOrWeaknessTitle>
+                    Selecione os tipos do pokemon
+                  </TypesOrWeaknessTitle>
+                  <CheckboxContainer>
+                    {dataTypes.map(type => {
+                      console.log(
+                        'teste',
+                        dataPokemon.types.includes(type.name),
+                      );
+                      return (
+                        <Checkbox
+                          label={type.name}
+                          key={type.id}
+                          value={type.name}
+                          id={`types-${type.name}`}
+                          {...register('types')}
+                        />
+                      );
+                    })}
+                  </CheckboxContainer>
+                  {errors.types && (
+                    <CheckboxError>{errors.types.message}</CheckboxError>
+                  )}
+                </Form.FormItem>
+                {/* <Form.FormItem>
+                  <TypesOrWeaknessTitle>
+                    Selecione as fraquezas do pokemon
+                  </TypesOrWeaknessTitle>
+                  <CheckboxContainer>
+                    {dataTypes.map(weak => (
+                      <Checkbox
+                        label={weak.name}
+                        key={weak.id}
+                        value={weak.name}
+                        id={`weakness-${weak.name}`}
+                        {...register('weakness')}
+                      />
+                    ))}
+                  </CheckboxContainer>
+                  {errors.weakness && (
+                    <CheckboxError>{errors.weakness.message}</CheckboxError>
+                  )}
+                </Form.FormItem> */}
+              </>
+            )}
+
+            <Form.FormItem>
+              {dataPokemon.image && (
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_API_URL}/files/${data.image}`}
-                  alt={data.name}
+                  src={`${process.env.NEXT_PUBLIC_API_URL}/files/${dataPokemon.image}`}
+                  alt={dataPokemon.name}
                 />
               )}
               <Input type="file" name="image" {...register('image')} />

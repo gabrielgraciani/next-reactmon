@@ -1,11 +1,4 @@
-import {
-  forwardRef,
-  ForwardRefRenderFunction,
-  useState,
-  useCallback,
-  useEffect,
-  useRef,
-} from 'react';
+import { forwardRef, ForwardRefRenderFunction } from 'react';
 
 import { Container, Input } from './Checkbox.styles';
 import { ICheckboxProps } from './Checkbox.types';

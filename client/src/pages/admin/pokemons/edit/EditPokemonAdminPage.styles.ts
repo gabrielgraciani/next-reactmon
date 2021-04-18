@@ -27,7 +27,7 @@ const StyledLink = styled.a`
 `;
 
 const LoadingOrErrorContainer = styled.div`
-  margin: 3rem auto 4rem;
+  margin: 2rem 0;
   text-align: center;
   color: ${Colors.red};
   display: flex;
@@ -40,6 +40,23 @@ const Image = styled.img`
   height: auto;
 `;
 
+const CheckboxContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  grid-gap: 1.5rem;
+`;
+
+const TypesOrWeaknessTitle = styled.span`
+  display: block;
+  margin: 2rem 0 1rem;
+`;
+
+const CheckboxError = styled.span`
+  color: ${Colors.red};
+  display: block;
+  margin: 0.5rem 0;
+`;
+
 export {
   Container,
   Title,
@@ -47,4 +64,7 @@ export {
   StyledLink,
   LoadingOrErrorContainer,
   Image,
+  CheckboxContainer,
+  TypesOrWeaknessTitle,
+  CheckboxError,
 };
