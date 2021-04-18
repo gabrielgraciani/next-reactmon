@@ -14,7 +14,10 @@ import { Loading } from 'components/Loading';
 import { Input } from 'components/Input';
 import { Checkbox } from 'components/Checkbox';
 
-import { usePokemonId } from 'hooks/reactQuery/pokemons/usePokemonId';
+import {
+  usePokemonId,
+  fetchPokemon,
+} from 'hooks/reactQuery/pokemons/usePokemonId';
 import { useUpdatePokemon } from 'hooks/reactQuery/pokemons/useUpdatePokemon';
 import { useTypes } from 'hooks/reactQuery/types/useTypes';
 
@@ -45,6 +48,7 @@ const updatePokemonFormSchema = yup.object().shape({
 
 export default function EditPokemon({
   id,
+  pokemonProps,
 }: IEditPokemonAdminPageProps): JSX.Element {
   const { addToast } = useToast();
   const router = useRouter();
@@ -54,15 +58,15 @@ export default function EditPokemon({
     data: dataPokemon,
     isLoading: isLoadingPokemon,
     isError: isErrorPokemon,
-  } = usePokemonId({ id });
+  } = usePokemonId({ id, initialData: pokemonProps });
   const { mutateAsync } = useUpdatePokemon();
 
   const { register, handleSubmit, formState } = useForm<IUpdatePokemonFormData>(
     {
       resolver: yupResolver(updatePokemonFormSchema),
       defaultValues: {
-        types: [],
-        weakness: [],
+        types: dataPokemon.types,
+        weakness: dataPokemon.weakness,
       },
     },
   );
@@ -81,7 +85,7 @@ export default function EditPokemon({
       formData.append('types', JSON.stringify(types));
       formData.append('weakness', JSON.stringify(weakness));
       formData.append('image', image[0]);
-      await mutateAsync({ data: formData });
+      await mutateAsync({ id, data: formData });
 
       addToast({
         type: 'success',
@@ -163,10 +167,6 @@ export default function EditPokemon({
                   </TypesOrWeaknessTitle>
                   <CheckboxContainer>
                     {dataTypes.map(type => {
-                      console.log(
-                        'teste',
-                        dataPokemon.types.includes(type.name),
-                      );
                       return (
                         <Checkbox
                           label={type.name}
@@ -182,7 +182,7 @@ export default function EditPokemon({
                     <CheckboxError>{errors.types.message}</CheckboxError>
                   )}
                 </Form.FormItem>
-                {/* <Form.FormItem>
+                <Form.FormItem>
                   <TypesOrWeaknessTitle>
                     Selecione as fraquezas do pokemon
                   </TypesOrWeaknessTitle>
@@ -200,7 +200,7 @@ export default function EditPokemon({
                   {errors.weakness && (
                     <CheckboxError>{errors.weakness.message}</CheckboxError>
                   )}
-                </Form.FormItem> */}
+                </Form.FormItem>
               </>
             )}
 
@@ -227,7 +227,9 @@ export default function EditPokemon({
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { id } = params;
 
+  const pokemonProps = await fetchPokemon({ id });
+
   return {
-    props: { id },
+    props: { pokemonProps, id },
   };
 };

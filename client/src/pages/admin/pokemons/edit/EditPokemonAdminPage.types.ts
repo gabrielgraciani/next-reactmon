@@ -1,3 +1,5 @@
+import { IPokemon } from 'interfaces/Pokemon';
+
 export interface IUpdatePokemonFormData {
   name: string;
   weight: string;
@@ -9,4 +11,5 @@ export interface IUpdatePokemonFormData {
 
 export interface IEditPokemonAdminPageProps {
   id: string;
+  pokemonProps: IPokemon;
 }

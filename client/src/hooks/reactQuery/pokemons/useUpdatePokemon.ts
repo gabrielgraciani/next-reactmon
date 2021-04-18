@@ -6,7 +6,10 @@ interface IUpdatePokemonProps {
   id: string;
   data: {
     name: string;
-    description: string;
+    weight: string;
+    height: string;
+    types: string;
+    weakness: string;
     image: File;
   };
 }
