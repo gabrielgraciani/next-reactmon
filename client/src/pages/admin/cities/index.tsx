@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -6,7 +7,10 @@ import Link from 'next/link';
 import { Table } from 'components/Table';
 import { Loading } from 'components/Loading';
 
-import { usePaginatedCities } from 'hooks/reactQuery/cities/usePaginatedCities';
+import {
+  usePaginatedCities,
+  fetchCities,
+} from 'hooks/reactQuery/cities/usePaginatedCities';
 import { useDeleteCity } from 'hooks/reactQuery/cities/useDeleteCity';
 
 import { Pagination } from 'components/Pagination';
@@ -18,13 +22,19 @@ import {
   LoadingOrErrorContainer,
   StyledLink,
 } from './CitiesAdminPage.styles';
+import { ICitiesAdminPageProps } from './CitiesAdminPage.types';
 
-export default function CitiesList(): JSX.Element {
+export default function CitiesList({
+  citiesProps,
+}: ICitiesAdminPageProps): JSX.Element {
   const [page, setPage] = useState(1);
   const router = useRouter();
   const { mutateAsync } = useDeleteCity();
 
-  const { data, isLoading, error, isFetching } = usePaginatedCities({ page });
+  const { data, isLoading, error, isFetching } = usePaginatedCities({
+    page,
+    initialData: citiesProps,
+  });
 
   const columns = [
     {
@@ -121,3 +131,10 @@ export default function CitiesList(): JSX.Element {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const citiesProps = await fetchCities({ page: 1 });
+  return {
+    props: { citiesProps },
+  };
+};

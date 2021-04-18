@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 import { ApplicationRoutes } from 'config/ApplicationRoutes';
 
-import { useCityId } from 'hooks/reactQuery/cities/useCityId';
+import { useCityId, fetchCity } from 'hooks/reactQuery/cities/useCityId';
 import { useUpdateCity } from 'hooks/reactQuery/cities/useUpdateCity';
 
 import { Form } from 'components/Form';
@@ -36,11 +36,17 @@ const updateCityFormSchema = yup.object().shape({
   description: yup.string().required('Descrição obrigatória'),
 });
 
-export default function EditCity({ id }: IEditCityAdminPageProps): JSX.Element {
+export default function EditCity({
+  id,
+  cityProps,
+}: IEditCityAdminPageProps): JSX.Element {
   const { addToast } = useToast();
   const router = useRouter();
 
-  const { data, isLoading, isError } = useCityId({ id });
+  const { data, isLoading, isError } = useCityId({
+    id,
+    initialData: cityProps,
+  });
   const { mutateAsync } = useUpdateCity();
 
   const { register, handleSubmit, formState } = useForm<IUpdateCityFormData>({
@@ -141,7 +147,8 @@ export default function EditCity({ id }: IEditCityAdminPageProps): JSX.Element {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { id } = params;
 
+  const cityProps = await fetchCity({ id });
   return {
-    props: { id },
+    props: { cityProps, id },
   };
 };

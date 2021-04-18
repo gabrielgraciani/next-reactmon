@@ -6,6 +6,11 @@ interface IFetchCityProps {
   id: string | string[];
 }
 
+interface IUseCityIdProps {
+  id: string | string[];
+  initialData: ICity;
+}
+
 export async function fetchCity({ id }: IFetchCityProps): Promise<ICity> {
   const { data } = await api.get(`/cities/${id}`);
 
@@ -14,8 +19,10 @@ export async function fetchCity({ id }: IFetchCityProps): Promise<ICity> {
 
 export function useCityId({
   id,
-}: IFetchCityProps): UseQueryResult<ICity, unknown> {
+  initialData,
+}: IUseCityIdProps): UseQueryResult<ICity, unknown> {
   return useQuery(['city', id], () => fetchCity({ id }), {
     staleTime: 1000 * 60 * 5, // 5 minutes
+    initialData,
   });
 }

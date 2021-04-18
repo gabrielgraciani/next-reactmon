@@ -1,3 +1,5 @@
+import { ICity } from 'interfaces/City';
+
 export interface IUpdateCityFormData {
   name: string;
   description: string;
@@ -6,4 +8,5 @@ export interface IUpdateCityFormData {
 
 export interface IEditCityAdminPageProps {
   id: string;
+  cityProps: ICity;
 }
