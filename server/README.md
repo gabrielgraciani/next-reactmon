@@ -8,10 +8,10 @@
 
 ```bash
 # Clone este repositório
-$ git clone https://link-a-definir.com.br
+$ git clone https://github.com/gabrielgraciani/next-typescript-course
 
 # Acesse a pasta do projeto no seu terminal/cmd
-$ cd server
+$ cd 2-reactmon/server
 
 # Instale as dependências
 $ yarn install or npm install
