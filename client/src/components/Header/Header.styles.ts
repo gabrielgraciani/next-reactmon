@@ -82,13 +82,14 @@ const UserAvatar = styled.div`
   height: 4rem;
   border-radius: 50%;
   margin: 0 1rem;
-`;
-
-const UserImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+  background: ${Colors.gray};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: ${Colors.black};
+  font-weight: bold;
+  font-size: 1.6rem;
 `;
 
 const PopoverContent = styled.div``;
@@ -117,7 +118,6 @@ export {
   UserInformation,
   UserName,
   UserAvatar,
-  UserImage,
   PopoverContent,
   PopoverContentItem,
   PopoverIconContainer,

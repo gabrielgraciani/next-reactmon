@@ -52,7 +52,7 @@ export default function Register(): JSX.Element {
       });
 
       await signIn({ email, password });
-      push(ApplicationRoutes.ADMIN.ROOT);
+      push(ApplicationRoutes.ADMIN.POKEMONS.LIST);
     } catch (err) {
       addToast({
         type: 'error',
