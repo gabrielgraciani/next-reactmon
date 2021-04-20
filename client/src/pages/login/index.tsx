@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import Head from 'next/head';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -27,6 +28,8 @@ export default function Login(): JSX.Element {
   const { signIn } = useAuth();
   const { addToast } = useToast();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const { register, handleSubmit, formState } = useForm<ISignInFormData>({
     resolver: yupResolver(signInFormSchema),
   });
@@ -34,6 +37,7 @@ export default function Login(): JSX.Element {
   const { errors } = formState;
 
   const handleSignIn: SubmitHandler<ISignInFormData> = async values => {
+    setIsLoading(true);
     try {
       const { email, password } = values;
 
@@ -42,6 +46,7 @@ export default function Login(): JSX.Element {
         password,
       });
 
+      setIsLoading(false);
       push(ApplicationRoutes.ADMIN.POKEMONS.LIST);
     } catch (err) {
       addToast({
@@ -49,6 +54,8 @@ export default function Login(): JSX.Element {
         title: 'Erro na autenticação',
         description: 'Tente novamente mais tarde',
       });
+
+      setIsLoading(false);
     }
   };
 
@@ -82,7 +89,9 @@ export default function Login(): JSX.Element {
           </Form.FormItem>
 
           <Form.FormItem>
-            <Button type="submit">Entrar</Button>
+            <Button type="submit" isLoading={isLoading}>
+              Entrar
+            </Button>
           </Form.FormItem>
         </Form>
 

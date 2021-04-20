@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Head from 'next/head';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -36,6 +37,8 @@ export default function Register(): JSX.Element {
   const { signIn } = useAuth();
   const { push } = useRouter();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const { register, handleSubmit, formState } = useForm<IRegisterFormData>({
     resolver: yupResolver(registerFormSchema),
   });
@@ -43,6 +46,7 @@ export default function Register(): JSX.Element {
   const { errors } = formState;
 
   const handleRegister: SubmitHandler<IRegisterFormData> = async values => {
+    setIsLoading(true);
     try {
       const { email, password, name } = values;
       await api.post('users', {
@@ -52,6 +56,7 @@ export default function Register(): JSX.Element {
       });
 
       await signIn({ email, password });
+      setIsLoading(false);
       push(ApplicationRoutes.ADMIN.POKEMONS.LIST);
     } catch (err) {
       addToast({
@@ -59,6 +64,8 @@ export default function Register(): JSX.Element {
         title: 'Erro no registro',
         description: 'Tente novamente mais tarde',
       });
+
+      setIsLoading(false);
     }
   };
   return (
@@ -108,7 +115,9 @@ export default function Register(): JSX.Element {
           </Form.FormItem>
 
           <Form.FormItem>
-            <Button type="submit">Criar</Button>
+            <Button type="submit" isLoading={isLoading}>
+              Criar
+            </Button>
           </Form.FormItem>
         </Form>
 

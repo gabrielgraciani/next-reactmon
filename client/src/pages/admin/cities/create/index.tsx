@@ -32,7 +32,7 @@ const createCityFormSchema = yup.object().shape({
 export default function CreateCity(): JSX.Element {
   const { addToast } = useToast();
   const router = useRouter();
-  const { mutateAsync } = useCreateCity();
+  const { mutateAsync, isLoading } = useCreateCity();
 
   const { register, handleSubmit, formState } = useForm<ICreateCityFormData>({
     resolver: yupResolver(createCityFormSchema),
@@ -103,7 +103,9 @@ export default function CreateCity(): JSX.Element {
           </Form.FormItem>
 
           <Form.FormItem>
-            <Button type="submit">Criar</Button>
+            <Button type="submit" isLoading={isLoading}>
+              Criar
+            </Button>
           </Form.FormItem>
         </Form>
       </Container>

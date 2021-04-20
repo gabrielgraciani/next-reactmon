@@ -41,8 +41,8 @@ const createPokemonFormSchema = yup.object().shape({
 export default function CreatePokemon(): JSX.Element {
   const { addToast } = useToast();
   const router = useRouter();
-  const { mutateAsync } = useCreatePokemon();
-  const { data, isLoading } = useTypes();
+  const { mutateAsync, isLoading: isLoadingCreatePokemon } = useCreatePokemon();
+  const { data, isLoading: isLoadingTypes } = useTypes();
 
   const { register, handleSubmit, formState } = useForm<ICreatePokemonFormData>(
     {
@@ -125,7 +125,7 @@ export default function CreatePokemon(): JSX.Element {
               error={errors.height}
             />
           </Form.FormItem>
-          {isLoading ? (
+          {isLoadingTypes ? (
             <LoadingOrErrorContainer>
               <Loading />
             </LoadingOrErrorContainer>
@@ -177,7 +177,9 @@ export default function CreatePokemon(): JSX.Element {
           </Form.FormItem>
 
           <Form.FormItem>
-            <Button type="submit">Criar</Button>
+            <Button type="submit" isLoading={isLoadingCreatePokemon}>
+              Criar
+            </Button>
           </Form.FormItem>
         </Form>
       </Container>

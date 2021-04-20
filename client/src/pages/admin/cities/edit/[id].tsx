@@ -43,11 +43,11 @@ export default function EditCity({
   const { addToast } = useToast();
   const router = useRouter();
 
-  const { data, isLoading, isError } = useCityId({
+  const { data, isLoading: isLoadingCityId, isError } = useCityId({
     id,
     initialData: cityProps,
   });
-  const { mutateAsync } = useUpdateCity();
+  const { mutateAsync, isLoading: isLoadingUpdateCity } = useUpdateCity();
 
   const { register, handleSubmit, formState } = useForm<IUpdateCityFormData>({
     resolver: yupResolver(updateCityFormSchema),
@@ -96,7 +96,7 @@ export default function EditCity({
           </Link>
         </HeaderContainer>
 
-        {isLoading ? (
+        {isLoadingCityId ? (
           <LoadingOrErrorContainer>
             <Loading />
           </LoadingOrErrorContainer>
@@ -135,7 +135,9 @@ export default function EditCity({
             </Form.FormItem>
 
             <Form.FormItem>
-              <Button type="submit">Editar</Button>
+              <Button type="submit" isLoading={isLoadingUpdateCity}>
+                Editar
+              </Button>
             </Form.FormItem>
           </Form>
         )}

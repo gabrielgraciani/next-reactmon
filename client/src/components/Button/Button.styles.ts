@@ -6,11 +6,18 @@ const Container = styled.button`
   border: 1px solid ${Colors.white};
   border-radius: 0.4rem;
   background: transparent;
-  padding: 1.5rem 2rem;
+  height: 5rem;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     filter: brightness(0.8);
+  }
+
+  &:disabled {
+    opacity: 0.6;
   }
 `;
 

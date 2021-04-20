@@ -59,7 +59,7 @@ export default function EditPokemon({
     isLoading: isLoadingPokemon,
     isError: isErrorPokemon,
   } = usePokemonId({ id, initialData: pokemonProps });
-  const { mutateAsync } = useUpdatePokemon();
+  const { mutateAsync, isLoading: isLoadingUpdatePokemon } = useUpdatePokemon();
 
   const { register, handleSubmit, formState } = useForm<IUpdatePokemonFormData>(
     {
@@ -215,7 +215,9 @@ export default function EditPokemon({
             </Form.FormItem>
 
             <Form.FormItem>
-              <Button type="submit">Editar</Button>
+              <Button type="submit" isLoading={isLoadingUpdatePokemon}>
+                Editar
+              </Button>
             </Form.FormItem>
           </Form>
         )}

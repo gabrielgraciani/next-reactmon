@@ -44,11 +44,11 @@ export default function EditItem({
   const { addToast } = useToast();
   const router = useRouter();
 
-  const { data, isLoading, isError } = useItemId({
+  const { data, isLoading: isLoadingItemId, isError } = useItemId({
     id,
     initialData: itemProps,
   });
-  const { mutateAsync } = useUpdateItem();
+  const { mutateAsync, isLoading: isLoadingUpdateItem } = useUpdateItem();
 
   const { register, handleSubmit, formState } = useForm<IUpdateItemFormData>({
     resolver: yupResolver(updateItemFormSchema),
@@ -98,7 +98,7 @@ export default function EditItem({
           </Link>
         </HeaderContainer>
 
-        {isLoading ? (
+        {isLoadingItemId ? (
           <LoadingOrErrorContainer>
             <Loading />
           </LoadingOrErrorContainer>
@@ -146,7 +146,9 @@ export default function EditItem({
             </Form.FormItem>
 
             <Form.FormItem>
-              <Button type="submit">Editar</Button>
+              <Button type="submit" isLoading={isLoadingUpdateItem}>
+                Editar
+              </Button>
             </Form.FormItem>
           </Form>
         )}

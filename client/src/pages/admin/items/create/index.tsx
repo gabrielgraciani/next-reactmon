@@ -33,7 +33,7 @@ const createItemFormSchema = yup.object().shape({
 export default function CreateItem(): JSX.Element {
   const { addToast } = useToast();
   const router = useRouter();
-  const { mutateAsync } = useCreateItem();
+  const { mutateAsync, isLoading } = useCreateItem();
 
   const { register, handleSubmit, formState } = useForm<ICreateItemFormData>({
     resolver: yupResolver(createItemFormSchema),
@@ -113,7 +113,9 @@ export default function CreateItem(): JSX.Element {
           </Form.FormItem>
 
           <Form.FormItem>
-            <Button type="submit">Criar</Button>
+            <Button type="submit" isLoading={isLoading}>
+              Criar
+            </Button>
           </Form.FormItem>
         </Form>
       </Container>
