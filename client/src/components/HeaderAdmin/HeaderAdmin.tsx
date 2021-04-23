@@ -4,6 +4,8 @@ import { FiMenu } from 'react-icons/fi';
 
 import { Drawer } from 'components/Drawer';
 
+import { useAuth } from 'contexts/AuthContext';
+
 import { ApplicationRoutes } from 'config/ApplicationRoutes';
 
 import {
@@ -16,6 +18,7 @@ import {
 
 const HeaderAdmin = (): JSX.Element => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const { user } = useAuth();
 
   const contentDrawer = () => {
     return (
@@ -45,7 +48,7 @@ const HeaderAdmin = (): JSX.Element => {
       <ProjectName>Reactmon</ProjectName>
 
       <UserName>
-        Olá, <strong>Gabriel Graciani</strong>
+        Olá, <strong>{user?.name}</strong>
       </UserName>
 
       <Drawer
