@@ -5,7 +5,7 @@ import { Colors } from 'styles/colors';
 const Container = styled.div`
   width: 100%;
   margin: 0 auto;
-  padding: 0 5%;
+  padding: 0 5% 5rem;
 `;
 
 const Title = styled.h1`

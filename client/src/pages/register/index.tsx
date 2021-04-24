@@ -13,7 +13,6 @@ import { Form } from 'components/Form';
 import { ApplicationRoutes } from 'config/ApplicationRoutes';
 
 import { useToast } from 'contexts/ToastContext';
-import { useAuth } from 'contexts/AuthContext';
 
 import { api } from 'services/api';
 
@@ -34,7 +33,6 @@ const registerFormSchema = yup.object().shape({
 
 export default function Register(): JSX.Element {
   const { addToast } = useToast();
-  const { signIn } = useAuth();
   const { push } = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -55,9 +53,12 @@ export default function Register(): JSX.Element {
         name,
       });
 
-      await signIn({ email, password });
       setIsLoading(false);
-      push(ApplicationRoutes.ADMIN.POKEMONS.LIST);
+      addToast({
+        title: 'Sucesso no registro',
+        description: 'Usuário criado com sucesso!',
+      });
+      push(ApplicationRoutes.LOGIN);
     } catch (err) {
       addToast({
         type: 'error',
