@@ -35,5 +35,6 @@ export function usePaginatedCities({
   return useQuery(['cities_paginated', page], () => fetchCities({ page }), {
     staleTime: 1000 * 60 * 10, // 10 minutes
     initialData,
+    initialDataUpdatedAt: 1000 * 60 * 10, // 10 minutes
   });
 }

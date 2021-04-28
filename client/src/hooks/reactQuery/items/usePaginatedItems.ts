@@ -32,5 +32,6 @@ export function usePaginatedItems({
   return useQuery(['items_paginated', page], () => fetchItems({ page }), {
     staleTime: 1000 * 60 * 10, // 10 minutes
     initialData,
+    initialDataUpdatedAt: 1000 * 60 * 10, // 10 minutes
   });
 }

@@ -35,5 +35,6 @@ export function usePaginatedPokemons({
   return useQuery(['pokemons_paginated', page], () => fetchPokemons({ page }), {
     staleTime: 1000 * 60 * 10, // 10 minutes
     initialData,
+    initialDataUpdatedAt: 1000 * 60 * 10, // 10 minutes
   });
 }
