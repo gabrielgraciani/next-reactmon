@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FiMenu } from 'react-icons/fi';
 
@@ -18,7 +18,14 @@ import {
 
 const HeaderAdmin = (): JSX.Element => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const [userName, setUserName] = useState('');
   const { user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      setUserName(user.name);
+    }
+  }, [user]);
 
   const contentDrawer = () => {
     return (
@@ -48,7 +55,7 @@ const HeaderAdmin = (): JSX.Element => {
       <ProjectName>Reactmon</ProjectName>
 
       <UserName>
-        Olá, <strong>{user?.name}</strong>
+        Olá, <strong>{userName}</strong>
       </UserName>
 
       <Drawer
