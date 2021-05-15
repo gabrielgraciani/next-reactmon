@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-import SeedTypes from '../seeds/types.seed';
+import SeedTypes from '../../seeds/types.seed';
 
 export default class SeedTypes1617828774301 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

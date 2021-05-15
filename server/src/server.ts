@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import express, { Request, Response, NextFunction } from 'express';
 
 import './database';
@@ -28,5 +29,7 @@ app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
     message: `Internal server error - ${err.message}`,
   });
 });
+
+dotenv.config();
 
 app.listen(3333, () => console.log('Server is running!'));

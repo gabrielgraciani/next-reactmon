@@ -16,17 +16,20 @@ $ cd 2-reactmon/server
 # Instale as dependências
 $ yarn install or npm install
 
-# Execute a aplicação criando um docker (executado apenas na primeira vez acessando o projeto)
-$ yarn up:docker or npm run up:docker
+# Crie as imagens da aplicação com o docker-compose (apenas na primeira execução)
+$ docker-compose up -d
 
-# Nas demais vezes que quiser subir o projeto
-$ yarn start:docker or npm run start:docker
+# Execute as migrações
+$ yarn typeorm migration:run or npm run typeorm migration:run
+
+# Nas demais vezes que executar o projeto, não é necessário o docker-compose up nem as migrações, somente
+$ docker-compose start
 
 # Parar o projeto
-$ yarn stop:docker or npm run stop:docker
+$ docker-compose stop
 
 # Excluir a imagem do docker
-$ yarn down:docker or npm run down:docker
+$ docker-compose down
 ```
 
 * [Request & Response Examples](#request--response-examples)

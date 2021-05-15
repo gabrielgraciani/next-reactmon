@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-import SeedItems from '../seeds/items.seed';
+import SeedItems from '../../seeds/items.seed';
 
 export default class SeedItems1617980909933 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

@@ -7,8 +7,8 @@ import {
 
 @Entity('cities')
 class City {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
   @Column()
   name: string;

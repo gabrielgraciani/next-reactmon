@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-import SeedPokemons from '../seeds/pokemons.seed';
+import SeedPokemons from '../../seeds/pokemons.seed';
 
 export default class SeedPokemons1617830027479 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
