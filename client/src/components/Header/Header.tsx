@@ -88,7 +88,7 @@ const Header = (): JSX.Element => {
             onVisibleChange={handleVisibleChange}
           >
             <UserInformation>
-              <UserName>{user.name}</UserName>
+              <UserName>{user?.name}</UserName>
               <UserAvatar>{initials}</UserAvatar>
               <PopoverIconContainer>
                 {isPopoverVisible ? (

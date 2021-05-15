@@ -39,7 +39,11 @@ const StyledPaginationItem = styled.button`
   }
 `;
 
-const Dots = styled.div``;
+const Dots = styled.div`
+  line-height: 2rem;
+  font-size: 2.5rem;
+  margin-left: 1rem;
+`;
 
 export {
   Container,
