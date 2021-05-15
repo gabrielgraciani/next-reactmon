@@ -6,9 +6,11 @@ const ormConfigDevelopment = {
   "password": "reactmon",
   "database": "reactmon",
   "entities": [
-    "./src/modules/**/models/*.ts"
+    `./${process.env.ORM_CONFIG_URL}/modules/**/models/*.${process.env.ORM_CONFIG_EXTENSION}`
   ],
-  "migrations": ['./src/database/migrations/postgres/*.ts'],
+  "migrations": [
+    `./${process.env.ORM_CONFIG_URL}/database/migrations/postgres/*.${process.env.ORM_CONFIG_EXTENSION}`
+  ],
   "cli": {
     "migrationsDir": './src/database/migrations/postgres'
   }
@@ -18,10 +20,10 @@ const ormConfigProduction = {
   "type": "sqlite",
   "database": "./src/database/database.sqlite",
   "entities": [
-    "./src/modules/**/models/*.ts"
+    `./${process.env.ORM_CONFIG_URL}/modules/**/models/*.${process.env.ORM_CONFIG_EXTENSION}`
   ],
   "migrations": [
-    './src/database/migrations/sqlite/*.ts'
+    `./${process.env.ORM_CONFIG_URL}/database/migrations/sqlite/*.${process.env.ORM_CONFIG_EXTENSION}`
   ],
   "cli": {
     "migrationsDir": './src/database/migrations/sqlite'

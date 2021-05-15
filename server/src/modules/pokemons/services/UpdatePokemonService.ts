@@ -29,7 +29,7 @@ class UpdatePokemonService {
     const pokemonsRepository = getRepository(Pokemon);
 
     const pokemon = await pokemonsRepository.findOne({
-      id,
+      id: parseInt(id, 10),
     });
 
     if (!pokemon) {

@@ -25,7 +25,7 @@ class UpdateItemService {
     const itemsRepository = getRepository(Item);
 
     const item = await itemsRepository.findOne({
-      id,
+      id: parseInt(id, 10),
     });
 
     if (!item) {

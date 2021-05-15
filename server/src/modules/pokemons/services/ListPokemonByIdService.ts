@@ -12,7 +12,7 @@ class ListPokemonByIdService {
   public async execute({ id }: Request): Promise<Pokemon> {
     const pokemonsRepository = getRepository(Pokemon);
 
-    const pokemon = await pokemonsRepository.findOne({ id });
+    const pokemon = await pokemonsRepository.findOne({ id: parseInt(id, 10) });
 
     if (!pokemon) {
       throw new AppError('Pokemon not found', 404);

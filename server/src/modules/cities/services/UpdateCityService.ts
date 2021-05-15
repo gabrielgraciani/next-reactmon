@@ -23,7 +23,7 @@ class UpdateCityService {
     const citiesRepository = getRepository(City);
 
     const city = await citiesRepository.findOne({
-      id,
+      id: parseInt(id, 10),
     });
 
     if (!city) {

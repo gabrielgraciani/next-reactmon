@@ -32,7 +32,7 @@ class DeleteItemService {
       }
     }
 
-    await itemsRepository.delete({ id });
+    await itemsRepository.delete({ id: parseInt(id, 10) });
   }
 }
 

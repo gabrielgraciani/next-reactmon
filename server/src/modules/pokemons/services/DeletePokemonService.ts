@@ -37,7 +37,7 @@ class DeletePokemonService {
       }
     }
 
-    await pokemonsRepository.delete({ id });
+    await pokemonsRepository.delete({ id: parseInt(id, 10) });
   }
 }
 

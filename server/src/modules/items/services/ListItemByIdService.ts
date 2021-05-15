@@ -12,7 +12,7 @@ class ListItemByIdService {
   public async execute({ id }: Request): Promise<Item> {
     const itemsRepository = getRepository(Item);
 
-    const item = await itemsRepository.findOne({ id });
+    const item = await itemsRepository.findOne({ id: parseInt(id, 10) });
 
     if (!item) {
       throw new AppError('Item not found', 404);

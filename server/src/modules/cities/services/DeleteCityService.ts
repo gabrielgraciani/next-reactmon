@@ -32,7 +32,7 @@ class DeleteCityService {
       }
     }
 
-    await citiesRepository.delete({ id });
+    await citiesRepository.delete({ id: parseInt(id, 10) });
   }
 }
 

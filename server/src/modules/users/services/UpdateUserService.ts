@@ -17,7 +17,7 @@ class UpdatePostService {
     const usersRepository = getCustomRepository(UsersRepository);
 
     const user = await usersRepository.findOne({
-      id,
+      id: parseInt(id, 10),
     });
 
     if (!user) {
